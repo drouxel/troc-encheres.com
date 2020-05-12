@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Encherir</title>
+<meta charset="ISO-8859-1">
+<title>Acquisition</title>
 </head>
 <header>
 	<h1>TrocEncheres.org</h1>
@@ -13,16 +13,20 @@
 <body>
 	<img>
 	<p>PC Gamer pour travailler</p>
+	<br>
 	<p>Description : </p>
+	<br>
 	<p>Meilleure offre : </p>
+	<br>
 	<p>Mise à prix : </p>
-	<p>Fin de l'enchère : </p>
+	<br>
 	<p>Retrait : </p>
+	<br>
 	<p>Vendeur : </p>
-	<label for="maProposition">Ma proposition : </label><br>
-	<input type="button" value="Enchérir" name="encherir" id="encherir"><br>
-	<input type="button" value="Annuler ma dernière enchère" name="annulerEnchere" id="annulerEnchere"><br>
-	<input type="button" value="Retour" name="retour" id="retour"><br>
-
+	<br>
+	<p>Tel : </p>
+	<br>
+	<input type="button" value="Retour" name="retour" id="retour">
+	<br>
 </body>
 </html>

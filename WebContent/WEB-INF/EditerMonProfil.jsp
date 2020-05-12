@@ -49,7 +49,7 @@
 		<input type="text" name="confirmationMotDePasse" id="confirmationMotDePasse">
 	<br>
 	<br>
-	<label for="credit">Crï¿½dit : </label><p>Insï¿½rer la valeur du crï¿½dit </p>
+	<label for="credit">Crédit : </label><p>Insérer la valeur du crédit </p>
 	<br>
 	<br>
 	<input type="submit" value="Enregistrer">

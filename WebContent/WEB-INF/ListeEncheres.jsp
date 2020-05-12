@@ -7,20 +7,20 @@
 <title>Accueil</title>
 </head>
 <header><h1>TrocEncheres.org</h1></header>
-<a href=""><p>Vendre un article</p></a>
-<a href="/Projet_Troc_Encheres/servletMonProfil"><p>Mon profil</p></a>
-<a href=""><p>Dï¿½connexion</p></a>
+<p><a href="">Vendre un article</a></p>
+<p><a href="/Projet_Troc_Encheres/servletMonProfil">Mon profil</a></p>
+<p><a href="">Déconnexion</a></p>
 
 <h2>Filtres : </h2>
-<p>leTrioDeLEtrange est connectï¿½ !</p>
+<p>leTrioDeLEtrange est connecté !</p>
 <form>
 	<input type="search" id="recherche" name="recherche" placeholder="Recherche">
 	<br>
 	<br>
-	<label for="categories">Catï¿½gories : </label>
+	<label for="categories">Catégories : </label>
 	<select>
-		<option>Jeux vidï¿½os
-		<option>Jeux de sociï¿½tï¿½
+		<option>Jeux vidéos
+		<option>Jeux de société
 		<option>Jeux de construction
 	</select>
 	<br>
@@ -30,7 +30,7 @@
 	<br>
 	<br>
 	<input type="checkbox" value ="mesEncheresEnCours">
-		<label for="mesEncheresEnCours">Mes enchï¿½res en cours</label>
+		<label for="mesEncheresEnCours">Mes enchères en cours</label>
 	<br>
 	<br>
 	<input type="checkbox" value ="mesAcquisitions">
@@ -38,13 +38,13 @@
 	<br>
 	<br>
 	<input type="checkbox" value ="autresEncheres">
-		<label for="autresEncheres">Mes autres enchï¿½res</label>
+		<label for="autresEncheres">Mes autres enchères</label>
 	<br>
 	<br>
 </form>
 
-<div><p>Annulation enchï¿½re</p></div>
-<div><p>Enchï¿½re en cours</p></div>
+<div><p>Annulation enchère</p></div>
+<div><p>Enchère en cours</p></div>
 <body>
 
 </body>

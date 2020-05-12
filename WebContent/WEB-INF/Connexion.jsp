@@ -22,7 +22,7 @@
 <input type="button" value="Connexion">
 <input type="checkbox"><label for="seSouvenirDeMoi">Se souvenir de moi</label>
 </form>
-<a href=""><p>Mot de passe oublié</p></a>
+<p><a href="">Mot de passe oublié</a></p>
 <br>
 <a href="/Projet_Troc_Encheres/servletCreationCompte"><input type="button" value="Créer un compte"></a>
 
