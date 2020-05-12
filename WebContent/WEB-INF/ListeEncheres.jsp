@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<%@ include file="fragments/ImportBootstrap.jspf"%>
 <title>Accueil</title>
 </head>
-<header><h1>TrocEncheres.org</h1></header>
-<p><a href="">Vendre un article</a></p>
-<p><a href="/Projet_Troc_Encheres/servletMonProfil">Mon profil</a></p>
-<p><a href="">Déconnexion</a></p>
+<%@ include file="fragments/EnTete.jspf"%>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <a href="/troc-encheres.com/servletVendreUnArticle"><button type="button" class="btn btn-primary">Vendre un article</button></a>
+  <a  href="/troc-encheres.com/servletMonProfil"><button type="button" class="btn btn-primary">Mon profil</button></a>
+  <a href=""><button type="button" class="btn btn-primary">Déconnexion</button></a>
+</div>
 
 <h2>Filtres : </h2>
 <p>leTrioDeLEtrange est connecté !</p>

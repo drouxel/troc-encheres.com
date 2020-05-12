@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<%@ include file="fragments/ImportBootstrap.jspf"%>
 <title>Détails de la vente</title>
 </head>
-<header>
-	<h1>TrocEncheres.org</h1>
-</header>
+<%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<p>... a remporté l'enchère</p>
 	<p>PC Gamer pour travailler</p>
