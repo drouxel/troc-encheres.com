@@ -13,7 +13,7 @@ public interface UtilisateurDAO {
 	 * @param Utilisateur
 	 * @throws BusinessException si un problème survient pendant l'opération avec la base de données.
 	 */
-	public void ajouterUtilisateur(Utilisateur u) throws BusinessException;
+	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException;
 	/**
 	 * méthode permettant de modifier utilisateur présent dans la base de données.
 	 * @param Utilisateur

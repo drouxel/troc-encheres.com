@@ -1,16 +1,16 @@
 package fr.eni.trocEncheres.dal;
 
 public abstract class DAOFactory {
-	public EnchereDAO getEnchereDAO() {
+	public static EnchereDAO getEnchereDAO() {
 		return null;
 	}
-	public RetraitDAO getRetraitDAO() {
+	public static RetraitDAO getRetraitDAO() {
 		return null;
 	}
-	public UtilisateurDAO getUtilisateurDAO() {
-		return null;
+	public static UtilisateurDAO getUtilisateurDAO() {
+		return new UtilisateurDAOJdbcImpl();
 	}
-	public VenteDAO getVenteDAO() {
+	public static VenteDAO getVenteDAO() {
 		return null;
 	}
 }
