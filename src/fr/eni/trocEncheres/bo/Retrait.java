@@ -1,5 +1,9 @@
 package fr.eni.trocEncheres.bo;
 
+/**
+ * @author MATTHIEU
+ *
+ */
 public class Retrait {
 	private int noVente;
 	private String rue;
