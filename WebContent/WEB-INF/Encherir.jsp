@@ -22,6 +22,6 @@
 <p>Vendeur : </p><br>
 <label for="maProposition">Ma proposition : </label><br>
 <input type="button" value="Enchérir" name="encherir" id="encherir"><br>
-<input type="button" value="Retour" name="retour" id=="retour"><br>
+<input type="button" value="Retour" name="retour" id="retour"><br>
 </body>
 </html>
