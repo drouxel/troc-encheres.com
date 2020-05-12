@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ï¿½diter mon profil</title>
+<%@ include file="fragments/ImportBootstrap.jspf"%>
+<title>Éditer mon profil</title>
 </head>
-<header><h1>TrocEncheres.org</h1></header>
+<%@ include file="fragments/EnTete.jspf"%>
 <body>
 <form name="editerMonProfil" id="editerMonProfil" method="POST" action="/A_MODIFIER">
 	<label>Pseudo : </label>

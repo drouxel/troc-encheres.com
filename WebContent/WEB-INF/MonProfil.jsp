@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<%@ include file="fragments/ImportBootstrap.jspf"%>
 <title>Mon profil</title>
 </head>
-<header><h1>TrocEncheres.org</h1></header>
+<%@ include file="fragments/EnTete.jspf"%>
 <body>
 <h2>MonProfil</h2>
 <label>Pseudo : </label>
