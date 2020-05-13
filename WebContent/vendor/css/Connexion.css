@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";
+
+#container1 {
+	display: flex;
+	width: 30%;
+	margin:auto;
+}
+
+#container2 {
+	display: flex;
+	width: 30%;
+	margin:auto;
+}
+
+#container3{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#container4{
+	margin:auto;
+	text-align: center;
+}
+
+#creerUnCompte{
+	display:inline;
+	size:auto;
+	margin:auto;
+	padding:2%;
+}
+
+#container5{
+	display:flex;
+	margin:auto;
+	text-align: center;
+}

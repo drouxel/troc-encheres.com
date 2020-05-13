@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+#container1 {
+	width:50%;
+	display:inline-block;
+	margin:auto;
+	vertical-align:middle;
+}
+
+
+container2 {
+	display:inline-block;
+	text-align: center;
+	vertical-align: middle;
+	padding:0.5%;
+}
+
+input {
+	padding:0.5%;
+	margin:1%;
+}
