@@ -2,6 +2,8 @@ package fr.eni.trocEncheres.bll;
 
 import java.sql.ResultSet;
 
+import javax.management.Query;
+
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.dal.DAOFactory;
@@ -29,24 +31,7 @@ public class UtilisateurManager {
 	public UtilisateurManager() {
 		super();
 	}
-	
-//	/**
-//	 * Recupere le No de l'utilisateur
-//	 * @param pseudo
-//	 * @return
-//	 * @throws BusinessException
-//	 */
-//	public int selectNoUtilisateur(String pseudo) throws BusinessException  {
-//		int noUtilisateur = 0;
-//		
-//		try {
-//			noUtilisateur = daoUtilisateur.ajouterUtilisateur(pseudo);
-//		} catch (BusinessException e) {
-//			throw new BusinessException("echec selection No utilisateur");
-//		}
-//		
-//		return noUtilisateur;
-//	}
+		
 	
 	
 	/**
@@ -56,55 +41,111 @@ public class UtilisateurManager {
 	 */
 	public void ajouterUtilisateur(Utilisateur u) throws BusinessException {
 		//Attribut(s)
-		boolean valide = true;
+		boolean isValide = true;
 		
 		// vérifier que tous les champs de saisies soit tous remplis
 		if(u == null) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Utilisateur null");
 		}if (u.getPseudo().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Pseudo est obligatoire !");
 		}if (u.getNom().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Nom est obligatoire !");
 		}if (u.getPrenom().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Prénom est obligatoire !");
 		}if (u.getMail().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Email est obligatoire !");
 		}if (u.getRue().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Rue est obligatoire !");
 		}if (u.getCodePostal().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Code Postal est obligatoire !");
 		}if (u.getVille().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Ville est obligatoire !");
 		}if (u.getMotDePasse().trim().length() == 0) {
-			valide = false;
+			isValide = false;
 			throw new BusinessException("Le champs Mot de Passe est obligatoire !");
 		}
 		
-		// vérifie que le pseudo choisit ne soit pas déja dans la BDD
+		// insertion de l'utilisateur si tout les 'isValide' sont à 'true'
 		try {
-//			if(daoUtilisateur.ajouterUtilisateur() != 0) {
-//				valide = false;
-//				throw new BusinessException("Le pseudo entré, est déja utilisé");
-//			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		// insertion de l'utilisateur si tout les 'valide' sont à 'true'
-		try {
-			if(valide) {
+			if(isValide) {
 				daoUtilisateur.ajouterUtilisateur(u);
 			}
 		} catch (BusinessException e) {
 			throw new BusinessException("Echec de l'insertion");
+		}
+	}
+	
+	
+	
+	/**
+	 * Permet de modifier l'utilisateur
+	 * @param u
+	 * @throws BusinessException
+	 */
+	public void modifierUtilisateur(Utilisateur u) throws BusinessException {
+		boolean isValide = true;
+		
+				// vérifier que tous les champs de saisies soit tous remplis
+				if(u == null) {
+					isValide = false;
+					throw new BusinessException("Utilisateur null");
+				}if (u.getPseudo().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Pseudo est obligatoire !");
+				}if (u.getNom().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Nom est obligatoire !");
+				}if (u.getPrenom().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Prénom est obligatoire !");
+				}if (u.getMail().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Email est obligatoire !");
+				}if (u.getRue().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Rue est obligatoire !");
+				}if (u.getCodePostal().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Code Postal est obligatoire !");
+				}if (u.getVille().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Ville est obligatoire !");
+				}if (u.getMotDePasse().trim().length() == 0) {
+					isValide = false;
+					throw new BusinessException("Le champs Mot de Passe est obligatoire !");
+				}
+				
+				// vérifie que 'isValide' soit 'true' avant de modifier
+				try {
+					if(isValide) {
+						daoUtilisateur.modifierUtilisateur(u);
+					}
+				} catch (BusinessException e) {
+					throw new BusinessException("Echec de la mise à jour");
+				}
+	}
+	
+	
+	
+	/**
+	 * Permet de suppirmer un utilisateur
+	 * @param no_utilisateur
+	 * @throws BusinessException
+	 */
+	public void supprimerUtilisateur(int no_utilisateur) throws BusinessException{
+		// supprime l'utilisateur par son no_utilisateur
+		try {
+			daoUtilisateur.supprimerUtilisateur(no_utilisateur);			
+		} catch (BusinessException e) {
+			throw new BusinessException("Echec de la suppression");
 		}
 	}
 	
