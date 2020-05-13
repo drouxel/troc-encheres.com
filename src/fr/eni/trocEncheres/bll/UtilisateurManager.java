@@ -12,11 +12,11 @@ import fr.eni.trocEncheres.dal.UtilisateurDAO;
 public class UtilisateurManager {
 	
 	//singleton
-	private static CategorieManager instance;
+	private static UtilisateurManager instance;
 	
-	public static CategorieManager getInstance() {
+	public static UtilisateurManager getInstance() {
 		if(instance == null) {
-			instance = new CategorieManager();
+			instance = new UtilisateurManager();
 		}
 		return instance;
 	}
@@ -148,18 +148,5 @@ public class UtilisateurManager {
 			throw new BusinessException("Echec de la suppression");
 		}
 	}
-	
-	
+		
 }
-
-
-
-
-
-
-
-
-
-
-
-
