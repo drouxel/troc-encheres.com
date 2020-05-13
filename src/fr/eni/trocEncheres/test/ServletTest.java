@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Categorie;
+import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.dal.CategorieDAO;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.UtilisateurDAO;
@@ -28,43 +29,43 @@ public class ServletTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
 		try {
-//			System.out.println("test ajout");
-//			System.out.println("----------------------------------------------------");
-//			Utilisateur test =
-//					user.ajouterUtilisateur(new Utilisateur
-//							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
-//									"labiteaucul", 0, "Jean-Michel", false));
-//			System.out.println(test.toString());
-//			System.out.println("----------------------------------------------------");
-//			
-//			System.out.println("test modification");
-//			System.out.println("----------------------------------------------------");
-//			test.setRue("rue saint michel");
-//			test.setCodePostal("35000");
-//			test.setVille("rennes");
-//			user.modifierUtilisateur(test);
-//			System.out.println(test.toString());
-//			System.out.println("----------------------------------------------------");
-//			
-//			System.out.println("test gestion");
-//			System.out.println("----------------------------------------------------");
-//			test.setPseudo("retourneveste");
-//			test.setNom("De Lamite");
-//			test.setPrenom("Charles-Edouard");
-//			test.setMail("cedelamite@gmail.com");
-//			test.setMotDePasse("toutestclean");
-//			test.setTelephone(null);
-//			user.gererUtilisateur(test);
-//			System.out.println(test.toString());
-//			System.out.println("----------------------------------------------------");
-//			
-//			System.out.println("test suppression");
-//			System.out.println("----------------------------------------------------");
-//			user.supprimerUtilisateur(2);
-//			
-//			System.out.println("test login");
-//			System.out.println("----------------------------------------------------");
-//			System.out.println(user.getUtilisateur(7).toString());
+			System.out.println("test ajout");
+			System.out.println("----------------------------------------------------");
+			Utilisateur test =
+					user.ajouterUtilisateur(new Utilisateur
+							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
+									"labiteaucul", 0, "Jean-Michel", false));
+			System.out.println(test.toString());
+			System.out.println("----------------------------------------------------");
+			
+			System.out.println("test modification");
+			System.out.println("----------------------------------------------------");
+			test.setRue("rue saint michel");
+			test.setCodePostal("35000");
+			test.setVille("rennes");
+			user.modifierUtilisateur(test);
+			System.out.println(test.toString());
+			System.out.println("----------------------------------------------------");
+			
+			System.out.println("test gestion");
+			System.out.println("----------------------------------------------------");
+			test.setPseudo("retourneveste");
+			test.setNom("De Lamite");
+			test.setPrenom("Charles-Edouard");
+			test.setMail("cedelamite@gmail.com");
+			test.setMotDePasse("toutestclean");
+			test.setTelephone(null);
+			user.gererUtilisateur(test);
+			System.out.println(test.toString());
+			System.out.println("----------------------------------------------------");
+			
+			System.out.println("test suppression");
+			System.out.println("----------------------------------------------------");
+			user.supprimerUtilisateur(2);
+			
+			System.out.println("test login");
+			System.out.println("----------------------------------------------------");
+			System.out.println(user.getUtilisateur(7).toString());
 			
 			Categorie info = new Categorie("Informatique");
 			Categorie brico = new Categorie("Bricolage");
@@ -73,17 +74,17 @@ public class ServletTest extends HttpServlet {
 			Categorie electro = new Categorie("Electro-ménager");
 			
 			CategorieDAO cdao = DAOFactory.getCategorieDAO();
-//			cdao.ajouterCategorie(mobilier);
-//			cdao.ajouterCategorie(brico);
-//			cdao.ajouterCategorie(sport);
-//			cdao.ajouterCategorie(electro);
-//			Categorie test = cdao.getCategorieById(2);
-//			System.out.println(test.getLibelle().toString());
+			cdao.ajouterCategorie(mobilier);
+			cdao.ajouterCategorie(brico);
+			cdao.ajouterCategorie(sport);
+			cdao.ajouterCategorie(electro);
+			Categorie test2 = cdao.getCategorieById(2);
+			System.out.println(test2.getLibelle().toString());
 			List<Categorie> lcdao = cdao.getCategories();
-//			for (Categorie categorie : lcdao) {
-//				System.out.println(categorie.getLibelle().toString());
-//			}
-//			cdao.supprimerCategorie(3);
+			for (Categorie categorie : lcdao) {
+				System.out.println(categorie.getLibelle().toString());
+			}
+			cdao.supprimerCategorie(3);
 			for (Categorie categorie : lcdao) {
 				System.out.println(categorie.getLibelle().toString());
 			}
