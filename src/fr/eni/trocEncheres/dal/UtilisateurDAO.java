@@ -34,6 +34,7 @@ public interface UtilisateurDAO {
 	 * @throws BusinessException si une erreur survient lors de la tentative de connection
 	 */
 	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException;
+	public Utilisateur getUtilisateur(int id) throws BusinessException;
 	/**
 	 * permet de supprimer un utilisateur renseignant son noUtilisateur.
 	 * seul l'utilisateur même est autorisé à réaliser cette opération ou un admistrateur
@@ -41,4 +42,6 @@ public interface UtilisateurDAO {
 	 * @throws BusinessException si une erreur survient ou si la personne n'est pas autorisée à réaliser cette opération
 	 */
 	public void supprimerUtilisateur(int id) throws BusinessException;
+	
+	
 }

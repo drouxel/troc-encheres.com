@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLType;
 import java.sql.Types;
 
 import fr.eni.trocEncheres.BusinessException;
@@ -21,9 +20,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String UPD_USER = "UPDATE utilisateurs SET "
 			+ "pseudo=?,nom=?,prenom=?,email=?,telephone=?,"
 			+ "mot_de_passe=? WHERE no_utilisateur=?";
-	private static final String CONNECT_USER = "SELECT * FROM utilisateurs WHERE email = ? OR pseudo = ? "
+	private static final String CONNECT_USER = "SELECT * FROM utilisateurs "
+			+ "WHERE email = ? OR pseudo = ? "
 			+ "AND mot_de_passe = ?";
 	private static final String DELETE_USER = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
+	private static final String GET_USER = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
 
 	@Override
 	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException {
@@ -146,21 +147,21 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	@Override
 	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException {
-		Utilisateur u = null;
+		Utilisateur u = new Utilisateur();
 		if (login==null || motDePasse==null) {
 			throw new BusinessException("vous devez saisir votre login et votre mot de passe");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
 			try {
-				cnx.setAutoCommit(false);
 				PreparedStatement pstmt = cnx.prepareStatement(CONNECT_USER);
 				pstmt.setString(1, login);
 				pstmt.setString(2, login);
 				pstmt.setString(3, motDePasse);
-				ResultSet rs = pstmt.executeQuery();
-				while(rs.next()) {
-					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				ResultSet rs = null;
+				rs = pstmt.executeQuery();
+				System.out.println(rs.toString());
+				if(rs.next()) {
 					u.setPseudo(rs.getString("pseudo"));
 					u.setNom(rs.getString("nom"));
 					u.setPrenom(rs.getString("prenom"));
@@ -172,11 +173,13 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					u.setMotDePasse(rs.getString("mot_de_passe"));
 					u.setCredit(rs.getInt("credit"));
 					u.setAdmin(rs.getBoolean("administrateur"));
+					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				}else {
+					throw new BusinessException("combinaison login/mot de passe inconnue");
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				cnx.rollback();
 				throw new BusinessException(e.getMessage());
 			}
 		} catch (SQLException e) {
@@ -209,6 +212,48 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			e.printStackTrace();
 			throw new BusinessException(e.getMessage());
 		}
+	}
+
+	@Override
+	public Utilisateur getUtilisateur(int id) throws BusinessException {
+		Utilisateur u = new Utilisateur();
+		if (id==0) {
+			throw new BusinessException("aucun utilisateur identifié");
+		}
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				PreparedStatement pstmt = cnx.prepareStatement(GET_USER);
+				pstmt.setInt(1, id);
+				ResultSet rs = null;
+				rs = pstmt.executeQuery();
+				System.out.println(rs.toString());
+				if(rs.next()) {
+					u.setPseudo(rs.getString("pseudo"));
+					u.setNom(rs.getString("nom"));
+					u.setPrenom(rs.getString("prenom"));
+					u.setMail(rs.getString("email"));
+					u.setTelephone(rs.getString("telephone"));
+					u.setRue(rs.getString("rue"));
+					u.setCodePostal(rs.getString("code_postal"));
+					u.setVille(rs.getString("ville"));
+					u.setMotDePasse(rs.getString("mot_de_passe"));
+					u.setCredit(rs.getInt("credit"));
+					u.setAdmin(rs.getBoolean("administrateur"));
+					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				}else {
+					throw new BusinessException("une erreur est survenue lors de la récupération des informations");
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new BusinessException(e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BusinessException(e.getMessage());
+		}
+		return u;
 	}
 
 }
