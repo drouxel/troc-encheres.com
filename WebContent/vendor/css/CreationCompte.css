@@ -3,8 +3,9 @@
 #container1 {
 	width:50%;
 	display:inline-block;
-	margin:auto;
 	vertical-align:middle;
+	text-align: center;
+	align-content: center;
 }
 
 
