@@ -39,7 +39,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 	@Override
 	public Categorie getCategorieById(int id) throws BusinessException{
 		if (id==0) {
-			throw new BusinessException("vous devez saisir un libellé de catégorie pour pouvoir l'ajouter à la base de donnée");
+			throw new BusinessException("vous devez saisir le n° de la catégorie");
 		}
 		Categorie categorie = new Categorie();
 		try {
