@@ -5,65 +5,39 @@
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="fragments/ImportBootstrap.jspf"%>
-<link rel="stylesheet" type="text/css" href="vendor/css/CreationCompte.css">
+<link rel="stylesheet" type="text/css"
+	href="vendor/css/CreationCompte.css">
 <title>Créer un compte</title>
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<h2>Créer un compte</h2>
-	
-	<form name="creationCompte" id="creationCompte" method="POST"
-		action="/servletCreationCompte">
-		<div id="container1">
-			<div class="form-row">
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Pseudo">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Nom">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Prénom">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control" placeholder="E-mail">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Téléphone">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Rue">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Code postal">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Ville">
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Mot de passe">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control" placeholder="Confirmation">
-				</div>
-			</div>
-		<br>
-		</div>
-		<div class="col-sm 3">
-			<div class="row" id="container2">
-				<input type="submit" value="Créer"> 
-				<input type="reset" value="Annuler">
+
+<form name="creationCompte" id="creationCompte" method="POST" action="/servletCreationCompte">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div>
+				<%@ include file="fragments/profil.jspf"%>
+				<br>
 			</div>
 		</div>
-	</form>
-	
+		<div class="col-sm-3"></div>
+		
+	<div class="row" id="container3">
+
+			<div class="col-sm-2" id="container2"></div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-primary btn-lg">Créer</button> 
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-danger btn-lg">Annuler</button>
+				</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>	
+		
+
+</form>
 </body>
 </html>

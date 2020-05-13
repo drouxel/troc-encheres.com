@@ -1,22 +1,21 @@
 @charset "ISO-8859-1";
 
-#container1 {
-	width:50%;
-	display:inline-block;
-	vertical-align:middle;
+ h2 {
 	text-align: center;
-	align-content: center;
+	margin:1%;
 }
 
 
-container2 {
-	display:inline-block;
+#container2 {
+	display:inline;
 	text-align: center;
-	vertical-align: middle;
-	padding:0.5%;
+	
+}
+
+#container3 {
+	margin:auto;
 }
 
 input {
-	padding:0.5%;
 	margin:1%;
 }

@@ -10,13 +10,35 @@
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
-<form name="container1" id="container1" method="POST" action="/A_MODIFIER">
-<%@ include file="fragments/profil.jspf"%>
-<div id="container2">
-	<input class="btn btn-primary" type="submit" value="Supprimer mon compte">
-	<input class="btn btn-primary" type="submit" value="Enregistrer">
-	<input class="btn btn-primary" type="button" value="Retour">
-</div>
+<h2>Éditer mon profil</h2>
+<form name="creationCompte" id="creationCompte" method="POST" action="/servletCreationCompte">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div>
+				<%@ include file="fragments/profil.jspf"%>
+				<br>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+		
+	<div class="row" id="container3">
+
+			<div class="col-sm-1" id="container2"></div>
+				<div class="col-sm-5">
+					<button type="button" class="btn btn-danger btn-lg">Supprimer le compte</button> 
+				</div>
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-success btn-lg">Enregistrer</button>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary btn-lg">Retour</button>
+				</div>
+			<div class="col-sm-1"></div>
+		</div>
+	</div>	
+		
+
 </form>
 </body>
 </html>
