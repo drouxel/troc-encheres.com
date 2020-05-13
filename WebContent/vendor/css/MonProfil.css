@@ -5,6 +5,7 @@
 	text-align: center;
 }
 
-input {
-	align-self: center;
+div {
+	display:block;
+	margin:auto;
 }

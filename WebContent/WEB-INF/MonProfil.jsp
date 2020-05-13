@@ -30,7 +30,8 @@
 </div>
 </body>
 <footer>
+<div class="center-block">
 <a href=""><input class="btn btn-primary" type="button" value="Retour"></a>
-
+</div>
 </footer>
 </html>
