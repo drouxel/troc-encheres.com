@@ -25,7 +25,7 @@
 	<br>
 	<p>Tel : </p>
 	<br>
-	<input type="button" value="Retour" name="retour" id="retour">
+	<button type="button" class="btn btn-primary">Retour</button>
 	<br>
 </body>
 </html>
