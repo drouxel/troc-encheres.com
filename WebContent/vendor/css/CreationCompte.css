@@ -14,8 +14,13 @@
 
 #container3 {
 	margin:auto;
+	text-align: center;
 }
 
 input {
 	margin:1%;
+}
+
+col {
+	display:inline;
 }

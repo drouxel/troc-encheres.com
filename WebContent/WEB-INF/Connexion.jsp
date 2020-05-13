@@ -26,15 +26,15 @@
 		</div>
 
 		<div class="row" id="container6">
-			<div class="col-sm-3"></div>
+			<div class="col-sm-3">
+			</div>
 			<div class="col-sm-3">
 				<button type="submit" class="btn btn-primary">Connexion</button>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group form-check" id="container3">
-					<input type="checkbox" id="seSouvenirDeMoi"> <label
-						class="form-check-label" for="seSouvenirDeMoi">Se souvenir
-						de moi</label>
+					<input type="checkbox" id="seSouvenirDeMoi"> 
+						<label class="form-check-label" for="seSouvenirDeMoi">Se souvenir de moi</label>
 					<p>
 						<a href="">Mot de passe oublié</a>
 					</p>
