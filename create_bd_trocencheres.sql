@@ -20,7 +20,8 @@ ALTER TABLE categories CHANGE no_categorie no_categorie INT(11) NOT NULL AUTO_IN
 CREATE TABLE ENCHERES (
     date_enchere                  datetime NOT NULL,
     no_utilisateur   INTEGER NOT NULL,
-    no_vente             INTEGER NOT NULL
+    no_vente             INTEGER NOT NULL,
+	credit		INTEGER NOT NULL
 );
 
 ALTER TABLE ENCHERES ADD constraint enchere_pk PRIMARY KEY (no_utilisateur, no_vente);
