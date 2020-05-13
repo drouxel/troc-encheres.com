@@ -5,36 +5,33 @@
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="fragments/ImportBootstrap.jspf"%>
+<link rel="stylesheet" type="text/css" href="vendor/css/MonProfil.css">
 <title>Mon profil</title>
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 <h2>MonProfil</h2>
+<div id="container1">
 <label>Pseudo : </label>
-<br>
 <br>
 <label>Nom : </label>
 <br>
-<br>
 <label>Prénom : </label>
-<br>
 <br>
 <label>Email : </label>
 <br>
-<br>
 <label>Téléphone : </label>
-<br>
 <br>
 <label>Rue : </label>
 <br>
-<br>
 <label>Code postal : </label>
 <br>
-<br>
 <label>Ville : </label>
-<br>
+</div>
 </body>
 <footer>
-<a><input type="button" value="Retour"></a>
+<div class="center-block">
+<a href=""><input class="btn btn-primary" type="button" value="Retour"></a>
+</div>
 </footer>
 </html>

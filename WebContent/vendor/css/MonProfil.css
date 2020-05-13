@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+#container1 {
+	display:block;
+	margin:1%;
+	text-align: center;
+}
+
+div {
+	display:block;
+	margin:auto;
+}
