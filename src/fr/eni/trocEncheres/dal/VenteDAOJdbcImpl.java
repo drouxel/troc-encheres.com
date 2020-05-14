@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,7 +136,7 @@ class VenteDAOJdbcImpl implements VenteDAO {
 		RetraitDAO rDAO = DAOFactory.getRetraitDAO();
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
-			PreparedStatement pstmt = cnx.prepareStatement(GET_VENTES_BY_USER);
+			PreparedStatement pstmt = cnx.prepareStatement(GET_VENTES_BY_CATEGORIE);
 			pstmt.setInt(1, noCategorie);			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -160,12 +159,6 @@ class VenteDAOJdbcImpl implements VenteDAO {
 		}
 		return ventes;
 	}
-
-//	@Override
-//	public List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public Vente getVente(int noVente) throws BusinessException {
