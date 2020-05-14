@@ -11,17 +11,38 @@
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<h2>Profil de trioDeLEtrange</h2>
-	<div id="container1">
-		<br>
-		<label for="pseudo">Pseudo : </label>
-		<br>
-		<label for="adresse">Adresse : </label>
-		<br>
-		<label for="Tel">Tel : </label>
-		<br>
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label for="pseudo">Pseudo : </label>
+		</div>
+		<div class="col-sm-2">info</div>
+		<div class="col-sm-4"></div>
 	</div>
-	<a href="">
-		<input class="btn btn-primary" type="button" value="Retour">
-	</a>
+
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label for="adresse">Adresse : </label>
+		</div>
+		<div class="col-sm-2">info</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label for="telephone">Téléphone : </label>
+		</div>
+		<div class="col-sm-2">info</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<div class="row" id="container3">
+		<div class="col-sm-5" id="container2"></div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary btn-lg">Retour</button> 
+				</div>
+			<div class="col-sm-5"></div>
+	</div>	
 </body>
 </html>
