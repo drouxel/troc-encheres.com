@@ -227,7 +227,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				pstmt.setInt(1, id);
 				ResultSet rs = null;
 				rs = pstmt.executeQuery();
-				System.out.println(rs.toString());
 				if(rs.next()) {
 					u.setPseudo(rs.getString("pseudo"));
 					u.setNom(rs.getString("nom"));
