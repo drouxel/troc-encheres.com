@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.trocEncheres.BusinessException;
+import fr.eni.trocEncheres.bo.Enchere;
 import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.bo.Vente;
 import fr.eni.trocEncheres.dal.CategorieDAO;
 import fr.eni.trocEncheres.dal.DAOFactory;
+import fr.eni.trocEncheres.dal.EnchereDAO;
 import fr.eni.trocEncheres.dal.RetraitDAO;
 import fr.eni.trocEncheres.dal.UtilisateurDAO;
 import fr.eni.trocEncheres.dal.VenteDAO;
@@ -32,36 +34,36 @@ public class ServletTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
 		try {
-//			System.out.println("test ajout");
-//			System.out.println("----------------------------------------------------");
-//			Utilisateur test =
-//					user.ajouterUtilisateur(new Utilisateur
-//							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
-//									"labiteaucul", 0, "Jean-Michel", false));
-//			System.out.println(test.toString());
-//			System.out.println("----------------------------------------------------");
+			System.out.println("test ajout");
+			System.out.println("----------------------------------------------------");
+			Utilisateur test =
+					user.ajouterUtilisateur(new Utilisateur
+							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
+									"labiteaucul", 0, "Jean-Michel", false));
+			System.out.println(test.toString());
+			System.out.println("----------------------------------------------------");
 			
-//			System.out.println("test modification");
-//			System.out.println("----------------------------------------------------");
-//			test.setRue("rue saint michel");
-//			test.setCodePostal("35000");
-//			test.setVille("rennes");
-//			user.modifierUtilisateur(test);
-//			System.out.println(test.toString());
-//			System.out.println("----------------------------------------------------");
-//			
-//			System.out.println("test gestion");
-//			System.out.println("----------------------------------------------------");
-//			test.setPseudo("retourneveste");
-//			test.setNom("De Lamite");
-//			test.setPrenom("Charles-Edouard");
-//			test.setMail("cedelamite@gmail.com");
-//			test.setMotDePasse("toutestclean");
-//			test.setTelephone(null);
-//			user.gererUtilisateur(test);
-//			System.out.println(test.toString());
-//			System.out.println("----------------------------------------------------");
-//			
+			System.out.println("test modification");
+			System.out.println("----------------------------------------------------");
+			test.setRue("rue saint michel");
+			test.setCodePostal("35000");
+			test.setVille("rennes");
+			user.modifierUtilisateur(test);
+			System.out.println(test.toString());
+			System.out.println("----------------------------------------------------");
+			
+			System.out.println("test gestion");
+			System.out.println("----------------------------------------------------");
+			test.setPseudo("retourneveste");
+			test.setNom("De Lamite");
+			test.setPrenom("Charles-Edouard");
+			test.setMail("cedelamite@gmail.com");
+			test.setMotDePasse("toutestclean");
+			test.setTelephone(null);
+			user.gererUtilisateur(test);
+			System.out.println(test.toString());
+			System.out.println("----------------------------------------------------");
+			
 //			System.out.println("test suppression");
 //			System.out.println("----------------------------------------------------");
 //			user.supprimerUtilisateur(2);
@@ -174,6 +176,22 @@ public class ServletTest extends HttpServlet {
 				System.out.println(vente.toString());
 				System.out.println("------------------------------------------------------");
 			}
+			
+			System.out.println("------------------------------------------------------");
+			System.out.println("Test Vente");
+			System.out.println("------------------------------------------------------");
+			Enchere e = new Enchere();
+			e.setDateEnchere(LocalDate.now());
+			e.setEncherisseur(user.getUtilisateur(12));
+			e.setVente(vdao.getVente(3));
+			e.setCredit(70);
+			EnchereDAO edao = DAOFactory.getEnchereDAO();
+			edao.ajouterEnchere(e);
+			System.out.println(e.toString());
+			System.out.println("--------------------------------------------------------");
+			System.out.println("mise à jour enchere");
+			System.out.println("--------------------------------------------------------");
+			
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();

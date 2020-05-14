@@ -1,11 +1,12 @@
 package fr.eni.trocEncheres.bo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Enchere {
 	private Utilisateur encherisseur;
 	private Vente vente;
-	private Date dateEnchere;
+	private LocalDate dateEnchere;
+	private int credit;
 	
 	/**
 	 * Constructeur vide de Enchere
@@ -19,12 +20,27 @@ public class Enchere {
 	 * @param vente
 	 * @param dateEnchere
 	 */
-	public Enchere(Utilisateur encherisseur, Vente vente, Date dateEnchere) {
+	public Enchere(Utilisateur encherisseur, Vente vente, LocalDate dateEnchere, int credit) {
 		this.encherisseur = encherisseur;
 		this.vente = vente;
 		this.dateEnchere = dateEnchere;
+		this.credit = credit;
 	}
 	
+	/**
+	 * @return the credit
+	 */
+	public int getCredit() {
+		return credit;
+	}
+
+	/**
+	 * @param credit the credit to set
+	 */
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+
 	/**
 	 * encherisseur
 	 * @return
@@ -61,7 +77,7 @@ public class Enchere {
 	 * dateEnchere
 	 * @return
 	 */
-	public Date getDateEnchere() {
+	public LocalDate getDateEnchere() {
 		return dateEnchere;
 	}
 	
@@ -69,7 +85,7 @@ public class Enchere {
 	 * 
 	 * @param dateEnchere
 	 */
-	public void setDateEnchere(Date dateEnchere) {
+	public void setDateEnchere(LocalDate dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
 }

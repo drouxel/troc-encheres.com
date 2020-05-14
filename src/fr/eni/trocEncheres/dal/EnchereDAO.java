@@ -8,8 +8,8 @@ import fr.eni.trocEncheres.bo.Vente;
 
 public interface EnchereDAO {
 	void ajouterEnchere(Enchere e) throws BusinessException;
-	void annulerEnchere(int idAcquereur)throws BusinessException;
-	void annulerVente(int noVente, int no_utilisateur)throws BusinessException;
-	void faireEnchere(Enchere e) throws BusinessException;
+	void supprimerEnchere(int noUtilisateur)throws BusinessException;
+	void supprimerEncheres(int noVente)throws BusinessException;
 	List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException;
+	List<Enchere> getEncheres(int noVente) throws BusinessException;
 }
