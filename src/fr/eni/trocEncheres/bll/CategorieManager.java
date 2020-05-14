@@ -54,7 +54,7 @@ public class CategorieManager {
 	 * @param categorie
 	 * @throws BusinessException
 	 */
-	public void supprimerCategorie(Categorie categorie) throws BusinessException {
+	public void supprimerCategorie(int id) throws BusinessException {
 		try {
 			daoCategorie.supprimerCategorie(id);
 		} catch (BusinessException e) {
