@@ -142,5 +142,19 @@ public class UtilisateurManager {
 			throw new BusinessException("Echec de la suppression");
 		}
 	}
+	
+	/**
+	 * Permet de connecter un utilisateur avec son login et mot de passe
+	 * @param login
+	 * @param motDePasse
+	 * @throws BusinessException
+	 */
+	public void connecterUtilisateur(String login, String motDePasse) throws BusinessException {
+		try {
+			daoUtilisateur.connecterUtilisateur(login, motDePasse);			
+		} catch (BusinessException e) {
+			throw new BusinessException("Erreur lors de la connexion");
+		}
+	}
 		
 }
