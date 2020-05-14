@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Retrait;
 
-public class RetraitDAOJdbcImpl implements RetraitDAO {
+class RetraitDAOJdbcImpl implements RetraitDAO {
 	private static final String GET_ADRESSE = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String GET_RETRAIT = "SELECT * FROM retraits WHERE no_vente = ?";
 	private static final String INSERT_RETRAIT = "INSERT INTO retraits (no_vente, rue, code_postal, ville) VALUES (?,?,?,?)";

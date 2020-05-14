@@ -1,7 +1,7 @@
 package fr.eni.trocEncheres.test;
 
 import java.io.IOException;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.trocEncheres.BusinessException;
-import fr.eni.trocEncheres.bo.Categorie;
-import fr.eni.trocEncheres.bo.Retrait;
 import fr.eni.trocEncheres.bo.Utilisateur;
+import fr.eni.trocEncheres.bo.Vente;
 import fr.eni.trocEncheres.dal.CategorieDAO;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.RetraitDAO;
 import fr.eni.trocEncheres.dal.UtilisateurDAO;
+import fr.eni.trocEncheres.dal.VenteDAO;
 
 /**
  * Servlet implementation class ServletTest
@@ -31,14 +31,14 @@ public class ServletTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
 		try {
-			System.out.println("test ajout");
-			System.out.println("----------------------------------------------------");
-			Utilisateur test =
-					user.ajouterUtilisateur(new Utilisateur
-							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
-									"labiteaucul", 0, "Jean-Michel", false));
-			System.out.println(test.toString());
-			System.out.println("----------------------------------------------------");
+//			System.out.println("test ajout");
+//			System.out.println("----------------------------------------------------");
+//			Utilisateur test =
+//					user.ajouterUtilisateur(new Utilisateur
+//							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
+//									"labiteaucul", 0, "Jean-Michel", false));
+//			System.out.println(test.toString());
+//			System.out.println("----------------------------------------------------");
 			
 //			System.out.println("test modification");
 //			System.out.println("----------------------------------------------------");
@@ -78,7 +78,7 @@ public class ServletTest extends HttpServlet {
 //			Categorie sport = new Categorie("Sport");
 //			Categorie electro = new Categorie("Electro-ménager");
 //			
-//			CategorieDAO cdao = DAOFactory.getCategorieDAO();
+			CategorieDAO cdao = DAOFactory.getCategorieDAO();
 //			cdao.ajouterCategorie(mobilier);
 //			cdao.ajouterCategorie(brico);
 //			cdao.ajouterCategorie(sport);
@@ -93,28 +93,43 @@ public class ServletTest extends HttpServlet {
 //			for (Categorie categorie : lcdao) {
 //				System.out.println(categorie.getLibelle().toString());
 //			}
-			
-			System.out.println("tests retraits");
-			System.out.println("----------------------------------------------------");
-			
-			Retrait r = null;
+//			
+//			System.out.println("tests retraits");
+//			System.out.println("----------------------------------------------------");
+//			
+//			Retrait r = null;
 			RetraitDAO rdao = DAOFactory.getRetraitDAO();
-			r = rdao.getAdresseUtilisateur(test.getNoUtilisateur());
-			
-			System.out.println(r.toString());
-			
-			r.setNoVente(1);
-			
-			System.out.println("test ajout retrait");
-			System.out.println("-----------------------------------------------------");
-			
-			rdao.ajouterRetrait(r);
-			
-			Retrait r2 = rdao.getRetrait(1);
-			
-			System.out.println("test récupération retrait");
-			System.out.println("-----------------------------------------------------");
-			System.out.println(r2.toString());
+//			r = rdao.getAdresseUtilisateur(test.getNoUtilisateur());
+//			
+//			System.out.println(r.toString());
+//			
+//			r.setNoVente(1);
+//			
+//			System.out.println("test ajout retrait");
+//			System.out.println("-----------------------------------------------------");
+//			
+//			rdao.ajouterRetrait(r);
+//			
+//			Retrait r2 = rdao.getRetrait(1);
+//			
+//			System.out.println("test récupération retrait");
+//			System.out.println("-----------------------------------------------------");
+//			System.out.println(r2.toString());
+			Utilisateur u = user.getUtilisateur(1);
+			Vente v = new Vente();
+			v.setNomArticle("pc bureautique");
+			v.setDescription("un truc pas terrible avec windows Vista");
+			v.setDateFinEnchere(LocalDate.of(2020, 06, 06));
+			v.setMiseAPrix(20);
+			v.setVendeur(u);
+			v.setCategorie(cdao.getCategorieById(1));
+			v.setRetrait(rdao.getAdresseUtilisateur(u.getNoUtilisateur()));
+			VenteDAO vdao = DAOFactory.getVenteDAO();
+			Vente v2 = vdao.ajouterVente(v);
+			System.out.println("Test Ajout Vente");
+			System.out.println("------------------------------------------------------");
+			System.out.println(v.toString());
+			System.out.println("------------------------------------------------------");
 			
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
