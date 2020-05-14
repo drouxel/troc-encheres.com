@@ -9,23 +9,22 @@
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
-	<p>... a remporté l'enchère</p>
+	<h2>... a remporté l'enchère</h2>
 <%@ include file="fragments/DetailsVente.jspf"%>
 
 			
 			<div class="row" id="container3">
-				<div class="col-sm-3" id="container2"></div>
-				<div class="col-sm-3">
-					<button type="button" class="btn btn-danger btn-lg">Supprimer
-						le compte</button>
+				<div class="col-sm-3"></div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-danger btn-lg">Retrait effectué</button>
 				</div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-success btn-lg">Enregistrer</button>
+					<button type="button" class="btn btn-success btn-lg">Contacter...</button>
 				</div>
-				<div class="col-sm-1">
+				<div class="col-sm-2">
 					<button type="button" class="btn btn-primary btn-lg">Retour</button>
 				</div>
-				<div class="col-sm-2"></div>
+				<div class="col-sm-3"></div>
 			</div>
 </body>
 </html>

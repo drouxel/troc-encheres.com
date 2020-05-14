@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,24 +8,27 @@
 <title>Acquisition</title>
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
-	<h2>Détail vente</h2>
+<h2>Détail vente</h2>
 <body>
 	<img>
-	<p>PC Gamer pour travailler</p>
-	<br>
-	<p>Description : </p>
-	<br>
-	<p>Meilleure offre : </p>
-	<br>
-	<p>Mise à prix : </p>
-	<br>
-	<p>Retrait : </p>
-	<br>
-	<p>Vendeur : </p>
-	<br>
-	<p>Tel : </p>
-	<br>
-	<button type="button" class="btn btn-primary">Retour</button>
+	<%@ include file="fragments/DetailsVente.jspf"%>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Téléphone : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+	<div class="row">
+		<div class="col-sm-5"></div>
+		<div class="col-sm-2">
+			<button type="button" class="btn btn-primary">Retour</button>
+		</div>
+		<div class="col-sm-5"></div>
+	</div>
+
 	<br>
 </body>
 </html>
+<label></label>

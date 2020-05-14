@@ -16,3 +16,7 @@ button {
 input, label {
     margin-top: 5%;
 }
+
+#creerCompte {
+	padding: 10%;
+}

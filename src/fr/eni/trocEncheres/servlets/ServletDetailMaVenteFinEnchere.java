@@ -10,31 +10,28 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ServletDetailMaVente
  */
-@WebServlet("/ServletDetailMaVente")
-public class ServletDetailMaVente extends HttpServlet {
+@WebServlet("/ServletDetailMaVenteFinEnchere")
+public class ServletDetailMaVenteFinEnchere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletDetailMaVente() {
+    public ServletDetailMaVenteFinEnchere() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/DetailMaVente.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/DetailMaVenteFinEnchere.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
