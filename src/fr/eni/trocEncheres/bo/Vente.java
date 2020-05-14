@@ -1,5 +1,6 @@
 package fr.eni.trocEncheres.bo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -20,7 +21,7 @@ public class Vente {
 	private int noVente;
 	private String nomArticle;
 	private String description;
-	private Date dateFinEnchere;
+	private LocalDate dateFinEnchere;
 	private int miseAPrix;
 	private int prixVente;
 	private Categorie categorie;
@@ -42,7 +43,7 @@ public class Vente {
 	 * @param dateFinEnchere
 	 * @param miseAPrix
 	 */
-	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix) {
+	public Vente(String nomArticle, String description, LocalDate dateFinEnchere, int miseAPrix) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -63,7 +64,7 @@ public class Vente {
 	 * @param vendeur
 	 * @param image
 	 */
-	public Vente(int noVente,String nomArticle, String description, Date dateFinEnchere, int miseAPrix, int prixVente, Categorie categorie,
+	public Vente(int noVente,String nomArticle, String description, LocalDate dateFinEnchere, int miseAPrix, int prixVente, Categorie categorie,
 			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur, String image) {
 		super();
 		this.noVente = noVente;
@@ -89,7 +90,7 @@ public class Vente {
 	 * @param acheteur
 	 * @param vendeur
 	 */
-	public Vente(String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie,
+	public Vente(String nomArticle, String description, LocalDate dateFinEnchere, int miseAPrix, Categorie categorie,
 			Retrait retrait, Utilisateur acheteur,Utilisateur vendeur) {
 		super();
 		this.nomArticle = nomArticle;
@@ -119,7 +120,7 @@ public class Vente {
 	 * @param categorie
 	 * @param retrait
 	 */
-	public Vente(int noVente, String nomArticle, String description, Date dateFinEnchere, int miseAPrix, Categorie categorie, Retrait retrait) {
+	public Vente(int noVente, String nomArticle, String description, LocalDate dateFinEnchere, int miseAPrix, Categorie categorie, Retrait retrait) {
 		this.noVente = noVente;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -175,14 +176,14 @@ public class Vente {
 	 * 	 
 	 * @return
 	 */
-	public Date getDateFinEnchere() {
+	public LocalDate getDateFinEnchere() {
 		return dateFinEnchere;
 	}
 	
 	/**
 	 * @param dateFinEnchere
 	 */
-	public void setDateFinEnchere(Date dateFinEnchere) {
+	public void setDateFinEnchere(LocalDate dateFinEnchere) {
 		this.dateFinEnchere = dateFinEnchere;
 	}
 	

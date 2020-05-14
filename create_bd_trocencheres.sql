@@ -55,7 +55,7 @@ ALTER TABLE utilisateurs CHANGE no_utilisateur no_utilisateur INT(11) NOT NULL A
 
 CREATE TABLE VENTES (
     no_vente                      INTEGER NOT NULL,
-    nomarticle                    VARCHAR(30) NOT NULL,
+    nom_article                    VARCHAR(30) NOT NULL,
     description                   VARCHAR(300) NOT NULL,
     date_fin_encheres             DATE NOT NULL,
     prix_initial                  INTEGER,
