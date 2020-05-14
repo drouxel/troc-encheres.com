@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+
+h2 {
+	text-align: center;
+}
+
+input,label,textarea {
+	margin:3%;
+}
+
+button{
+	margin:3%;
+	display:none;
+}
+
+fieldset{
+	border-style: solid;
+	border-color:black;
+	border-width:2px;
+	border-top: 2px;
+}
+
+label{
+	border:medium;
+	border-color:black;
+}

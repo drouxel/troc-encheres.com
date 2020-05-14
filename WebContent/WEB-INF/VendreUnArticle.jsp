@@ -5,26 +5,99 @@
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="fragments/ImportBootstrap.jspf"%>
-<title>Vendre un articlee</title>
+<link rel="stylesheet" type="text/css" href="vendor/css/VendreUnArticle.css">
+<title>Vendre un article</title>
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<h2>Nouvelle vente</h2>
 	<form>
-		<label>Article : </label> <input type="text" name="article"
-			id="article"> 
-		<label>Description : </label><textarea name="description" id="description" cols="5" rows="5"></textarea>
-		<label>Photos de l'article</label> 
-		<label>Mise à prix : </label> <input type="number" name="enchere" id="enchere" min="100"> 
-		<label>Fin de l'enchère : </label>
-		<fieldset>
-			<legend>Retrait</legend>
-			<label>Rue : </label> <input type="text" name="rue" id="rue">
-			<label>Code postal : </label> <input type="text" name="codePostal" id="codePostal"> 
-			<label>Ville : </label> <input type="text" name="ville" id="ville">
-		</fieldset>
-		<input type="submit" value="Publier"> <input type="button"
-			value="Enregistrer"> <input type="reset" value="Annuler">
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label>Article : </label>
+		</div>
+		<div class="col-sm-2">
+			<input type="text" name="article" id="article">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label>Description : </label>
+		</div>
+		<div class="col-sm-2">
+			<textarea name="description" id="description" cols="40" rows="5"></textarea>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>	
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label>Photo de l'article</label>
+		</div>
+		<div class="col-sm-2">
+			<button type="button" class="btn btn-primary btn-lg">UPLOADER</button> 
+		</div>
+		<div class="col-sm-4"></div>
+	</div>	
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label>Mise à prix : </label>
+		</div>
+		<div class="col-sm-2">
+			<input type="number" name="enchere" id="enchere" min="100">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>		
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-2">
+			<label>Fin de l'enchère : </label>
+		</div>
+		<div class="col-sm-2">
+			<input type="date" name="finEnchere" id="finEnchere">
+		</div>
+		<div class="col-sm-4"></div>
+	</div>		
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-6">
+			<fieldset id="adresse" align="left">
+				<legend>Retrait</legend>
+				<div class="row">
+					<div class="col-sm-3"><label>Rue : </label></div>
+					<div class="col-sm-3"><input type="text" name="rue" id="rue"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3"><label>Code postal : </label></div>
+					<div class="col-sm-3"><input type="text" name="codePostal" id="codePostal"></div>
+				</div>			 
+				<div class="row">
+					<div class="col-sm-3"><label>Ville : </label></div>
+					<div class="col-sm-3"><input type="text" name="ville" id="ville"></div>
+				</div>
+							
+			</fieldset>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-danger btn-lg">Publier</button>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-success btn-lg">Enregistrer</button>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-primary btn-lg">Annuler</button>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
 	</form>
 </body>
 </html>
