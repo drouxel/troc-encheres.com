@@ -32,8 +32,6 @@ public class UtilisateurManager {
 		super();
 	}
 		
-	
-	
 	/**
 	 * Permet d'ajouter un utilisateur à la base de donné
 	 * @param utilisateur
@@ -83,8 +81,6 @@ public class UtilisateurManager {
 		}
 	}
 	
-	
-	
 	/**
 	 * Permet de modifier l'utilisateur
 	 * @param u
@@ -132,8 +128,6 @@ public class UtilisateurManager {
 					throw new BusinessException("Echec de la mise à jour");
 				}
 	}
-	
-	
 	
 	/**
 	 * Permet de suppirmer un utilisateur
