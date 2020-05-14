@@ -1,0 +1,58 @@
+	<div id="container4">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>PC Gamer pour travailler</label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Description : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Meilleure offre : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Mise à prix : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Fin de l'enchère : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Retrait : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-2">
+				<label>Vendeur : </label>
+			</div>
+			<div class="col-sm-2">info</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>

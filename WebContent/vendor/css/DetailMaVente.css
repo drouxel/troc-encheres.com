@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+#container4 {
+	display: table-column;
+}
+label {
+	margin:1%;
+}
+
+.col-sm-3 {
+	text-align: center;
+}

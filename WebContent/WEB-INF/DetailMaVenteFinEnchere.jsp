@@ -10,22 +10,22 @@
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<p>... a remporté l'enchère</p>
-	<p>PC Gamer pour travailler</p>
-	<br>
-	<p>Description : </p>
-	<br>
-	<p>Meilleure offre : </p>
-	<br>
-	<p>Mise à prix : </p>
-	<br>
-	<p>Fin de l'enchère : </p>
-	<br>
-	<p>Retrait : </p>
-	<br>
-	<p>Vendeur : </p>
-	<br>
-	<input type="button" value="Retrait effectué" name="retraitEffectue" id="retraitEffectue">
-	<input type="button" value="Contacter vendeur" name="contacterVendeur" id="contacterVendeur">
-	<input type="button" value="Retour" name="retour" id="retour">
+<%@ include file="fragments/DetailsVente.jspf"%>
+
+			
+			<div class="row" id="container3">
+				<div class="col-sm-3" id="container2"></div>
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-danger btn-lg">Supprimer
+						le compte</button>
+				</div>
+				<div class="col-sm-2">
+					<button type="button" class="btn btn-success btn-lg">Enregistrer</button>
+				</div>
+				<div class="col-sm-1">
+					<button type="button" class="btn btn-primary btn-lg">Retour</button>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
 </body>
 </html>
