@@ -22,7 +22,7 @@ public interface RetraitDAO {
 	 * @param noVente 
 	 * @throws BusinessException
 	 */
-	public void ajouterRetrait(Retrait retrait, int noVente) throws BusinessException;
+	public void ajouterRetrait(Retrait retrait) throws BusinessException;
 	/**
 	 * 
 	 * @param noVente

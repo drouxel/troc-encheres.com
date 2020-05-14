@@ -23,21 +23,21 @@
 			</div>
 		</div>
 		<div class="col-sm-3"></div>
-		
+	</div>
+	
 	<div class="row" id="container3">
-
-			<div class="col-sm-2" id="container2"></div>
-				<div class="col-sm-4">
+		<div class="col-sm-2" id="container2"></div>
+				<div class="col">
 					<button type="button" class="btn btn-primary btn-lg">Créer</button> 
 				</div>
-				<div class="col-sm-4">
+				<div class="col">
 					<button type="button" class="btn btn-danger btn-lg">Annuler</button>
 				</div>
 			<div class="col-sm-2"></div>
-		</div>
 	</div>	
 		
 
 </form>
+
 </body>
 </html>

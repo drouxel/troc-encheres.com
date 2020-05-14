@@ -10,47 +10,32 @@
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
-	<form id="container4">
-		<div class="form-group">
-			<div id="container1">
-				<label for="identifiant">Identifiant</label> <input type="email"
-					class="form-control" id="exampleInputEmail1"
-					aria-describedby="emailHelp">
-			</div>
-			<small id="emailHelp" class="form-text text-muted">Nous ne
-				partagerons jamais vos coordonnées à quiconque.</small>
-		</div>
-		<div class="form-group" id="container2">
-			<label for="motDePasse">Mot de passe</label> <input type="password"
-				class="form-control" id="motDePasse">
-		</div>
-
-		<div class="row" id="container6">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-3">
-				<button type="submit" class="btn btn-primary">Connexion</button>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group form-check" id="container3">
-					<input type="checkbox" id="seSouvenirDeMoi"> <label
-						class="form-check-label" for="seSouvenirDeMoi">Se souvenir
-						de moi</label>
-					<p>
-						<a href="">Mot de passe oublié</a>
-					</p>
-				</div>
-			</div>
-			<div class="col-sm-3"></div>
-		</div>
-
-	</form>
-	<br>
-	<div class="col-sm 3" id="container5">
-		<div class="row">
-			<a href="/Projet_Troc_Encheres/servletCreationCompte"><input
-				type="button" value="Créer un compte" id="creerUnCompte"></a>
-		</div>
+	<div class="form-row">
+	    <div class="col">
+	        <label for="identifiant">Identifiant : </label>
+	    </div>
+	    <div class="col">
+	        <input type="text" class="form-control" placeholder="Identifiant" id="identifiant">
+	    </div>
 	</div>
-
+	<div class="form-row">
+	    <div class="col">
+	        <label for="motDePasse">Mot de passe : </label>
+	    </div>
+	    <div class="col">
+	        <input type="password" class="form-control" placeholder="******" id="motDePasse">
+	    </div>
+	</div>
+	<div class="form-row">
+	    <div class="col">
+	        <button type="button" class="btn btn-primary">Connexion</button>
+	    </div>
+	    <div class="col" id="choixConnexion">
+	        <input type="checkbox" id="seSouvenirDeMoi">
+	        <label for="seSouvenirDeMoi"> Se souvenir de moi</label>
+	        <br>
+	        <a href="/Projet_Troc_Encheres/servletCreationCompte">Mot de passe oublié</a>
+	    </div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+.form-row {
+	display: flex;
+	width:40%;
+}
+#encherir {
+
+}
+
+#maProposition {
+	margin-left:-10%;
+	margin-right:1%;
+}
+
+#annulerEnchere {
+	margin-left:0%;
+}
+#retour {
+	margin-left:42%;
+}
+
