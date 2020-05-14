@@ -63,26 +63,25 @@
 		<div class="col-sm-4"></div>
 	</div>		
 	<div class="row">
-		<div class="col-sm-4"></div>
+		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
-			<fieldset id="adresse" align="left">
-				<legend>Retrait</legend>
+			<fieldset class="border p-2" id="adresse">
+				<legend class="w-auto">Retrait</legend>
 				<div class="row">
-					<div class="col-sm-3"><label>Rue : </label></div>
-					<div class="col-sm-3"><input type="text" name="rue" id="rue"></div>
+					<div class="col-sm-5"><label>Rue : </label></div>
+					<div class="col-sm-1"><input type="text" name="rue" id="rue"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-3"><label>Code postal : </label></div>
-					<div class="col-sm-3"><input type="text" name="codePostal" id="codePostal"></div>
+					<div class="col-sm-5"><label>Code postal : </label></div>
+					<div class="col-sm-1"><input type="text" name="codePostal" id="codePostal"></div>
 				</div>			 
 				<div class="row">
-					<div class="col-sm-3"><label>Ville : </label></div>
-					<div class="col-sm-3"><input type="text" name="ville" id="ville"></div>
+					<div class="col-sm-5"><label>Ville : </label></div>
+					<div class="col-sm-1"><input type="text" name="ville" id="ville"></div>
 				</div>
-							
 			</fieldset>
 		</div>
-		<div class="col-sm-2"></div>
+		<div class="col-sm-3"></div>
 	</div>
 			<div class="row">
 				<div class="col-sm-3"></div>
