@@ -88,4 +88,10 @@ public class Enchere {
 	public void setDateEnchere(LocalDate dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
+
+	@Override
+	public String toString() {
+		return "Enchere [encherisseur=" + encherisseur + ", vente=" + vente + ", dateEnchere=" + dateEnchere
+				+ ", credit=" + credit + "]";
+	}
 }

@@ -182,9 +182,9 @@ public class ServletTest extends HttpServlet {
 			System.out.println("------------------------------------------------------");
 			Enchere e = new Enchere();
 			e.setDateEnchere(LocalDate.now());
-			e.setEncherisseur(user.getUtilisateur(12));
+			e.setEncherisseur(user.getUtilisateur(2));
 			e.setVente(vdao.getVente(3));
-			e.setCredit(70);
+			e.setCredit(80);
 			EnchereDAO edao = DAOFactory.getEnchereDAO();
 			edao.ajouterEnchere(e);
 			System.out.println(e.toString());
@@ -192,6 +192,35 @@ public class ServletTest extends HttpServlet {
 			System.out.println("mise à jour enchere");
 			System.out.println("--------------------------------------------------------");
 			
+			System.out.println("--------------------------------------------------------");
+			System.out.println("récupération liste Encheres");
+			System.out.println("--------------------------------------------------------");
+			List<Enchere> encheres = edao.getEncheres(3);
+			for (Enchere enchere : encheres) {
+				System.out.println(enchere.toString());
+				System.out.println("--------------------------------------------------------");
+			}
+			
+			System.out.println("--------------------------------------------------------");
+			System.out.println("Suppression enchere");
+			System.out.println("--------------------------------------------------------");
+			edao.supprimerEnchere(e);
+			encheres = edao.getEncheres(3);
+			System.out.println("il ne doit rien s'afficher entre ici...");
+			for (Enchere enchere : encheres) {
+				System.out.println(enchere.toString());
+				System.out.println("--------------------------------------------------------");
+			}
+			
+//			System.out.println("--------------------------------------------------------");
+//			System.out.println("Suppression vente");
+//			System.out.println("--------------------------------------------------------");
+//			edao.supprimerEncheres(3);
+//			for (Enchere enchere : encheres) {
+//				System.out.println(enchere.toString());
+//				System.out.println("--------------------------------------------------------");
+//			}
+			System.out.println("...et là");
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();

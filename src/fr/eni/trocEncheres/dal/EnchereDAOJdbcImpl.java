@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
@@ -17,10 +18,10 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 			+ "VALUES(?,?,?,?)";
 	private static final String UPDATE_ENCHERE ="UPDATE encheres SET date_enchere = ?, credit = ? "
 			+ "WHERE no_utilisateur = ? AND no_vente = ?";
-	private static final String DELETE_ENCHERE ="";
-	private static final String DELETE_ENCHERES ="";
-	private static final String GET_ACQUISITIONS ="";
-	private static final String GET_ENCHERES ="";
+	private static final String DELETE_ENCHERE ="DELETE FROM encheres WHERE no_utilisateur = ? AND no_vente = ?";
+	private static final String DELETE_ENCHERES ="DELETE FROM encheres WHERE no_vente = ?";
+//	private static final String GET_ACQUISITIONS ="";
+	private static final String GET_ENCHERES ="SELECT * FROM encheres WHERE no_vente = ? ORDER BY credit DESC";
 
 	@Override
 	public void ajouterEnchere(Enchere e) throws BusinessException {
@@ -58,27 +59,86 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 	}
 
 	@Override
-	public void supprimerEnchere(int noUtilisateur) throws BusinessException {
-		// TODO Auto-generated method stub
-
+	public void supprimerEnchere(Enchere e) throws BusinessException {
+		if(e == null) {
+			throw new BusinessException("veuillez renseigner une enchère");
+		}
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				PreparedStatement pstmt = cnx.prepareStatement(DELETE_ENCHERE);
+				pstmt.setInt(1, e.getEncherisseur().getNoUtilisateur());
+				pstmt.setInt(2, e.getVente().getNoVente());
+				pstmt.executeUpdate();
+				pstmt.close();
+			} catch (Exception ex) {
+				throw new BusinessException(ex.getMessage());
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new BusinessException(ex.getMessage());
+		}
 	}
 
 	@Override
 	public void supprimerEncheres(int noVente) throws BusinessException {
-		// TODO Auto-generated method stub
-
+		if(noVente==0) {
+			throw new BusinessException("veuillez renseigner une vente");
+		}
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				PreparedStatement pstmt = cnx.prepareStatement(DELETE_ENCHERES);
+				pstmt.setInt(1, noVente);
+				pstmt.executeUpdate();
+				pstmt.close();
+			} catch (Exception ex) {
+				throw new BusinessException(ex.getMessage());
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new BusinessException(ex.getMessage());
+		}
 	}
 
-	@Override
-	public List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public List<Enchere> getEncheres(int noVente) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		if(noVente==0) {
+			throw new BusinessException("veuillez renseigner une vente");
+		}
+		List<Enchere> encheres = new ArrayList<Enchere>();
+		UtilisateurDAO uDAO = DAOFactory.getUtilisateurDAO();
+		VenteDAO vDAO = DAOFactory.getVenteDAO();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				PreparedStatement pstmt = cnx.prepareStatement(GET_ENCHERES);
+				pstmt.setInt(1, noVente);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					Enchere e = new Enchere();
+					e.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
+					e.setEncherisseur(uDAO.getUtilisateur(rs.getInt("no_utilisateur")));
+					e.setVente(vDAO.getVente(rs.getInt("no_vente")));
+					e.setCredit(rs.getInt("credit"));
+					encheres.add(e);
+				}
+				rs.close();
+				pstmt.close();
+			} catch (Exception ex) {
+				throw new BusinessException(ex.getMessage());
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new BusinessException(ex.getMessage());
+		}
+		return encheres;
 	}
 
 }
