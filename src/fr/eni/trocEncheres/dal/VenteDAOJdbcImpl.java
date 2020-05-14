@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
@@ -15,10 +17,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 	public static final String INSERT_VENTE = "INSERT INTO ventes "
 			+ "(nom_article, description, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
 			+ " VALUES(?,?,?,?,?,?,?)";
-	public static final String GET_VENTES_BY_USER = "";
-	public static final String GET_VENTES_BY_NOM = "";
-	public static final String GET_VENTES_BY_CATEGORIE = "";
-	public static final String GET_VENTE_BY_NO = "";
+	private static final String GET_VENTES_BY_USER = "SELECT * FROM ventes WHERE no_utilisateur = ?";
+	private static final String GET_VENTES_BY_NOM = "SELECT * FROM ventes WHERE nom_article like ? ";
+	private static final String GET_VENTES_BY_CATEGORIE = "SELECT * FROM ventes WHERE no_categorie = ?";
+	private static final String GET_VENTE_BY_NO = "SELECT * FROM ventes WHERE no_vente = ?";
+	private static final String GET_VENTES = "SELECT * FROM ventes";
 
 	@Override
 	public Vente ajouterVente(Vente v) throws BusinessException {
@@ -61,32 +64,161 @@ class VenteDAOJdbcImpl implements VenteDAO {
 
 	@Override
 	public List<Vente> getVentesUtilisateur(int noUtilisateur) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Vente> ventes = new ArrayList<Vente>();
+		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
+		CategorieDAO cat = DAOFactory.getCategorieDAO();
+		RetraitDAO rDAO = DAOFactory.getRetraitDAO();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(GET_VENTES_BY_USER);
+			pstmt.setInt(1, noUtilisateur);			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Vente v = new Vente();
+				v.setNoVente(rs.getInt("no_vente"));
+				v.setNomArticle(rs.getString("nom_article"));
+				v.setDescription(rs.getString("description"));
+				v.setDateFinEnchere(rs.getDate("date_fin_encheres").toLocalDate());
+				v.setMiseAPrix(rs.getInt("prix_initial"));
+				v.setPrixVente(rs.getInt("prix_vente"));
+				v.setVendeur(user.getUtilisateur(rs.getInt("no_utilisateur")));
+				v.setCategorie(cat.getCategorieById(rs.getInt("no_categorie")));
+				v.setRetrait(rDAO.getRetrait(v.getNoVente()));
+				ventes.add(v);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return ventes;
 	}
 
 	@Override
 	public List<Vente> getVentesByNom(String nom) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Vente> ventes = new ArrayList<Vente>();
+		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
+		CategorieDAO cat = DAOFactory.getCategorieDAO();
+		RetraitDAO rDAO = DAOFactory.getRetraitDAO();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(GET_VENTES_BY_NOM);
+			pstmt.setString(1, "%" + nom + "%");			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Vente v = new Vente();
+				v.setNoVente(rs.getInt("no_vente"));
+				v.setNomArticle(rs.getString("nom_article"));
+				v.setDescription(rs.getString("description"));
+				v.setDateFinEnchere(rs.getDate("date_fin_encheres").toLocalDate());
+				v.setMiseAPrix(rs.getInt("prix_initial"));
+				v.setPrixVente(rs.getInt("prix_vente"));
+				v.setVendeur(user.getUtilisateur(rs.getInt("no_utilisateur")));
+				v.setCategorie(cat.getCategorieById(rs.getInt("no_categorie")));
+				v.setRetrait(rDAO.getRetrait(v.getNoVente()));
+				ventes.add(v);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return ventes;
 	}
 
 	@Override
 	public List<Vente> getVentesByCategorie(int noCategorie) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Vente> ventes = new ArrayList<Vente>();
+		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
+		CategorieDAO cat = DAOFactory.getCategorieDAO();
+		RetraitDAO rDAO = DAOFactory.getRetraitDAO();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(GET_VENTES_BY_CATEGORIE);
+			pstmt.setInt(1, noCategorie);			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Vente v = new Vente();
+				v.setNoVente(rs.getInt("no_vente"));
+				v.setNomArticle(rs.getString("nom_article"));
+				v.setDescription(rs.getString("description"));
+				v.setDateFinEnchere(rs.getDate("date_fin_encheres").toLocalDate());
+				v.setMiseAPrix(rs.getInt("prix_initial"));
+				v.setPrixVente(rs.getInt("prix_vente"));
+				v.setVendeur(user.getUtilisateur(rs.getInt("no_utilisateur")));
+				v.setCategorie(cat.getCategorieById(rs.getInt("no_categorie")));
+				v.setRetrait(rDAO.getRetrait(v.getNoVente()));
+				ventes.add(v);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return ventes;
 	}
-
-//	@Override
-//	public List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public Vente getVente(int noVente) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		Vente v = new Vente();
+		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
+		CategorieDAO cat = DAOFactory.getCategorieDAO();
+		RetraitDAO rDAO = DAOFactory.getRetraitDAO();
+		try {
+			Connection cnx=ConnecteurBDD.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(GET_VENTE_BY_NO);
+			pstmt.setInt(1, noVente);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				v.setNoVente(rs.getInt("no_vente"));
+				v.setNomArticle(rs.getString("nom_article"));
+				v.setDescription(rs.getString("description"));
+				v.setDateFinEnchere(rs.getDate("date_fin_encheres").toLocalDate());
+				v.setMiseAPrix(rs.getInt("prix_initial"));
+				v.setPrixVente(rs.getInt("prix_vente"));
+				v.setVendeur(user.getUtilisateur(rs.getInt("no_utilisateur")));
+				v.setCategorie(cat.getCategorieById(rs.getInt("no_categorie")));
+				v.setRetrait(rDAO.getRetrait(v.getNoVente()));
+			}
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BusinessException("erreur de connection à la base de données");
+		}
+		return v;
+	}
+	
+	public List<Vente> getVentes() throws BusinessException{
+		List<Vente> ventes = new ArrayList<Vente>();
+		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
+		CategorieDAO cat = DAOFactory.getCategorieDAO();
+		RetraitDAO rDAO = DAOFactory.getRetraitDAO();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			Statement stmt = cnx.createStatement();		
+			ResultSet rs = stmt.executeQuery(GET_VENTES);
+			while(rs.next()) {
+				Vente v = new Vente();
+				v.setNoVente(rs.getInt("no_vente"));
+				v.setNomArticle(rs.getString("nom_article"));
+				v.setDescription(rs.getString("description"));
+				v.setDateFinEnchere(rs.getDate("date_fin_encheres").toLocalDate());
+				v.setMiseAPrix(rs.getInt("prix_initial"));
+				v.setPrixVente(rs.getInt("prix_vente"));
+				v.setVendeur(user.getUtilisateur(rs.getInt("no_utilisateur")));
+				v.setCategorie(cat.getCategorieById(rs.getInt("no_categorie")));
+				v.setRetrait(rDAO.getRetrait(v.getNoVente()));
+				ventes.add(v);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return ventes;
 	}
 
 }

@@ -32,8 +32,6 @@ public class UtilisateurManager {
 		super();
 	}
 		
-	
-	
 	/**
 	 * Permet d'ajouter un utilisateur à la base de donné
 	 * @param utilisateur
@@ -83,8 +81,6 @@ public class UtilisateurManager {
 		}
 	}
 	
-	
-	
 	/**
 	 * Permet de modifier l'utilisateur
 	 * @param u
@@ -133,8 +129,6 @@ public class UtilisateurManager {
 				}
 	}
 	
-	
-	
 	/**
 	 * Permet de suppirmer un utilisateur
 	 * @param no_utilisateur
@@ -146,6 +140,20 @@ public class UtilisateurManager {
 			daoUtilisateur.supprimerUtilisateur(no_utilisateur);			
 		} catch (BusinessException e) {
 			throw new BusinessException("Echec de la suppression");
+		}
+	}
+	
+	/**
+	 * Permet de connecter un utilisateur avec son login et mot de passe
+	 * @param login
+	 * @param motDePasse
+	 * @throws BusinessException
+	 */
+	public void connecterUtilisateur(String login, String motDePasse) throws BusinessException {
+		try {
+			daoUtilisateur.connecterUtilisateur(login, motDePasse);			
+		} catch (BusinessException e) {
+			throw new BusinessException("Erreur lors de la connexion");
 		}
 	}
 		

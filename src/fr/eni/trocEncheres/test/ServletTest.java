@@ -2,6 +2,7 @@ package fr.eni.trocEncheres.test;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -115,22 +116,64 @@ public class ServletTest extends HttpServlet {
 //			System.out.println("test récupération retrait");
 //			System.out.println("-----------------------------------------------------");
 //			System.out.println(r2.toString());
-			Utilisateur u = user.getUtilisateur(1);
-			Vente v = new Vente();
-			v.setNomArticle("pc bureautique");
-			v.setDescription("un truc pas terrible avec windows Vista");
-			v.setDateFinEnchere(LocalDate.of(2020, 06, 06));
-			v.setMiseAPrix(20);
-			v.setVendeur(u);
-			v.setCategorie(cdao.getCategorieById(1));
-			v.setRetrait(rdao.getAdresseUtilisateur(u.getNoUtilisateur()));
+
+//			System.out.println("Test Ajout Vente");
+//			System.out.println("------------------------------------------------------");
+//			Utilisateur u = user.getUtilisateur(1);
+//			Vente v = new Vente();
+//			v.setNomArticle("pc bureautique");
+//			v.setDescription("un truc pas terrible avec windows Vista");
+//			v.setDateFinEnchere(LocalDate.of(2020, 06, 06));
+//			v.setMiseAPrix(20);
+//			v.setVendeur(u);
+//			v.setCategorie(cdao.getCategorieById(1));
+//			v.setRetrait(rdao.getAdresseUtilisateur(u.getNoUtilisateur()));
 			VenteDAO vdao = DAOFactory.getVenteDAO();
-			Vente v2 = vdao.ajouterVente(v);
-			System.out.println("Test Ajout Vente");
+//			Vente v2 = vdao.ajouterVente(v);
+//			System.out.println(v.toString());
+//			System.out.println("------------------------------------------------------");
+			
+			System.out.println("Test Ventes by utilisateur");
 			System.out.println("------------------------------------------------------");
+			List<Vente> ventesByUser = vdao.getVentesUtilisateur(1);
+			for (Vente vente : ventesByUser) {
+				System.out.println(vente.toString());
+				System.out.println("------------------------------------------------------");
+			}
+			
+			System.out.println("------------------------------------------------------");
+			System.out.println("Test Ventes by nom");
+			System.out.println("------------------------------------------------------");
+			List<Vente> ventesByNom = vdao.getVentesByNom("bur");
+			for (Vente vente : ventesByNom) {
+				System.out.println(vente.toString());
+				System.out.println("------------------------------------------------------");
+			}
+			
+			System.out.println("------------------------------------------------------");
+			System.out.println("Test Ventes by categorie");
+			System.out.println("------------------------------------------------------");
+			List<Vente> ventesByCategorie = vdao.getVentesByCategorie(1);
+			for (Vente vente : ventesByCategorie) {
+				System.out.println(vente.toString());
+				System.out.println("------------------------------------------------------");
+			}
+			
+			System.out.println("------------------------------------------------------");
+			System.out.println("Test Vente");
+			System.out.println("------------------------------------------------------");
+			Vente v = vdao.getVente(2);
 			System.out.println(v.toString());
 			System.out.println("------------------------------------------------------");
 			
+			System.out.println("------------------------------------------------------");
+			System.out.println("Test Ventes ");
+			System.out.println("------------------------------------------------------");
+			List<Vente> ventes = vdao.getVentes();
+			for (Vente vente : ventes) {
+				System.out.println(vente.toString());
+				System.out.println("------------------------------------------------------");
+			}
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();

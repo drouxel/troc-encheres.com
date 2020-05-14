@@ -1,7 +1,10 @@
 package fr.eni.trocEncheres.dal;
 
+import java.util.List;
+
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Enchere;
+import fr.eni.trocEncheres.bo.Vente;
 
 class EnchereDAOJdbcImpl implements EnchereDAO {
 
@@ -27,6 +30,12 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 	public void faireEnchere(Enchere e) throws BusinessException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

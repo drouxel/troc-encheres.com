@@ -15,6 +15,6 @@ public interface VenteDAO {
 	public List<Vente> getVentesUtilisateur(int noUtilisateur) throws BusinessException;
 	public List<Vente> getVentesByNom(String nom) throws BusinessException;
 	public List<Vente> getVentesByCategorie(int noCategorie) throws BusinessException;
-//	public List<Vente> getAcquisitions(int noUtilisateur) throws BusinessException;
 	public Vente getVente(int noVente) throws BusinessException;
+	public List<Vente> getVentes() throws BusinessException;
 }
