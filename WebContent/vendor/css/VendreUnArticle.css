@@ -20,6 +20,12 @@ fieldset{
 	border-top: 2px;
 }
 
+fieldset legend{
+	visible:true;
+	width:auto;
+	display:block;
+}
+
 label{
 	border:medium;
 	border-color:black;
