@@ -17,7 +17,11 @@ public class ServletConnexion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String forgotPwd = request.getParameter("forgotPwd");
+		if(forgotPwd!=null) {
+			System.out.println("c'est balot");
+			request.setAttribute("forgotPwd", forgotPwd);
+		}
 		request.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 	}
 
@@ -25,7 +29,10 @@ public class ServletConnexion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String login = request.getParameter("login");
+		String motDePasse = request.getParameter("motDePasse");
+		String rememberMe = request.getParameter("rememberMe");
+		
 		doGet(request, response);
 	}
 
