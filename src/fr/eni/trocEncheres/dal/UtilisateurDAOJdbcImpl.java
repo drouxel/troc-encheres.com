@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Utilisateur;
@@ -25,6 +28,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			+ "AND mot_de_passe = ?";
 	private static final String DELETE_USER = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String GET_USER = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
+	private static final String GET_PSEUDOS = "SELECT pseudo FROM utilisateurs";
+	private static final String GET_MAILS = "SELECT email FROM utilisateurs";
 
 	@Override
 	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException {
@@ -253,6 +258,50 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			throw new BusinessException(e.getMessage());
 		}
 		return u;
+	}
+
+	@Override
+	public List<String> getPseudos() throws BusinessException {
+		List<String> logins = new ArrayList();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				Statement stmt = cnx.createStatement();
+				ResultSet rs = stmt.executeQuery(GET_PSEUDOS);
+				while(rs.next()) {
+					logins.add(rs.getString("pseudo"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new BusinessException(e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BusinessException(e.getMessage());
+		}
+		return logins;
+	}
+
+	@Override
+	public List<String> getMails() throws BusinessException {
+		List<String> mails = new ArrayList();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				Statement stmt = cnx.createStatement();
+				ResultSet rs = stmt.executeQuery(GET_MAILS);
+				while(rs.next()) {
+					mails.add(rs.getString("email"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new BusinessException(e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new BusinessException(e.getMessage());
+		}
+		return mails;
 	}
 
 }

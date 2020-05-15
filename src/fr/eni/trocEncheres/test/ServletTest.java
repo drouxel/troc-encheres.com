@@ -34,35 +34,35 @@ public class ServletTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtilisateurDAO user = DAOFactory.getUtilisateurDAO();
 		try {
-			System.out.println("test ajout");
-			System.out.println("----------------------------------------------------");
-			Utilisateur test =
-					user.ajouterUtilisateur(new Utilisateur
-							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
-									"labiteaucul", 0, "Jean-Michel", false));
-			System.out.println(test.toString());
-			System.out.println("----------------------------------------------------");
-			
-			System.out.println("test modification");
-			System.out.println("----------------------------------------------------");
-			test.setRue("rue saint michel");
-			test.setCodePostal("35000");
-			test.setVille("rennes");
-			user.modifierUtilisateur(test);
-			System.out.println(test.toString());
-			System.out.println("----------------------------------------------------");
-			
-			System.out.println("test gestion");
-			System.out.println("----------------------------------------------------");
-			test.setPseudo("retourneveste");
-			test.setNom("De Lamite");
-			test.setPrenom("Charles-Edouard");
-			test.setMail("cedelamite@gmail.com");
-			test.setMotDePasse("toutestclean");
-			test.setTelephone(null);
-			user.gererUtilisateur(test);
-			System.out.println(test.toString());
-			System.out.println("----------------------------------------------------");
+//			System.out.println("test ajout");
+//			System.out.println("----------------------------------------------------");
+//			Utilisateur test =
+//					user.ajouterUtilisateur(new Utilisateur
+//							("kiki", "Labite", "kiki.labite@mail.ru", "0769753645", "place pigalle", "75000", "Paris", 
+//									"labiteaucul", 0, "Jean-Michel", false));
+//			System.out.println(test.toString());
+//			System.out.println("----------------------------------------------------");
+//			
+//			System.out.println("test modification");
+//			System.out.println("----------------------------------------------------");
+//			test.setRue("rue saint michel");
+//			test.setCodePostal("35000");
+//			test.setVille("rennes");
+//			user.modifierUtilisateur(test);
+//			System.out.println(test.toString());
+//			System.out.println("----------------------------------------------------");
+//			
+//			System.out.println("test gestion");
+//			System.out.println("----------------------------------------------------");
+//			test.setPseudo("retourneveste");
+//			test.setNom("De Lamite");
+//			test.setPrenom("Charles-Edouard");
+//			test.setMail("cedelamite@gmail.com");
+//			test.setMotDePasse("toutestclean");
+//			test.setTelephone(null);
+//			user.gererUtilisateur(test);
+//			System.out.println(test.toString());
+//			System.out.println("----------------------------------------------------");
 			
 //			System.out.println("test suppression");
 //			System.out.println("----------------------------------------------------");
@@ -135,82 +135,82 @@ public class ServletTest extends HttpServlet {
 //			System.out.println(v.toString());
 //			System.out.println("------------------------------------------------------");
 			
-			System.out.println("Test Ventes by utilisateur");
-			System.out.println("------------------------------------------------------");
-			List<Vente> ventesByUser = vdao.getVentesUtilisateur(1);
-			for (Vente vente : ventesByUser) {
-				System.out.println(vente.toString());
-				System.out.println("------------------------------------------------------");
-			}
-			
-			System.out.println("------------------------------------------------------");
-			System.out.println("Test Ventes by nom");
-			System.out.println("------------------------------------------------------");
-			List<Vente> ventesByNom = vdao.getVentesByNom("bur");
-			for (Vente vente : ventesByNom) {
-				System.out.println(vente.toString());
-				System.out.println("------------------------------------------------------");
-			}
-			
-			System.out.println("------------------------------------------------------");
-			System.out.println("Test Ventes by categorie");
-			System.out.println("------------------------------------------------------");
-			List<Vente> ventesByCategorie = vdao.getVentesByCategorie(1);
-			for (Vente vente : ventesByCategorie) {
-				System.out.println(vente.toString());
-				System.out.println("------------------------------------------------------");
-			}
-			
-			System.out.println("------------------------------------------------------");
-			System.out.println("Test Vente");
-			System.out.println("------------------------------------------------------");
-			Vente v = vdao.getVente(2);
-			System.out.println(v.toString());
-			System.out.println("------------------------------------------------------");
-			
-			System.out.println("------------------------------------------------------");
-			System.out.println("Test Ventes ");
-			System.out.println("------------------------------------------------------");
-			List<Vente> ventes = vdao.getVentes();
-			for (Vente vente : ventes) {
-				System.out.println(vente.toString());
-				System.out.println("------------------------------------------------------");
-			}
-			
-			System.out.println("------------------------------------------------------");
-			System.out.println("Test Vente");
-			System.out.println("------------------------------------------------------");
-			Enchere e = new Enchere();
-			e.setDateEnchere(LocalDate.now());
-			e.setEncherisseur(user.getUtilisateur(2));
-			e.setVente(vdao.getVente(3));
-			e.setCredit(80);
-			EnchereDAO edao = DAOFactory.getEnchereDAO();
-			edao.ajouterEnchere(e);
-			System.out.println(e.toString());
-			System.out.println("--------------------------------------------------------");
-			System.out.println("mise à jour enchere");
-			System.out.println("--------------------------------------------------------");
-			
-			System.out.println("--------------------------------------------------------");
-			System.out.println("récupération liste Encheres");
-			System.out.println("--------------------------------------------------------");
-			List<Enchere> encheres = edao.getEncheres(3);
-			for (Enchere enchere : encheres) {
-				System.out.println(enchere.toString());
-				System.out.println("--------------------------------------------------------");
-			}
-			
-			System.out.println("--------------------------------------------------------");
-			System.out.println("Suppression enchere");
-			System.out.println("--------------------------------------------------------");
-			edao.supprimerEnchere(e);
-			encheres = edao.getEncheres(3);
-			System.out.println("il ne doit rien s'afficher entre ici...");
-			for (Enchere enchere : encheres) {
-				System.out.println(enchere.toString());
-				System.out.println("--------------------------------------------------------");
-			}
+//			System.out.println("Test Ventes by utilisateur");
+//			System.out.println("------------------------------------------------------");
+//			List<Vente> ventesByUser = vdao.getVentesUtilisateur(1);
+//			for (Vente vente : ventesByUser) {
+//				System.out.println(vente.toString());
+//				System.out.println("------------------------------------------------------");
+//			}
+//			
+//			System.out.println("------------------------------------------------------");
+//			System.out.println("Test Ventes by nom");
+//			System.out.println("------------------------------------------------------");
+//			List<Vente> ventesByNom = vdao.getVentesByNom("bur");
+//			for (Vente vente : ventesByNom) {
+//				System.out.println(vente.toString());
+//				System.out.println("------------------------------------------------------");
+//			}
+//			
+//			System.out.println("------------------------------------------------------");
+//			System.out.println("Test Ventes by categorie");
+//			System.out.println("------------------------------------------------------");
+//			List<Vente> ventesByCategorie = vdao.getVentesByCategorie(1);
+//			for (Vente vente : ventesByCategorie) {
+//				System.out.println(vente.toString());
+//				System.out.println("------------------------------------------------------");
+//			}
+//			
+//			System.out.println("------------------------------------------------------");
+//			System.out.println("Test Vente");
+//			System.out.println("------------------------------------------------------");
+//			Vente v = vdao.getVente(2);
+//			System.out.println(v.toString());
+//			System.out.println("------------------------------------------------------");
+//			
+//			System.out.println("------------------------------------------------------");
+//			System.out.println("Test Ventes ");
+//			System.out.println("------------------------------------------------------");
+//			List<Vente> ventes = vdao.getVentes();
+//			for (Vente vente : ventes) {
+//				System.out.println(vente.toString());
+//				System.out.println("------------------------------------------------------");
+//			}
+//			
+//			System.out.println("------------------------------------------------------");
+//			System.out.println("Test Vente");
+//			System.out.println("------------------------------------------------------");
+//			Enchere e = new Enchere();
+//			e.setDateEnchere(LocalDate.now());
+//			e.setEncherisseur(user.getUtilisateur(2));
+//			e.setVente(vdao.getVente(3));
+//			e.setCredit(80);
+//			EnchereDAO edao = DAOFactory.getEnchereDAO();
+//			edao.ajouterEnchere(e);
+//			System.out.println(e.toString());
+//			System.out.println("--------------------------------------------------------");
+//			System.out.println("mise à jour enchere");
+//			System.out.println("--------------------------------------------------------");
+//			
+//			System.out.println("--------------------------------------------------------");
+//			System.out.println("récupération liste Encheres");
+//			System.out.println("--------------------------------------------------------");
+//			List<Enchere> encheres = edao.getEncheres(3);
+//			for (Enchere enchere : encheres) {
+//				System.out.println(enchere.toString());
+//				System.out.println("--------------------------------------------------------");
+//			}
+//			
+//			System.out.println("--------------------------------------------------------");
+//			System.out.println("Suppression enchere");
+//			System.out.println("--------------------------------------------------------");
+//			edao.supprimerEnchere(e);
+//			encheres = edao.getEncheres(3);
+//			System.out.println("il ne doit rien s'afficher entre ici...");
+//			for (Enchere enchere : encheres) {
+//				System.out.println(enchere.toString());
+//				System.out.println("--------------------------------------------------------");
+//			}
 			
 //			System.out.println("--------------------------------------------------------");
 //			System.out.println("Suppression vente");
@@ -220,7 +220,16 @@ public class ServletTest extends HttpServlet {
 //				System.out.println(enchere.toString());
 //				System.out.println("--------------------------------------------------------");
 //			}
-			System.out.println("...et là");
+			System.out.println("test getPseudos");
+			List<String> pseudos = user.getPseudos();
+			for (String string : pseudos) {
+				System.out.println(string);
+			}
+			System.out.println("test getMails");
+			List<String> mails = user.getMails();
+			for (String string : mails) {
+				System.out.println(string);
+			}
 		} catch (BusinessException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();

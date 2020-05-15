@@ -1,5 +1,7 @@
 package fr.eni.trocEncheres.dal;
 
+import java.util.List;
+
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Utilisateur;
 /**
@@ -34,6 +36,12 @@ public interface UtilisateurDAO {
 	 * @throws BusinessException si une erreur survient lors de la tentative de connection
 	 */
 	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException;
+	/**
+	 * fonction permettant de récupérer un utilisateur enregistré dans la base de données grâce à son numéro
+	 * @param id = numéro utilisateur
+	 * @return Utilisateur
+	 * @throws BusinessException
+	 */
 	public Utilisateur getUtilisateur(int id) throws BusinessException;
 	/**
 	 * permet de supprimer un utilisateur renseignant son noUtilisateur.
@@ -42,6 +50,16 @@ public interface UtilisateurDAO {
 	 * @throws BusinessException si une erreur survient ou si la personne n'est pas autorisée à réaliser cette opération
 	 */
 	public void supprimerUtilisateur(int id) throws BusinessException;
-	
-	
+	/**
+	 * fonction qui retourne tous les logins enregistrés en base de données
+	 * @return tous les logins sous forme de String
+	 * @throws BusinessException
+	 */
+	public List<String> getPseudos() throws BusinessException;
+	/**
+	 * fonction qui retourne toutes les adresses mail enregistrés en base de données
+	 * @return tous les logins sous forme de String
+	 * @throws BusinessException
+	 */
+	public List<String> getMails() throws BusinessException;
 }
