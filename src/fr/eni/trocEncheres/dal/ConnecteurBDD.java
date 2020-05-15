@@ -7,7 +7,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
+/**
+ * classe permettant de se connecter à la base de données mySql
+ * @author damien
+ *
+ */
 public class ConnecteurBDD {
 	private static DataSource dataSource;
 	
@@ -21,7 +25,11 @@ public class ConnecteurBDD {
 			throw new RuntimeException("impossible de se connecter à la base de données");
 		}
 	}
-	
+	/**
+	 * classe permettant d'obtenir un pool de connexion pour intervenir sur la base de données
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Connection getConnection() throws SQLException {
 		return  ConnecteurBDD.dataSource.getConnection();
 	}

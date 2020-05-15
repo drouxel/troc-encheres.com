@@ -27,7 +27,7 @@ public interface UtilisateurDAO {
 	 */
 	public void gererUtilisateur(Utilisateur u) throws BusinessException;
 	/**
-	 * 
+	 * méthode permettant de récupérer l'utilisateur correspondant au login et au mot de passe renseignés sur la page connexion
 	 * @param login soit le pseudo, soit l'adresse mail fourni lors de la tentative de connection
 	 * @param motDePasse fourni lors de la tentative de connection
 	 * @return l'utilisateur correspondant aux paramètres fournis
