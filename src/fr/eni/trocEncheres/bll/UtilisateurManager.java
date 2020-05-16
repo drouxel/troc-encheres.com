@@ -149,12 +149,14 @@ public class UtilisateurManager {
 	 * @param motDePasse
 	 * @throws BusinessException
 	 */
-	public void connecterUtilisateur(String login, String motDePasse) throws BusinessException {
+	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException {
+		Utilisateur u = null;
 		try {
-			daoUtilisateur.connecterUtilisateur(login, motDePasse);			
+			u = daoUtilisateur.connecterUtilisateur(login, motDePasse);			
 		} catch (BusinessException e) {
 			throw new BusinessException("Erreur lors de la connexion");
 		}
+		return u;
 	}
 		
 }
