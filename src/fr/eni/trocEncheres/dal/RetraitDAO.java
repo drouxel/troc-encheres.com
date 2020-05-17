@@ -16,6 +16,7 @@ public interface RetraitDAO {
 	 * @throws BusinessException
 	 */
 	public Retrait getAdresseUtilisateur(int id) throws BusinessException;
+	
 	/**
 	 * cette methode permet d'ajouter l'adresse du retrait associé à une vente
 	 * @param retrait 
@@ -23,6 +24,7 @@ public interface RetraitDAO {
 	 * @throws BusinessException
 	 */
 	public void ajouterRetrait(Retrait retrait) throws BusinessException;
+	
 	/**
 	 * 
 	 * @param noVente

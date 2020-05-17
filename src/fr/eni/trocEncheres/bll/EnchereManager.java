@@ -53,9 +53,15 @@ public class EnchereManager {
 	 * Methode permettant de supprimer une enchère
 	 * @throws BusinessException
 	 */
-	public void supprimerEnchere() throws BusinessException {
-		
+	public void supprimerEnchere(Enchere e) throws BusinessException {
+		try {
+			daoEnchere.supprimerEnchere(e);
+		} catch (BusinessException e1) {
+			throw new BusinessException("Erreur lors de la suppression");
+		}
 	}
+	
+//	public void enchereTerminee()
 	
 	/**
 	 * Fonction qui vérifie la date de l'enchère
@@ -65,15 +71,11 @@ public class EnchereManager {
 	 */
 	private boolean dateIsValideEnchere(Enchere e) throws BusinessException {
 		// Permet de vérifier le créneau des dates
-		// manque getDateDebutEnchere() code à rajouter à la suite :
-		// || e.getDateEnchere().isAfter(e.getVente().get)
 		if (e.getDateEnchere().isAfter(e.getVente().getDateFinEnchere())) {
 			throw new BusinessException("Erreur de date");
 		}else {
 			return true;
 		}
-		
-		
 	}
 	
 	/**

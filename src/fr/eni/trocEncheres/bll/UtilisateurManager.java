@@ -41,6 +41,19 @@ public class UtilisateurManager {
 		//Attribut(s)
 		boolean isValide = true;
 		
+		isValide = verifAjouterUtil(u, isValide);
+		
+		// insertion de l'utilisateur si tout les 'isValide' sont à 'true'
+		try {
+			if(isValide) {
+				daoUtilisateur.ajouterUtilisateur(u);
+			}
+		} catch (BusinessException e) {
+			throw new BusinessException("Echec de l'insertion");
+		}
+	}
+
+	private boolean verifAjouterUtil(Utilisateur u, boolean isValide) throws BusinessException {
 		// vérifier que tous les champs de saisies soit tous remplis
 		if(u == null) {
 			isValide = false;
@@ -70,15 +83,7 @@ public class UtilisateurManager {
 			isValide = false;
 			throw new BusinessException("Le champs Mot de Passe est obligatoire !");
 		}
-		
-		// insertion de l'utilisateur si tout les 'isValide' sont à 'true'
-		try {
-			if(isValide) {
-				daoUtilisateur.ajouterUtilisateur(u);
-			}
-		} catch (BusinessException e) {
-			throw new BusinessException("Echec de l'insertion");
-		}
+		return isValide;
 	}
 	
 	/**
@@ -89,35 +94,7 @@ public class UtilisateurManager {
 	public void modifierUtilisateur(Utilisateur u) throws BusinessException {
 		boolean isValide = true;
 		
-				// vérifier que tous les champs de saisies soit tous remplis
-				if(u == null) {
-					isValide = false;
-					throw new BusinessException("Utilisateur null");
-				}if (u.getPseudo().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Pseudo est obligatoire !");
-				}if (u.getNom().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Nom est obligatoire !");
-				}if (u.getPrenom().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Prénom est obligatoire !");
-				}if (u.getMail().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Email est obligatoire !");
-				}if (u.getRue().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Rue est obligatoire !");
-				}if (u.getCodePostal().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Code Postal est obligatoire !");
-				}if (u.getVille().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Ville est obligatoire !");
-				}if (u.getMotDePasse().trim().length() == 0) {
-					isValide = false;
-					throw new BusinessException("Le champs Mot de Passe est obligatoire !");
-				}
+				isValide = verifAjouterUtil(u, isValide);
 				
 				// vérifie que 'isValide' soit 'true' avant de modifier
 				try {

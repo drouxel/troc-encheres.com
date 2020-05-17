@@ -1,5 +1,26 @@
 package fr.eni.trocEncheres.bll;
 
-public class RetraitManager {
+import fr.eni.trocEncheres.BusinessException;
+import fr.eni.trocEncheres.bo.Retrait;
+import fr.eni.trocEncheres.dal.DAOFactory;
+import fr.eni.trocEncheres.dal.RetraitDAO;
 
+public class RetraitManager {
+	//singleton
+		private static RetraitManager instance;
+		
+		public static RetraitManager getInstance()throws BusinessException {
+			if(instance == null) {
+				instance = new RetraitManager();
+			}
+			return instance;
+		}
+		
+		//Attribut(s)
+		RetraitDAO daoRetrait = DAOFactory.getRetraitDAO();
+		
+		public void ajouterRetrait(Retrait retrait) throws BusinessException {
+			daoRetrait.getRetrait(retrait);
+			//Verifier adresse
+		}
 }
