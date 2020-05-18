@@ -62,5 +62,11 @@ public class CategorieManager {
 		}
 	}
 	
+	public List<Categorie> getCategories() throws BusinessException{
+		List<Categorie> categories = null;
+		categories = daoCategorie.getCategories();
+		return categories;
+	}
+	
 	
 }
