@@ -13,7 +13,7 @@ import fr.eni.trocEncheres.dal.UtilisateurDAOJdbcImpl;
 
 /**
  * @author MATTHIEU
- *
+ *Creer, supprimer des catégories.
  */
 public class CategorieManager {
 	

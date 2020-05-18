@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * @author MATTHIEU
- *
+ *Classe permettant de crrer une vente
  */
 public class Vente {
 

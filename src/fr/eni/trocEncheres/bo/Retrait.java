@@ -2,7 +2,7 @@ package fr.eni.trocEncheres.bo;
 
 /**
  * @author MATTHIEU
- *
+ *Classe permettant de creer des retraits
  */
 public class Retrait {
 	private int noVente;

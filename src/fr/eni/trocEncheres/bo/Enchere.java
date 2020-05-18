@@ -2,6 +2,10 @@ package fr.eni.trocEncheres.bo;
 
 import java.time.LocalDate;
 
+/**
+ * @author MATTHIEU
+ *Classe permettant de creer des enchères.
+ */
 public class Enchere {
 	private Utilisateur encherisseur;
 	private Vente vente;

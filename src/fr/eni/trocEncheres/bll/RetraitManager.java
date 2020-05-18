@@ -5,6 +5,10 @@ import fr.eni.trocEncheres.bo.Retrait;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.RetraitDAO;
 
+/**
+ * @author MATTHIEU
+ *Ajouter un retrait
+ */
 public class RetraitManager {
 	//singleton
 		private static RetraitManager instance;

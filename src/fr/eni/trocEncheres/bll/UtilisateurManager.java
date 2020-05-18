@@ -9,6 +9,11 @@ import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.UtilisateurDAO;
 
+/**
+ * Ajouter, Supprimer, gerer un utilisateur
+ * @author MATTHIEU
+ *
+ */
 public class UtilisateurManager {
 	
 	//singleton
@@ -137,3 +142,15 @@ public class UtilisateurManager {
 	}
 		
 }
+
+
+
+
+
+
+
+
+
+
+
+

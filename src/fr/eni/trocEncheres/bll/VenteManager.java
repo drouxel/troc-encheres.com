@@ -5,6 +5,10 @@ import fr.eni.trocEncheres.bo.Vente;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.VenteDAO;
 
+/**
+ * @author MATTHIEU
+ *Ajouter une vente
+ */
 public class VenteManager {
 	
 		//singleton
