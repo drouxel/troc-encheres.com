@@ -15,6 +15,7 @@ class RetraitDAOJdbcImpl implements RetraitDAO {
 
 	@Override
 	public Retrait getAdresseUtilisateur(int id) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		Retrait r = new Retrait();
 		try {
 			Connection cnx=ConnecteurBDD.getConnection();
@@ -30,15 +31,16 @@ class RetraitDAOJdbcImpl implements RetraitDAO {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException("erreur de connection Ã  la base de donnÃ©es");
+			BExc.ajouterErreur("Problème de connexion à la base de données");;
 		}
 		return r;
 	}
 
 	@Override
 	public void ajouterRetrait(Retrait retrait) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if(retrait.getNoVente()==0) {
-			throw new BusinessException("le retrait n'est pas associÃ© Ã  une vente");
+			BExc.ajouterErreur("le retrait n'est pas associé à une vente");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -54,16 +56,17 @@ class RetraitDAOJdbcImpl implements RetraitDAO {
 				cnx.commit();
 			} catch (Exception e) {
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur("Problème de connexion à la base de données.");
 		}
 	}
 
 	@Override
 	public Retrait getRetrait(int noVente) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		Retrait r = new Retrait();
 		try {
 			Connection cnx=ConnecteurBDD.getConnection();
@@ -80,7 +83,7 @@ class RetraitDAOJdbcImpl implements RetraitDAO {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException("erreur de connection Ã  la base de donnÃ©es");
+			BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 		}
 		return r;
 	}
