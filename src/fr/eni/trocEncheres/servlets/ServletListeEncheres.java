@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bll.CategorieManager;
+import fr.eni.trocEncheres.bll.EnchereManager;
 import fr.eni.trocEncheres.bo.Categorie;
 
 /**
@@ -26,6 +27,7 @@ public class ServletListeEncheres extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieManager cMgr;
+		EnchereManager eMgr;
 		try {
 			cMgr = CategorieManager.getInstance();
 			List<Categorie> categories = cMgr.getCategories();
@@ -36,6 +38,17 @@ public class ServletListeEncheres extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			eMgr = EnchereManager.getInstance();
+			List<Encheres> ventes = eMgr.getEncheres();
+		} catch (BusinessException e) {
+			// à décommenter quand les exceptions seront gérées
+//			e.addErreur("impossible d'accéder à la liste des ventes en cours");
+//			List<String> listeErreurs = e.getErreurs();
+//			request.setAttribute("listeErreurs", listeErreurs);
+			e.printStackTrace();
+		}
+		
 		request.getRequestDispatcher("/WEB-INF/ListeEncheres.jsp").forward(request, response);
 	}
 

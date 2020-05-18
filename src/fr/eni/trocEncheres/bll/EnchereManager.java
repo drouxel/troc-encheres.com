@@ -1,5 +1,7 @@
 package fr.eni.trocEncheres.bll;
 
+import java.util.List;
+
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Enchere;
 import fr.eni.trocEncheres.dal.DAOFactory;
@@ -93,4 +95,9 @@ public class EnchereManager {
 		}
 	}
 	
+	public List<Enchere> getEncheres() throws BusinessException{
+		List<Enchere> encheres = null;
+		encheres = daoEnchere.getEncheres();
+		return encheres;
+	}
 }

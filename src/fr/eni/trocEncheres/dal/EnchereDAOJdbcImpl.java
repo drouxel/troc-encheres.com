@@ -5,13 +5,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Enchere;
-import fr.eni.trocEncheres.bo.Vente;
 
 class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String INSERT_ENCHERE ="INSERT INTO encheres(date_enchere, credit, no_utilisateur, no_vente) "
@@ -21,7 +20,8 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String DELETE_ENCHERE ="DELETE FROM encheres WHERE no_utilisateur = ? AND no_vente = ?";
 	private static final String DELETE_ENCHERES ="DELETE FROM encheres WHERE no_vente = ?";
 //	private static final String GET_ACQUISITIONS ="";
-	private static final String GET_ENCHERES ="SELECT * FROM encheres WHERE no_vente = ? ORDER BY credit DESC";
+	private static final String GET_ENCHERES_VENTE ="SELECT * FROM encheres WHERE no_vente = ? ORDER BY credit DESC";
+	private static final String GET_ENCHERES ="SELECT * FROM encheres GROUB BY no_vente";
 
 	@Override
 	public void ajouterEnchere(Enchere e) throws BusinessException {
@@ -118,7 +118,7 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
 			try {
-				PreparedStatement pstmt = cnx.prepareStatement(GET_ENCHERES);
+				PreparedStatement pstmt = cnx.prepareStatement(GET_ENCHERES_VENTE);
 				pstmt.setInt(1, noVente);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()) {
@@ -131,6 +131,36 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				}
 				rs.close();
 				pstmt.close();
+			} catch (Exception ex) {
+				throw new BusinessException(ex.getMessage());
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new BusinessException(ex.getMessage());
+		}
+		return encheres;
+	}
+
+	@Override
+	public List<Enchere> getEncheres() throws BusinessException {
+		List<Enchere> encheres = new ArrayList<Enchere>();
+		UtilisateurDAO uDAO = DAOFactory.getUtilisateurDAO();
+		VenteDAO vDAO = DAOFactory.getVenteDAO();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				Statement stmt = cnx.createStatement();
+				ResultSet rs = stmt.executeQuery(GET_ENCHERES);
+				while(rs.next()) {
+					Enchere e = new Enchere();
+					e.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
+					e.setEncherisseur(uDAO.getUtilisateur(rs.getInt("no_utilisateur")));
+					e.setVente(vDAO.getVente(rs.getInt("no_vente")));
+					e.setCredit(rs.getInt("credit"));
+					encheres.add(e);
+				}
+				rs.close();
+				stmt.close();
 			} catch (Exception ex) {
 				throw new BusinessException(ex.getMessage());
 			}
