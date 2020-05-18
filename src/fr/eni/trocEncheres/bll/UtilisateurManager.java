@@ -1,10 +1,12 @@
 package fr.eni.trocEncheres.bll;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import javax.management.Query;
 
 import fr.eni.trocEncheres.BusinessException;
+import fr.eni.trocEncheres.bo.Categorie;
 import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.UtilisateurDAO;
@@ -140,7 +142,35 @@ public class UtilisateurManager {
 		}
 		return u;
 	}
-		
+	
+	/**
+	 * méthode permettant de modifier utilisateur présent dans la base de données.
+	 * @param u
+	 * @throws BusinessException
+	 */
+	public void gererUtilisateur(Utilisateur u) throws BusinessException {
+		try {
+			daoUtilisateur.gererUtilisateur(u);			
+		} catch (BusinessException e) {
+			throw new BusinessException("Echec de la modification de l'utilisateur");
+		}
+	}
+	
+	public List<String> getPseudos() throws BusinessException {
+		try {
+			return daoUtilisateur.getPseudos();
+		} catch (BusinessException e) {
+			throw new BusinessException("");
+		}
+	}
+	
+	public List<String> getMails() throws BusinessException {
+		try {
+			return daoUtilisateur.getMails();
+		} catch (BusinessException e) {
+			throw new BusinessException("");
+		}
+	}
 }
 
 

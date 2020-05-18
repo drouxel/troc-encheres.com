@@ -1,5 +1,7 @@
 package fr.eni.trocEncheres.bll;
 
+import java.util.List;
+
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Enchere;
 import fr.eni.trocEncheres.dal.DAOFactory;
@@ -61,6 +63,18 @@ public class EnchereManager {
 		}
 	}
 	
+	/**
+	 * Methode permettant de supprimer une enchère
+	 * @throws BusinessException
+	 */
+	public void supprimerEnchere(int noVente) throws BusinessException {
+		try {
+			daoEnchere.supprimerEncheres(noVente);
+		} catch (BusinessException e) {
+			throw new BusinessException("Erreur lors de la suppression");
+		}
+	}
+	
 //	public void enchereTerminee()
 	
 	/**
@@ -91,6 +105,17 @@ public class EnchereManager {
 		}else {
 			return true;
 		}
+	}
+	
+	/**
+	 * Fonction permettant de lister des encheres liées à une vente
+	 * (la liste est triée par ordre décroissant de la meilleure offre à la moins bonne)
+	 * @param noVente
+	 * @return
+	 * @throws BusinessException
+	 */
+	public List<Enchere> getEncheres(int noVente) throws BusinessException {
+		return daoEnchere.getEncheres(noVente);
 	}
 	
 }

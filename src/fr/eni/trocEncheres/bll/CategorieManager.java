@@ -68,5 +68,13 @@ public class CategorieManager {
 		return categories;
 	}
 	
+	public void categorieById(int id) throws BusinessException {
+		try { 			
+			daoCategorie.getCategorieById(id);
+		} catch (BusinessException e) {
+			throw new BusinessException("Erreur de catégorie");
+		}
+	}
+	
 	
 }
