@@ -48,7 +48,7 @@
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<button type="button" class="btn btn-primary" id="creerCompte">Créer un compte</button>
+				<a href="<%=request.getContextPath()%>/ServletCreationCompte" type="button" class="btn btn-primary" id="creerCompte">Créer un compte</a>
 			</div>
 			<div class="col-sm-4"></div>
 		</div>
