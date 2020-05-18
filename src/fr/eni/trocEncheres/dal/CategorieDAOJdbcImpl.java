@@ -16,6 +16,8 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 	private static final String DELETE_CATEGORIE = "DELETE FROM categories WHERE no_categorie = ?";
 	private static final String GET_CATEGORIE = "SELECT * FROM categories WHERE no_categorie = ?";
 	private static final String GET_CATEGORIES = "SELECT * FROM categories ORDER BY libelle";
+	private static final String BDD_MAUVAISE_CONNEXION = "Problème de connexion à la base de données.";
+	private static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de données.";
 
 	@Override
 	public List<Categorie> getCategories() throws BusinessException{
@@ -91,11 +93,11 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur("Erreur de connexion à la base de données");
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur("Erreur de connexion à la base de données");
+			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
 		}
 		return categorie;
 	}
@@ -118,11 +120,11 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(e.getMessage());
+			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
 		}
 	}
 

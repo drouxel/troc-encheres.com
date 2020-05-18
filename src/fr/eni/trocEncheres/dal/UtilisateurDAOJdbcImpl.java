@@ -30,11 +30,14 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String GET_USER = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String GET_PSEUDOS = "SELECT pseudo FROM utilisateurs";
 	private static final String GET_MAILS = "SELECT email FROM utilisateurs";
+	private static final String BDD_MAUVAISE_CONNEXION = "Problème de connexion à la base de données.";
+	private static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de données.";
 
 	@Override
 	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if (u==null) {
-			throw new BusinessException("vous devez crÃ©er un utilisateur pour pouvoir l'ajouter Ã  la base de donnÃ©e");
+			BExc.ajouterErreur("vous devez créer un utilisateur pour pouvoir l'ajouter à  la base de données");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -68,19 +71,20 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
 		}
 		return u;
 	}
 
 	@Override
 	public void modifierUtilisateur(Utilisateur u) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if (u==null) {
-			throw new BusinessException("pas d'information concernant l'utilisateur Ã  modifier");
+			BExc.ajouterErreur("pas d'information concernant l'utilisateur à modifier");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -107,18 +111,19 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
 		}
 	}
 
 	@Override
 	public void gererUtilisateur(Utilisateur u) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if (u==null) {
-			throw new BusinessException("vous devez crÃ©er un utilisateur pour pouvoir l'ajouter Ã  la base de donnÃ©e");
+			BExc.ajouterErreur("Vous devez créer un utilisateur pour pouvoir l'ajouter à la base de données.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -142,19 +147,21 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
 		}
 	}
 
 	@Override
 	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException {
+		BusinessException BExc = new BusinessException();
+		
 		Utilisateur u = new Utilisateur();
 		if (login==null || motDePasse==null) {
-			throw new BusinessException("vous devez saisir votre login et votre mot de passe");
+			throw new BusinessException("Vous devez saisir votre login et votre mot de passe.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -180,24 +187,25 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					u.setAdmin(rs.getBoolean("administrateur"));
 					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				}else {
-					throw new BusinessException("combinaison login/mot de passe inconnue");
+					BExc.ajouterErreur("combinaison login/mot de passe inconnue");
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
 		}
 		return u;
 	}
 
 	@Override
 	public void supprimerUtilisateur(int id) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if (id==0) {
-			throw new BusinessException("vous devez crÃ©er un utilisateur pour pouvoir l'ajouter Ã  la base de donnÃ©e");
+			BExc.ajouterErreur("vous devez créer un utilisateur pour pouvoir l'ajouter à la base de données");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -211,19 +219,21 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 		}
 	}
 
 	@Override
 	public Utilisateur getUtilisateur(int id) throws BusinessException {
+		BusinessException BExc = new BusinessException();
+		
 		Utilisateur u = new Utilisateur();
 		if (id==0) {
-			throw new BusinessException("aucun utilisateur identifiÃ©");
+			BExc.ajouterErreur("Aucun utilisateur identifié.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -246,22 +256,23 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					u.setAdmin(rs.getBoolean("administrateur"));
 					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				}else {
-					throw new BusinessException("une erreur est survenue lors de la rÃ©cupÃ©ration des informations");
+					BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
 		}
 		return u;
 	}
 
 	@Override
 	public List<String> getPseudos() throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		List<String> logins = new ArrayList();
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -273,17 +284,18 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
 		}
 		return logins;
 	}
 
 	@Override
 	public List<String> getMails() throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		List<String> mails = new ArrayList();
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -295,11 +307,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
 		}
 		return mails;
 	}
