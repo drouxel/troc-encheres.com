@@ -9,17 +9,26 @@
 	<title>Accueil</title>
 	</head>
 	<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
-	   <div class="navbar-nav navbar-right">
-	     <div class="nav-item">
-			<a class="nav-link" href="<%=request.getContextPath()%>/servletVendreUnArticle">Vendre un article</a>
-	     </div>
-	     <div class="nav-item">
-			<a class="nav-link" href="<%=request.getContextPath()%>/servletMonProfil">Mon profil</a>
-	     </div>
-	     <div class="nav-item">
-			<a class="nav-link disabled" href="<%=request.getContextPath()%>/ServletDeconnexion">Déconnexion</a>
-	     </div>
-	   </div>
+		<c:if test="${empty sessionScope.utilisateurCourant}">
+			<div class="navbar-nav navbar-right">
+		     <div class="nav-item">
+				<a class="nav-link" href="<%=request.getContextPath()%>/ServletConnexion">Connexion</a>
+		     </div>
+		   </div>
+		</c:if>
+		<c:if test="${!empty sessionScope.utilisateurCourant}">
+		   <div class="navbar-nav navbar-right">
+		     <div class="nav-item">
+				<a class="nav-link" href="<%=request.getContextPath()%>/ServletVendreUnArticle">Vendre un article</a>
+		     </div>
+		     <div class="nav-item">
+				<a class="nav-link" href="<%=request.getContextPath()%>/ServletMonProfil">Mon profil</a>
+		     </div>
+		     <div class="nav-item">
+				<a class="nav-link disabled" href="<%=request.getContextPath()%>/ServletDeconnexion">Déconnexion</a>
+		     </div>
+		   </div>
+		</c:if>
 	</nav>
 	<body>
 		<%@ include file="fragments/EnTete.jspf"%>

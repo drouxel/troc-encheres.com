@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bll.CategorieManager;
@@ -44,10 +45,8 @@ public class ServletListeEncheres extends HttpServlet {
 			List<Enchere> annonces = eMgr.getEncheres();
 			request.setAttribute("annonces", annonces);
 		} catch (BusinessException e) {
-			// à décommenter quand les exceptions seront gérées
-//			e.addErreur("impossible d'accéder à la liste des ventes en cours");
-//			List<String> listeErreurs = e.getErreurs();
-//			request.setAttribute("listeErreurs", listeErreurs);
+			List<String> listeErreurs = e.getListeCodesErreur();
+			request.setAttribute("listeErreurs", listeErreurs);
 			e.printStackTrace();
 		}
 		

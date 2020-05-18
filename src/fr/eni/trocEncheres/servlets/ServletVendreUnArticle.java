@@ -14,17 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletVendreUnArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletVendreUnArticle() {
-        super();
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.getRequestDispatcher("/WEB-INF/VendreUnArticle.jsp").forward(request, response);
 	}
 
