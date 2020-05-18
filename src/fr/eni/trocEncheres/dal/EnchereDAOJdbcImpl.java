@@ -21,7 +21,7 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String DELETE_ENCHERES ="DELETE FROM encheres WHERE no_vente = ?";
 //	private static final String GET_ACQUISITIONS ="";
 	private static final String GET_ENCHERES_VENTE ="SELECT * FROM encheres WHERE no_vente = ? ORDER BY credit DESC";
-	private static final String GET_ENCHERES ="SELECT * FROM encheres GROUB BY no_vente";
+	private static final String GET_ENCHERES ="SELECT * FROM encheres GROUP BY no_vente";
 
 	@Override
 	public void ajouterEnchere(Enchere e) throws BusinessException {

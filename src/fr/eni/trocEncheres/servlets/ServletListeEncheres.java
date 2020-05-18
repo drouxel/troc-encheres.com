@@ -13,6 +13,7 @@ import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bll.CategorieManager;
 import fr.eni.trocEncheres.bll.EnchereManager;
 import fr.eni.trocEncheres.bo.Categorie;
+import fr.eni.trocEncheres.bo.Enchere;
 
 /**
  * Servlet implementation class ServletAccueilUtilisateur
@@ -40,7 +41,8 @@ public class ServletListeEncheres extends HttpServlet {
 		}
 		try {
 			eMgr = EnchereManager.getInstance();
-			List<Encheres> ventes = eMgr.getEncheres();
+			List<Enchere> annonces = eMgr.getEncheres();
+			request.setAttribute("annonces", annonces);
 		} catch (BusinessException e) {
 			// à décommenter quand les exceptions seront gérées
 //			e.addErreur("impossible d'accéder à la liste des ventes en cours");

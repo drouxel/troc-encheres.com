@@ -64,24 +64,24 @@
 					<button class="btn btn-lg btn-block" type="submit">Rechercher</button>
 				</div>
 			</form>
-			<c:forEach var="vente" items="${ventes}">
+			<c:forEach var="annonce" items="${annonces}">
 				<div class="row">
-					<div class=col-sm-6>
+					<div class="col-sm-5 offset-sm-1">
 						<div class="card">
 							<div class="row no-gutters">
 								<div class="col-sm-4">
-									<img src="" class="card-img" alt="${vente.nomArticle}">
+									<img src="" class="card-img" alt="${annonce.vente.nomArticle}">
 								</div>
 								<div class="col-sm-8">
 									<div class="card-body">
 										<h5 class="card-title">
-											<a href="<%=request.getContextPath()%>/ServletDetailMaVente?noVente=${vente.noVente}">${vente.nomArticle}</a>
+											<a href="<%=request.getContextPath()%>/ServletDetailMaVente?noVente=${annonce.vente.noVente}">${annonce.vente.nomArticle}</a>
 										</h5>
-										<p class="card-text">Prix : ${vente.prixVente} points</p>
-										<p class="card-text">Fin de l'enchere : ${vente.dateFinEnchere}</p>
-										<p class="card-text">Retrait : ${vente.retrait.rue}</p>
-										<p class="card-text">			${vente.retrait.codePostal} ${vente.retrait.ville}</p>
-										<p class="card-text">Vendeur : ${vente.vendeur.pseudo}</p>
+										<p class="card-text">Prix : ${annonce.vente.prixVente} points</p>
+										<p class="card-text">Fin de l'enchere : ${annonce.vente.dateFinEnchere}</p>
+										<p class="card-text">Retrait : ${annonce.vente.retrait.rue}</p>
+										<p class="card-text">			${annonce.vente.retrait.codePostal} ${annonce.vente.retrait.ville}</p>
+										<p class="card-text">Vendeur : ${annonce.vente.vendeur.pseudo}</p>
 									</div>
 								</div>
 							</div>

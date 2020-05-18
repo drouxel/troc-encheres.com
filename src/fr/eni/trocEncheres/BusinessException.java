@@ -16,6 +16,12 @@ public class BusinessException extends Exception {
 		this.listeErreurs=new ArrayList<String>();
 	}
 	
+	public BusinessException(String erreur) {
+		super();
+		this.listeErreurs=new ArrayList<String>();
+		ajouterErreur(erreur);
+	}
+	
 	/**
 	 * 
 	 * @param code Code de l'erreur. 
