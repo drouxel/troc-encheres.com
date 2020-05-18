@@ -118,4 +118,11 @@ public class EnchereManager {
 		return daoEnchere.getEncheres(noVente);
 	}
 	
+	/**Fonction permettant de lister des encheres
+	 * @return
+	 * @throws BusinessException
+	 */
+	public List<Enchere> getEncheres() throws BusinessException {
+		return daoEnchere.getEncheres();
+	}
 }

@@ -37,4 +37,6 @@ public interface EnchereDAO {
 	 * @throws BusinessException
 	 */
 	List<Enchere> getEncheres(int noVente) throws BusinessException;
+	
+	List<Enchere> getEncheres() throws BusinessException;
 }
