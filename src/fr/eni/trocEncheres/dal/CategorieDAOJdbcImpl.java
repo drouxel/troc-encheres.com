@@ -38,8 +38,11 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 
 	@Override
 	public Categorie getCategorieById(int id) throws BusinessException{
+		BusinessException BExc;
+		BExc = new BusinessException();
 		if (id==0) {
-			throw new BusinessException("vous devez saisir le nÂ° de la catÃ©gorie");
+			BExc.ajouterErreur("vous devez saisir le n° de la catégorie");
+			throw BExc;
 		}
 		Categorie categorie = new Categorie();
 		try {
@@ -55,19 +58,20 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 				pstmt.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(e.getMessage());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(e.getMessage());
 		}
 		return categorie;
 	}
 
 	@Override
 	public Categorie ajouterCategorie(Categorie categorie) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if (categorie.getLibelle()==null) {
-			throw new BusinessException("vous devez saisir un libellÃ© de catÃ©gorie pour pouvoir l'ajouter Ã  la base de donnÃ©e");
+			BExc.ajouterErreur("vous devez saisir un libellé de catégorie pour pouvoir l'ajouter à  la base de donnée");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -87,19 +91,20 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(e.getMessage());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(e.getMessage());
 		}
 		return categorie;
 	}
 
 	@Override
 	public void supprimerCategorie(int id) throws BusinessException{
+		BusinessException BExc = new BusinessException();
 		if (id==0) {
-			throw new BusinessException("vous devez saisir un libellÃ© de catÃ©gorie pour pouvoir l'ajouter Ã  la base de donnÃ©e");
+			BExc.ajouterErreur("vous devez saisir un libellé de catégorie pour pouvoir l'ajouter à  la base de donnée");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -113,11 +118,11 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				throw new BusinessException(e.getMessage());
+				BExc.ajouterErreur(e.getMessage());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new BusinessException(e.getMessage());
+			BExc.ajouterErreur(e.getMessage());
 		}
 	}
 
