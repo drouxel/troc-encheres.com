@@ -91,11 +91,11 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur(e.getMessage());
+				BExc.ajouterErreur("Erreur de connexion à la base de données");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(e.getMessage());
+			BExc.ajouterErreur("Erreur de connexion à la base de données");
 		}
 		return categorie;
 	}

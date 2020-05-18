@@ -25,8 +25,9 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 
 	@Override
 	public void ajouterEnchere(Enchere e) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if(e == null) {
-			throw new BusinessException("veuillez renseigner une enchÃ¨re");
+			BExc.ajouterErreur("veuillez renseigner une enchère");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -50,18 +51,19 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				cnx.commit();
 			} catch (Exception ex) {
 				cnx.rollback();
-				throw new BusinessException(ex.getMessage());
+				BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new BusinessException(ex.getMessage());
+			BExc.ajouterErreur("Problème de connexion à la base de données.");
 		}
 	}
 
 	@Override
 	public void supprimerEnchere(Enchere e) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if(e == null) {
-			throw new BusinessException("veuillez renseigner une enchÃ¨re");
+			BExc.ajouterErreur("Veuillez renseigner une enchère.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -72,18 +74,19 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				pstmt.executeUpdate();
 				pstmt.close();
 			} catch (Exception ex) {
-				throw new BusinessException(ex.getMessage());
+				BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new BusinessException(ex.getMessage());
+			BExc.ajouterErreur("Problème de connexion à la base de données.");
 		}
 	}
 
 	@Override
 	public void supprimerEncheres(int noVente) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if(noVente==0) {
-			throw new BusinessException("veuillez renseigner une vente");
+			BExc.ajouterErreur("veuillez renseigner une vente");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -93,11 +96,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				pstmt.executeUpdate();
 				pstmt.close();
 			} catch (Exception ex) {
-				throw new BusinessException(ex.getMessage());
+				BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new BusinessException(ex.getMessage());
+			BExc.ajouterErreur("Problème de connexion à la base de données.");
 		}
 	}
 
@@ -109,8 +112,9 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 
 	@Override
 	public List<Enchere> getEncheres(int noVente) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		if(noVente==0) {
-			throw new BusinessException("veuillez renseigner une vente");
+			BExc.ajouterErreur("veuillez renseigner une vente");
 		}
 		List<Enchere> encheres = new ArrayList<Enchere>();
 		UtilisateurDAO uDAO = DAOFactory.getUtilisateurDAO();
@@ -132,17 +136,18 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				rs.close();
 				pstmt.close();
 			} catch (Exception ex) {
-				throw new BusinessException(ex.getMessage());
+				BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new BusinessException(ex.getMessage());
+			BExc.ajouterErreur("Problème de connexion à la base de données.");
 		}
 		return encheres;
 	}
 
 	@Override
 	public List<Enchere> getEncheres() throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		List<Enchere> encheres = new ArrayList<Enchere>();
 		UtilisateurDAO uDAO = DAOFactory.getUtilisateurDAO();
 		VenteDAO vDAO = DAOFactory.getVenteDAO();
@@ -162,11 +167,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				rs.close();
 				stmt.close();
 			} catch (Exception ex) {
-				throw new BusinessException(ex.getMessage());
+				BExc.ajouterErreur("Erreur de traitement au niveau de la base de données.");
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new BusinessException(ex.getMessage());
+			BExc.ajouterErreur("Problème de connexion à la base de données.");
 		}
 		return encheres;
 	}

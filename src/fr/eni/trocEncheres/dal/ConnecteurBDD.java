@@ -22,7 +22,7 @@ public class ConnecteurBDD {
 			ConnecteurBDD.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/pool_cnx");
 		} catch (NamingException e) {
 			e.printStackTrace();
-			throw new RuntimeException("impossible de se connecter Ã  la base de donnÃ©es");
+			throw new RuntimeException("impossible de se connecter à  la base de données");
 		}
 	}
 	/**
