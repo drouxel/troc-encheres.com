@@ -20,7 +20,7 @@ public class RetraitManager {
 		RetraitDAO daoRetrait = DAOFactory.getRetraitDAO();
 		
 		public void ajouterRetrait(Retrait retrait) throws BusinessException {
-			daoRetrait.getRetrait(retrait);
+			daoRetrait.getRetrait(retrait.getNoVente());
 			//Verifier adresse
 		}
 }

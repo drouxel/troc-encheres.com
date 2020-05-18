@@ -39,6 +39,8 @@ public class VenteManager {
 					if (isValide) {
 						// Ajoute la vente si 'isValide' est 'true'
 						daoVente.ajouterVente(v);
+					}else {
+						throw new BusinessException("erreur");
 					}
 				} catch (BusinessException e) {
 					throw new BusinessException("L'ajout de la vente à échouée");
@@ -50,7 +52,8 @@ public class VenteManager {
 			 * @param v
 			 * @throws BusinessException
 			 */
-			private void verificationsVente(Vente v) throws BusinessException {
+			private boolean verificationsVente(Vente v) throws BusinessException {
+				boolean isValide = true;
 				if (v == null) {
 					isValide = false;
 					throw new BusinessException("Vente null"); // à changer pour un code erreurs
@@ -70,6 +73,7 @@ public class VenteManager {
 					isValide = false;
 					throw new BusinessException("Date obligatoire"); // à changer pour un code erreur
 				}
+				return isValide;
 			}
 }
 
