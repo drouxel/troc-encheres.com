@@ -30,8 +30,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String GET_USER = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String GET_PSEUDOS = "SELECT pseudo FROM utilisateurs";
 	private static final String GET_MAILS = "SELECT email FROM utilisateurs";
-	private static final String BDD_MAUVAISE_CONNEXION = "Problème de connexion à la base de données.";
-	private static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de données.";
 
 	@Override
 	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException {
@@ -71,7 +69,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,11 +109,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 	}
 
@@ -147,11 +145,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 	}
 
@@ -192,11 +190,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return u;
 	}
@@ -219,11 +217,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 	}
 
@@ -256,16 +254,16 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					u.setAdmin(rs.getBoolean("administrateur"));
 					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				}else {
-					BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+					BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return u;
 	}
@@ -284,11 +282,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return logins;
 	}
@@ -307,11 +305,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return mails;
 	}

@@ -22,8 +22,6 @@ class VenteDAOJdbcImpl implements VenteDAO {
 	private static final String GET_VENTES_BY_CATEGORIE = "SELECT * FROM ventes WHERE no_categorie = ?";
 	private static final String GET_VENTE_BY_NO = "SELECT * FROM ventes WHERE no_vente = ?";
 	private static final String GET_VENTES = "SELECT * FROM ventes";
-	private static final String BDD_MAUVAISE_CONNEXION = "Problème de connexion à la base de données.";
-	private static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de données.";
 
 	@Override
 	public Vente ajouterVente(Vente v) throws BusinessException {
@@ -56,11 +54,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				cnx.commit();
 			} catch (Exception e) {
 				cnx.rollback();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return v;
 	}
@@ -94,11 +92,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				rs.close();
 				pstmt.close();
 			} catch (Exception e) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 
 		return ventes;
@@ -133,11 +131,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				rs.close();
 				pstmt.close();
 			} catch (Exception e) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 
 		return ventes;
@@ -172,11 +170,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				rs.close();
 				pstmt.close();
 			} catch (Exception e) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return ventes;
 	}
@@ -209,11 +207,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return v;
 	}
@@ -245,11 +243,11 @@ class VenteDAOJdbcImpl implements VenteDAO {
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
-			BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 		}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return ventes;
 	}

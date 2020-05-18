@@ -22,8 +22,6 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 //	private static final String GET_ACQUISITIONS ="";
 	private static final String GET_ENCHERES_VENTE ="SELECT * FROM encheres WHERE no_vente = ? ORDER BY credit DESC";
 	private static final String GET_ENCHERES ="SELECT * FROM encheres GROUP BY no_vente";
-	private static final String BDD_MAUVAISE_CONNEXION = "Problème de connexion à la base de données.";
-	private static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de données.";
 
 	@Override
 	public void ajouterEnchere(Enchere e) throws BusinessException {
@@ -53,11 +51,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				cnx.commit();
 			} catch (Exception ex) {
 				cnx.rollback();
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 	}
 
@@ -76,11 +74,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				pstmt.executeUpdate();
 				pstmt.close();
 			} catch (Exception ex) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 	}
 
@@ -98,11 +96,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				pstmt.executeUpdate();
 				pstmt.close();
 			} catch (Exception ex) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 	}
 
@@ -138,11 +136,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				rs.close();
 				pstmt.close();
 			} catch (Exception ex) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return encheres;
 	}
@@ -169,11 +167,11 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 				rs.close();
 				stmt.close();
 			} catch (Exception ex) {
-				BExc.ajouterErreur(BDD_ERREUR_TRAITEMENT);
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			BExc.ajouterErreur(BDD_MAUVAISE_CONNEXION);
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
 		}
 		return encheres;
 	}
