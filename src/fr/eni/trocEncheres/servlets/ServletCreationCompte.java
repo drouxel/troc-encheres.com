@@ -41,16 +41,16 @@ public class ServletCreationCompte extends HttpServlet {
 			}
 		}else if(request.getParameter("envoyer")!=null) {
 			Utilisateur u = new Utilisateur();
-			u.setPseudo((String) request.getAttribute("pseudo"));
-			u.setNom((String) request.getAttribute("nom"));
-			u.setPrenom((String) request.getAttribute("prenom"));
-			u.setMail((String) request.getAttribute("email"));
-			u.setTelephone((String) request.getAttribute("telephone"));
-			u.setRue((String) request.getAttribute("rue"));
-			u.setCodePostal((String) request.getAttribute("codePostal"));
-			u.setVille((String) request.getAttribute("ville"));
-			if(request.getAttribute("motDePasse").equals(request.getAttribute("confirmation"))) {
-				u.setPseudo((String) request.getAttribute("motDePasse"));
+			u.setPseudo((String) request.getParameter("pseudo"));
+			u.setNom((String) request.getParameter("nom"));
+			u.setPrenom((String) request.getParameter("prenom"));
+			u.setMail((String) request.getParameter("email"));
+			u.setTelephone((String) request.getParameter("telephone"));
+			u.setRue((String) request.getParameter("rue"));
+			u.setCodePostal((String) request.getParameter("codePostal"));
+			u.setVille((String) request.getParameter("ville"));
+			if(request.getParameter("motDePasse").equals(request.getParameter("confirmation"))) {
+				u.setMotDePasse((String) request.getParameter("motDePasse"));
 				try {
 					uMgr.ajouterUtilisateur(u);
 					request.setAttribute("login", u.getPseudo());

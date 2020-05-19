@@ -25,16 +25,29 @@ public class ServletConnexion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String login=null;
 		String motDePasse=null;
+		System.out.println(request.getParameter("login"));
+		if(request.getParameter("deconnexion")!=null) {
+			session.removeAttribute("utilisateurCourant");
+		}
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for (Cookie cookie : cookies) {
 				if(cookie.getName().equalsIgnoreCase("login")) {
-					login = cookie.getValue();
+					if(request.getParameter("deconnexion")!=null) {
+						cookie.setMaxAge(0);
+					}else {
+						login = cookie.getValue();
+					}
 				}
 				if(cookie.getName().equalsIgnoreCase("motDePasse")) {
-					motDePasse = cookie.getValue();
+					if(request.getParameter("deconnexion")!=null) {
+						cookie.setMaxAge(0);
+					}else {
+						motDePasse = cookie.getValue();
+					}
 				}
 			}
 		}
@@ -45,13 +58,11 @@ public class ServletConnexion extends HttpServlet {
 		if(login!=null||motDePasse!=null) {
 			UtilisateurManager.getInstance();
 			UtilisateurManager uMgr = UtilisateurManager.getInstance();
-			HttpSession session = request.getSession();
 			Utilisateur utilisateurCourant = null;
 			try {
 				utilisateurCourant = uMgr.connecterUtilisateur(login, motDePasse);
 			} catch (BusinessException e) {
 				e.printStackTrace();
-				//renvoyer vers la page connexion avec message erreur
 				request.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 			}
 			session.setAttribute("utilisateurCourant",utilisateurCourant);
@@ -77,20 +88,6 @@ public class ServletConnexion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = request.getParameter("login");
-		String motDePasse = request.getParameter("motDePasse");
-		String rememberMe = request.getParameter("rememberMe");
-		UtilisateurManager.getInstance();
-		UtilisateurManager uMgr = UtilisateurManager.getInstance();
-		HttpSession session = request.getSession();
-		Utilisateur utilisateurCourant = null;
-		try {
-			utilisateurCourant = uMgr.connecterUtilisateur(login, motDePasse);
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		session.setAttribute("utilisateurCourant",utilisateurCourant);
-		
 		doGet(request, response);
 	}
 

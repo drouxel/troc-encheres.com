@@ -9,9 +9,9 @@
 	<%@ include file="fragments/ImportBootstrap.jspf"%>
 	<title>Accueil</title>
 	</head>
-	<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+	<nav class="navbar fixed-top navbar-right navbar-expand-sm navbar-light bg-light">
 		<c:if test="${empty sessionScope.utilisateurCourant}">
-			<div class="navbar-nav navbar-right">
+			<div class="navbar-nav ">
 		     <div class="nav-item">
 				<a class="nav-link" href="<%=request.getContextPath()%>/ServletConnexion">Connexion</a>
 		     </div>
@@ -26,7 +26,7 @@
 				<a class="nav-link" href="<%=request.getContextPath()%>/ServletCreationCompte?noUtilisateurAAfficher=${utilisateurCourant.noUtilisateur}">Mon profil</a>
 		     </div>
 		     <div class="nav-item">
-				<a class="nav-link disabled" href="<%=request.getContextPath()%>/ServletDeconnexion">Déconnexion</a>
+				<a class="nav-link " href="<%=request.getContextPath()%>/ServletConnexion?deconnexion=oui">Déconnexion</a>
 		     </div>
 		   </div>
 		</c:if>

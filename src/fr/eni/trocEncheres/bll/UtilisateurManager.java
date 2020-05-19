@@ -117,6 +117,7 @@ public class UtilisateurManager {
 					}
 				} catch (BusinessException e) {
 					BExc.ajouterErreur("Echec de la mise � jour");
+					throw BExc;
 				}
 	}
 	
@@ -131,6 +132,7 @@ public class UtilisateurManager {
 			daoUtilisateur.supprimerUtilisateur(no_utilisateur);			
 		} catch (BusinessException e) {
 			BExc.ajouterErreur("Echec de la suppression");
+			throw BExc;
 		}
 	}
 	
@@ -147,6 +149,7 @@ public class UtilisateurManager {
 			u = daoUtilisateur.connecterUtilisateur(login, motDePasse);			
 		} catch (BusinessException e) {
 			BExc.ajouterErreur("Erreur lors de la connexion");
+			throw BExc;
 		}
 		return u;
 	}
@@ -162,6 +165,7 @@ public class UtilisateurManager {
 			daoUtilisateur.gererUtilisateur(u);			
 		} catch (BusinessException e) {
 			BExc.ajouterErreur("Echec de la modification de l'utilisateur.");
+			throw BExc;
 		}
 	}
 	
@@ -171,6 +175,7 @@ public class UtilisateurManager {
 			daoUtilisateur.getPseudos();
 		} catch (BusinessException e) {
 			BExc.ajouterErreur("Erreur de r�cup�ration du pseudo.");
+			throw BExc;
 		}
 		return daoUtilisateur.getPseudos();
 	}
@@ -181,6 +186,7 @@ public class UtilisateurManager {
 			daoUtilisateur.getMails();
 		} catch (BusinessException e) {
 			BExc.ajouterErreur("Erreur de r�cup�ration de l'adresse e-mail.");
+			throw BExc;
 		}
 		return daoUtilisateur.getMails();
 	}

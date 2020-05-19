@@ -160,7 +160,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException {
 		BusinessException BExc = new BusinessException();
-		
 		Utilisateur u = new Utilisateur();
 		if (login==null || motDePasse==null) {
 			throw new BusinessException("Vous devez saisir votre login et votre mot de passe.");
@@ -174,7 +173,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				pstmt.setString(3, motDePasse);
 				ResultSet rs = null;
 				rs = pstmt.executeQuery();
-				System.out.println(rs.toString());
 				if(rs.next()) {
 					u.setPseudo(rs.getString("pseudo"));
 					u.setNom(rs.getString("nom"));
@@ -190,15 +188,17 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				}else {
 					BExc.ajouterErreur("combinaison login/mot de passe inconnue");
+					throw BExc;
 				}
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return u;
 	}
