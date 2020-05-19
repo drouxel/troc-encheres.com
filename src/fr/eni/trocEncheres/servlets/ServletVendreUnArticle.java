@@ -1,6 +1,7 @@
 package fr.eni.trocEncheres.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -17,11 +18,12 @@ import fr.eni.trocEncheres.bll.VenteManager;
 import fr.eni.trocEncheres.bo.Retrait;
 import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.bo.Vente;
-import fr.eni.trocEncheres.dal.VenteDAO;
 
 
 /**
  * Servlet implementation class ServletVendreUnArticle
+ * Ludo servlet
+ * Matthieu alogo
  */
 @WebServlet("/ServletVendreUnArticle")
 public class ServletVendreUnArticle extends HttpServlet {
@@ -31,6 +33,10 @@ public class ServletVendreUnArticle extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		Utilisateur vendeur = (Utilisateur) session.getAttribute("utilisateur");
+		request.setAttribute("vendeur", vendeur);
 		
 		request.getRequestDispatcher("/WEB-INF/VendreUnArticle.jsp").forward(request, response);
 	}
@@ -78,9 +84,13 @@ public class ServletVendreUnArticle extends HttpServlet {
 			String rue = request.getParameter("rue").trim();
 			String codePostal = request.getParameter("codePostal").trim();
 			String ville = request.getParameter("ville").trim();
-			Retrait retrait = new Retrait(rue, codePostal, ville);
-			Vente art = new Vente(nomArticle, description, dateFinEncheres, prixInitial, vendeur);
-		
+//			Retrait retrait = new Retrait(rue, codePostal, ville);
+//			Vente vente = new Vente(nomArticle, description, dateFinEncheres, prixInitial);
+			
+	} catch (BusinessException be) {
+		System.out.println(be.getMessage());
+		request.setAttribute("error", be.getMessage());
+	}
 		doGet(request, response);
 	}
 
