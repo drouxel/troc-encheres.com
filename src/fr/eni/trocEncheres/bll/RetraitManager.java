@@ -13,7 +13,7 @@ public class RetraitManager {
 	//singleton
 		private static RetraitManager instance;
 		
-		public static RetraitManager getInstance()throws BusinessException {
+		public static RetraitManager getInstance() {
 			if(instance == null) {
 				instance = new RetraitManager();
 			}
@@ -24,7 +24,13 @@ public class RetraitManager {
 		RetraitDAO daoRetrait = DAOFactory.getRetraitDAO();
 		
 		public void ajouterRetrait(Retrait retrait) throws BusinessException {
-			daoRetrait.getRetrait(retrait.getNoVente());
+			BusinessException BExc = new BusinessException();
+			try {
+				daoRetrait.getRetrait(retrait.getNoVente());
+			} catch (BusinessException e) {
+				BExc.ajouterErreur("Erreur à l'ajout du retrait.");
+			}
+			
 			//Verifier adresse
 		}
 		
@@ -34,7 +40,13 @@ public class RetraitManager {
 		 * @throws BusinessException
 		 */
 		public void getAdresse(int id) throws BusinessException {
-			daoRetrait.getAdresseUtilisateur(id);
+			BusinessException BExc = new BusinessException();
+			try {
+				daoRetrait.getAdresseUtilisateur(id);				
+			} catch (BusinessException e) {
+				BExc.ajouterErreur("Erreur de récupération de l'adresse de l'utilisateur.");
+			}
+			
 		}
 		
 		/**
@@ -43,6 +55,12 @@ public class RetraitManager {
 		 * @throws BusinessException
 		 */
 		public void getRetrait(int noVente) throws BusinessException {
-			daoRetrait.getRetrait(noVente);
+			BusinessException BExc = new BusinessException();
+			try {
+				daoRetrait.getRetrait(noVente);
+			} catch (BusinessException e) {
+				BExc.ajouterErreur("Erreur de récupération du retrait.");
+			}
+			
 		}
 }
