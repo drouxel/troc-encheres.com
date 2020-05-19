@@ -1,15 +1,10 @@
 package fr.eni.trocEncheres.bll;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Categorie;
 import fr.eni.trocEncheres.dal.CategorieDAO;
-import fr.eni.trocEncheres.dal.CategorieDAOJdbcImpl;
 import fr.eni.trocEncheres.dal.DAOFactory;
-import fr.eni.trocEncheres.dal.UtilisateurDAO;
-import fr.eni.trocEncheres.dal.UtilisateurDAOJdbcImpl;
 
 /**
  * @author MATTHIEU
@@ -70,7 +65,7 @@ public class CategorieManager {
 		try {
 			categories = daoCategorie.getCategories();
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Echec de la récupération des catégories.");
+			BExc.ajouterErreur("Echec de la rï¿½cupï¿½ration des catï¿½gories.");
 			e.printStackTrace();
 		}
 		return categories;
@@ -81,7 +76,7 @@ public class CategorieManager {
 		try { 			
 			daoCategorie.getCategorieById(id);
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Echec de récupération de la catégorie.");
+			BExc.ajouterErreur("Echec de rï¿½cupï¿½ration de la catï¿½gorie.");
 		}
 	}
 	
