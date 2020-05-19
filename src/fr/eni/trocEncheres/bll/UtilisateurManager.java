@@ -1,12 +1,7 @@
 package fr.eni.trocEncheres.bll;
 
-import java.sql.ResultSet;
 import java.util.List;
-
-import javax.management.Query;
-
 import fr.eni.trocEncheres.BusinessException;
-import fr.eni.trocEncheres.bo.Categorie;
 import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.dal.DAOFactory;
 import fr.eni.trocEncheres.dal.UtilisateurDAO;
