@@ -29,60 +29,60 @@
 				<div class="row">
 					<div class="form-row col-sm-6">
 						<label for="pseudo">Pseudo : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="pseudo" name="pseudo" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="pseudo" name="pseudo" value="${utilisateurAAfficher.pseudo}" ${readonly}>
 					</div>
 					<div class="form-row col-sm-6">
 						<label for="nom">Nom : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="nom" name="nom" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="nom" name="nom" value="${utilisateurAAfficher.nom}" ${readonly}>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-row col-sm-6">
 						<label for="prenom">Prenom : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="prenom" name="prenom" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="prenom" name="prenom" value="${utilisateurAAfficher.prenom}" ${readonly}>
 					</div>
 					<div class="form-row col-sm-6">
 						<label for="email">E-mail : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="email" name="email" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="email" name="email" value="${utilisateurAAfficher.mail}" ${readonly}>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-row col-sm-6">
 						<label for="telephone">Telephone : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="telephone" name="telephone" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="telephone" name="telephone" value="${utilisateurAAfficher.telephone}" ${readonly}>
 					</div>
 					<div class="form-row col-sm-6">
 						<label for="rue">Rue : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="rue" name="rue" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="rue" name="rue" value="${utilisateurAAfficher.rue}" ${readonly}>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-row col-sm-6">
 						<label for="codePostal">Code Postal : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="codePostal" name="codePostal" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="codePostal" name="codePostal" value="${utilisateurAAfficher.codePostal}" ${readonly}>
 					</div>
 					<div class="form-row col-sm-6">
 						<label for="ville">Ville : </label>
-						<input type="text" class="form-control col offset-1" placeholder="" id="ville" name="ville" value="">
+						<input type="text" class="form-control${plaintext} col offset-1" required id="ville" name="ville" value="${utilisateurAAfficher.ville}" ${readonly}>
 					</div>
 				</div>
 				<c:if test="${empty other}">
 					<div class="row">
 						<div class="form-row col-sm-6">
 							<label for="motDePasse">Mot de passe : </label>
-							<input type="password" class="form-control col offset-1" placeholder="" id="motDePasse" name="motDePasse" value="">
+							<input type="password" class="form-control col offset-1" required id="motDePasse" name="motDePasse" value="${utilisateurAAfficher.motDePasse}">
 						</div>
 						<div class="form-row col-sm-6">
 							<label for="confirmation">Confirmation : </label>
-							<input type="password" class="form-control col offset-1" placeholder="" id="confirmation" name="confirmation" value="">
+							<input type="password" class="form-control col offset-1" required id="confirmation" name="confirmation" value="${utilisateurAAfficher.motDePasse}">
 						</div>
 					</div>
 				</c:if>
 				<c:if test="${!empty self}">
 					<div class ="row">
 						<div class="form-row col-sm-6">
-							<label for="credit">Credit : </label>
-							<input type="text" class="form-control-plaintext col offset-1" placeholder="" id="credit" name="credit" value="">
+							<label for="credit">Credit : ${utilisateurAAfficher.credit} points</label>
+							<input type="hidden" class="form-control-plaintext col offset-1" id="credit" name="credit" value="${utilisateurAAfficher.motDePasse}">
 						</div>
 					</div>
 				</c:if>

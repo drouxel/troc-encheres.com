@@ -2,7 +2,11 @@ package fr.eni.trocEncheres;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 
+ * @author Ludo
+ *
+ */
 public class BusinessException extends Exception {
 
 	/**

@@ -23,7 +23,7 @@ import fr.eni.trocEncheres.bo.Vente;
 /**
  * Servlet implementation class ServletVendreUnArticle
  * Ludo servlet
- * Matthieu alogo
+ * Matthieu algo
  */
 @WebServlet("/ServletVendreUnArticle")
 public class ServletVendreUnArticle extends HttpServlet {
@@ -63,34 +63,35 @@ public class ServletVendreUnArticle extends HttpServlet {
 			VenteManager artMger = new VenteManager();
 			BusinessException be = new BusinessException();
 			
-		//Conversion pour la date
-		try {
-			DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-			dateFinEncheres = LocalDateTime.parse(dateFinEncheresStr, formatter);
-		} catch (DateTimeParseException e) {
-			e.printStackTrace();
-			request.setAttribute("error", "Erreur de saisie dans les données Date de début et/ou fin enchère");
-		}
-		
-		//Conversion pour les entiers
-		try {
-			prixInitial = Integer.parseInt(request.getParameter("prixInitial").trim());
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-			request.setAttribute("error", "Erreur de saisie dans les données de type numérique");
-		}
+			//Conversion pour la date
+			try {
+				DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+				dateFinEncheres = LocalDateTime.parse(dateFinEncheresStr, formatter);
+			} catch (DateTimeParseException e) {
+				e.printStackTrace();
+				request.setAttribute("error", "Erreur de saisie dans les données Date de début et/ou fin enchère");
+			}
+			
+			//Conversion pour les entiers
+			try {
+				prixInitial = Integer.parseInt(request.getParameter("prixInitial").trim());
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				request.setAttribute("error", "Erreur de saisie dans les données de type numérique");
+			}
 		
 		// récupere les 3 champs de RETRAIT, puis construction des objets
-			String rue = request.getParameter("rue").trim();
-			String codePostal = request.getParameter("codePostal").trim();
-			String ville = request.getParameter("ville").trim();
+			Retrait retrait = new Retrait();
+			retrait.setRue(request.getParameter("rue").trim());
+			retrait.setCodePostal(request.getParameter("codePostal").trim());
+			retrait.setVille(request.getParameter("ville").trim());
 //			Retrait retrait = new Retrait(rue, codePostal, ville);
 //			Vente vente = new Vente(nomArticle, description, dateFinEncheres, prixInitial);
 			
-	} catch (BusinessException be) {
-		System.out.println(be.getMessage());
-		request.setAttribute("error", be.getMessage());
-	}
+		} catch (BusinessException be) {
+			System.out.println(be.getMessage());
+			request.setAttribute("error", be.getMessage());
+		}
 		doGet(request, response);
 	}
 

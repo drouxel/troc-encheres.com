@@ -7,6 +7,7 @@ import fr.eni.trocEncheres.dal.RetraitDAO;
 
 /**
  * @author MATTHIEU
+ * @author Ludo -> gestion des exceptions
  *Ajouter un retrait
  */
 public class RetraitManager {
@@ -28,7 +29,7 @@ public class RetraitManager {
 			try {
 				daoRetrait.getRetrait(retrait.getNoVente());
 			} catch (BusinessException e) {
-				BExc.ajouterErreur("Erreur à l'ajout du retrait.");
+				BExc.ajouterErreur("Erreur ï¿½ l'ajout du retrait.");
 			}
 			
 			//Verifier adresse
@@ -44,7 +45,7 @@ public class RetraitManager {
 			try {
 				daoRetrait.getAdresseUtilisateur(id);				
 			} catch (BusinessException e) {
-				BExc.ajouterErreur("Erreur de récupération de l'adresse de l'utilisateur.");
+				BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration de l'adresse de l'utilisateur.");
 			}
 			
 		}
@@ -59,7 +60,7 @@ public class RetraitManager {
 			try {
 				daoRetrait.getRetrait(noVente);
 			} catch (BusinessException e) {
-				BExc.ajouterErreur("Erreur de récupération du retrait.");
+				BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration du retrait.");
 			}
 			
 		}

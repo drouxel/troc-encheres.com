@@ -9,6 +9,7 @@ import fr.eni.trocEncheres.dal.EnchereDAO;
 
 /**
  * @author MATTHIEU Ajouter, Supprimer une enchÃ¨re
+ * @author Ludo -> gestion des exceptions
  */
 public class EnchereManager {
 
@@ -131,7 +132,7 @@ public class EnchereManager {
 		try {
 			daoEnchere.getEncheres(noVente);
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Erreur de récupération des enchères liées à la vente.");
+			BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration des enchï¿½res liï¿½es ï¿½ la vente.");
 		}
 		return daoEnchere.getEncheres(noVente);
 	}
@@ -147,7 +148,7 @@ public class EnchereManager {
 		try {
 			daoEnchere.getEncheres();
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Erreur de récupération des enchères.");
+			BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration des enchï¿½res.");
 		}
 		return daoEnchere.getEncheres();
 	}

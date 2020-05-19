@@ -8,6 +8,7 @@ import fr.eni.trocEncheres.dal.VenteDAO;
 /**
  * @author MATTHIEU
  *Ajouter une vente
+ *@author Ludo -> gestion des exceptions
  */
 public class VenteManager {
 	

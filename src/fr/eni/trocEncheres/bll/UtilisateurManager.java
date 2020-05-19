@@ -9,7 +9,7 @@ import fr.eni.trocEncheres.dal.UtilisateurDAO;
 /**
  * Ajouter, Supprimer, gerer un utilisateur
  * @author MATTHIEU
- *
+ *@author Ludo -> gestion des exceptions
  */
 public class UtilisateurManager {
 	
@@ -73,7 +73,7 @@ public class UtilisateurManager {
 			throw BExc;
 		}if (u.getPrenom().trim().length() == 0) {
 			isValide = false;
-			BExc.ajouterErreur("Le champ Prénom est obligatoire !");
+			BExc.ajouterErreur("Le champ Prï¿½nom est obligatoire !");
 			throw BExc;
 		}if (u.getMail().trim().length() == 0) {
 			isValide = false;
@@ -116,7 +116,7 @@ public class UtilisateurManager {
 						daoUtilisateur.modifierUtilisateur(u);
 					}
 				} catch (BusinessException e) {
-					BExc.ajouterErreur("Echec de la mise à  jour");
+					BExc.ajouterErreur("Echec de la mise ï¿½ jour");
 				}
 	}
 	
@@ -170,7 +170,7 @@ public class UtilisateurManager {
 		try {
 			daoUtilisateur.getPseudos();
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Erreur de récupération du pseudo.");
+			BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration du pseudo.");
 		}
 		return daoUtilisateur.getPseudos();
 	}
@@ -180,7 +180,7 @@ public class UtilisateurManager {
 		try {
 			daoUtilisateur.getMails();
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Erreur de récupération de l'adresse e-mail.");
+			BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration de l'adresse e-mail.");
 		}
 		return daoUtilisateur.getMails();
 	}

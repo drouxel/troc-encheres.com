@@ -88,7 +88,6 @@ public class ServletConnexion extends HttpServlet {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
-		System.out.println(utilisateurCourant.toString());
 		session.setAttribute("utilisateurCourant",utilisateurCourant);
 		
 		doGet(request, response);

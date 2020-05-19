@@ -8,6 +8,7 @@ import fr.eni.trocEncheres.dal.DAOFactory;
 
 /**
  * @author MATTHIEU
+ * @author Ludo -> gestion des exceptions
  *Creer, supprimer des catégories.
  */
 public class CategorieManager {
