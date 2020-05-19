@@ -9,7 +9,7 @@
 	<%@ include file="fragments/ImportBootstrap.jspf"%>
 	<link rel="stylesheet" type="text/css"
 		href="vendor/css/CreationCompte.css">
-	<title>Créer un compte</title>
+	<title>Profil</title>
 	</head>
 <%@ include file="fragments/EnTete.jspf"%>
 	<body>
@@ -25,7 +25,7 @@
 					<h2>Créer un compte</h2>
 				</c:if>
 			</div>
-			<form action="<%=request.getContextPath()%>/servletCreationCompte"  method="POST" >
+			<form action="<%=request.getContextPath()%>/ServletCreationCompte"  method="POST" >
 				<div class="row">
 					<div class="form-row col-sm-6">
 						<label for="pseudo">Pseudo : </label>
@@ -91,7 +91,7 @@
 					<div class="col-sm-3"></div>
 					<c:if test="${empty other}">
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-block btn-lg">Créer</button> 
+							<input type="submit" class="btn btn-success btn-block btn-lg" name="envoyer" value="Envoyer">
 						</div>
 						<div class="col-sm-3">
 							<c:if test="${!empty self }">
@@ -101,7 +101,7 @@
 					</c:if>
 					<div class="col-sm-2">
 						<a href="<%=request.getContextPath()%>/ServletListeEncheres">
-							<button type="button" class="btn btn-danger btn-block btn-lg">Annuler</button>
+							<button type="button" class="btn btn-secondary btn-block btn-lg">Annuler</button>
 						</a>
 					</div>
 				</div>	
