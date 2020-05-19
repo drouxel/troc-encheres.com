@@ -11,7 +11,7 @@
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<h2>Nouvelle vente</h2>
-	<form>
+	<form name="ajouterUnArticle" id="ajouterUnArticle" method="POST" action="/ServletVendreUnArticle">
 	<div class="row">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-2">
@@ -38,10 +38,12 @@
 			<label>Photo de l'article</label>
 		</div>
 		<div class="col-sm-2">
-			<button type="button" class="btn btn-primary btn-lg">UPLOADER</button> 
+				<input type="file" class="form-control-file btn btn-primary btn-lg" id="exampleFormControlFile1">
+<!-- 			<button type="button" class="btn btn-primary btn-lg">UPLOADER</button>  -->
 		</div>
 		<div class="col-sm-4"></div>
 	</div>	
+	
 	<div class="row">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-2">
