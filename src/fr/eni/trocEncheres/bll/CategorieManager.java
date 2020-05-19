@@ -20,7 +20,7 @@ public class CategorieManager {
 	//singleton
 	private static CategorieManager instance;
 	
-	public static CategorieManager getInstance()throws BusinessException {
+	public static CategorieManager getInstance() {
 		if(instance == null) {
 			instance = new CategorieManager();
 		}
@@ -42,10 +42,11 @@ public class CategorieManager {
 	 * @throws BusinessException
 	 */
 	public void ajouterCategorie(Categorie categorie) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		try {
 			daoCategorie.ajouterCategorie(categorie);
 		} catch (BusinessException e) {
-			throw new BusinessException("Echec de l'ajout de la categorie");
+			BExc.ajouterErreur("Echec de l'ajout de la categorie");
 		}
 	}
 	
@@ -55,24 +56,32 @@ public class CategorieManager {
 	 * @throws BusinessException
 	 */
 	public void supprimerCategorie(int id) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		try {
 			daoCategorie.supprimerCategorie(id);
 		} catch (BusinessException e) {
-			throw new BusinessException("Echec de suppression de la categorie");
+			BExc.ajouterErreur("Echec de suppression de la categorie");
 		}
 	}
 	
-	public List<Categorie> getCategories() throws BusinessException{
+	public List<Categorie> getCategories() throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		List<Categorie> categories = null;
-		categories = daoCategorie.getCategories();
+		try {
+			categories = daoCategorie.getCategories();
+		} catch (BusinessException e) {
+			BExc.ajouterErreur("Echec de la récupération des catégories.");
+			e.printStackTrace();
+		}
 		return categories;
 	}
 	
 	public void categorieById(int id) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		try { 			
 			daoCategorie.getCategorieById(id);
 		} catch (BusinessException e) {
-			throw new BusinessException("Erreur de catÃ©gorie");
+			BExc.ajouterErreur("Echec de récupération de la catégorie.");
 		}
 	}
 	
