@@ -11,7 +11,11 @@ import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Utilisateur;
-
+/**
+ * ImplÃ©mentation de l'interface UtilisateurDAO
+ * @author damien
+ *
+ */
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String INSERT_USER = "INSERT INTO utilisateurs"
 			+ "(pseudo, nom, prenom, email, telephone, rue, code_postal, "
@@ -35,7 +39,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if (u==null) {
-			BExc.ajouterErreur("vous devez créer un utilisateur pour pouvoir l'ajouter à  la base de données");
+			BExc.ajouterErreur("vous devez crï¿½er un utilisateur pour pouvoir l'ajouter ï¿½ la base de donnï¿½es");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -82,7 +86,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public void modifierUtilisateur(Utilisateur u) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if (u==null) {
-			BExc.ajouterErreur("pas d'information concernant l'utilisateur à modifier");
+			BExc.ajouterErreur("pas d'information concernant l'utilisateur ï¿½ modifier");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -121,7 +125,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public void gererUtilisateur(Utilisateur u) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if (u==null) {
-			BExc.ajouterErreur("Vous devez créer un utilisateur pour pouvoir l'ajouter à la base de données.");
+			BExc.ajouterErreur("Vous devez crï¿½er un utilisateur pour pouvoir l'ajouter ï¿½ la base de donnï¿½es.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -203,7 +207,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	public void supprimerUtilisateur(int id) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if (id==0) {
-			BExc.ajouterErreur("vous devez créer un utilisateur pour pouvoir l'ajouter à la base de données");
+			BExc.ajouterErreur("vous devez crï¿½er un utilisateur pour pouvoir l'ajouter ï¿½la base de donnï¿½es");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -231,7 +235,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		
 		Utilisateur u = new Utilisateur();
 		if (id==0) {
-			BExc.ajouterErreur("Aucun utilisateur identifié.");
+			BExc.ajouterErreur("Aucun utilisateur identifiï¿½.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();

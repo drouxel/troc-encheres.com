@@ -1,6 +1,10 @@
 package fr.eni.trocEncheres.dal;
-
+/**
+ * classe abstraite permettant d'avoir une remontÃ©e uniforme des erreurs liÃ©es Ã  la DAL
+ * @author Ludo
+ *
+ */
 public abstract class ExceptionsDAL {
-	public static final String BDD_ERREUR_CONNEXION = "Problème de connexion à la base de données.";
-	public static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de données.";
+	public static final String BDD_ERREUR_CONNEXION = "Problï¿½me de connexion ï¿½ la base de donnï¿½es.";
+	public static final String BDD_ERREUR_TRAITEMENT = "Erreur de traitement au niveau de la base de donnï¿½es.";
 }

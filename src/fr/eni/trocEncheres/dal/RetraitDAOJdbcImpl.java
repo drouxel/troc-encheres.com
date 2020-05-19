@@ -7,7 +7,11 @@ import java.sql.SQLException;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Retrait;
-
+/**
+ * ImplÃ©mentation de l'interface RetraitDAO
+ * @author damien
+ *
+ */
 class RetraitDAOJdbcImpl implements RetraitDAO {
 	private static final String GET_ADRESSE = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String GET_RETRAIT = "SELECT * FROM retraits WHERE no_vente = ?";
@@ -40,7 +44,7 @@ class RetraitDAOJdbcImpl implements RetraitDAO {
 	public void ajouterRetrait(Retrait retrait) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if(retrait.getNoVente()==0) {
-			BExc.ajouterErreur("le retrait n'est pas associé à une vente");
+			BExc.ajouterErreur("le retrait n'est pas associï¿½ ï¿½une vente");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();

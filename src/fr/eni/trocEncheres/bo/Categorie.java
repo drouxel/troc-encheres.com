@@ -1,7 +1,7 @@
 package fr.eni.trocEncheres.bo;
 /**
  * classe permettant de définir des catégories d'objet pouvant être troqués sur le site.
- * @author damro
+ * @author damien
  *
  */
 public class Categorie {

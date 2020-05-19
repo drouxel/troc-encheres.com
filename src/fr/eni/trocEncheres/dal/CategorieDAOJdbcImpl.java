@@ -11,6 +11,11 @@ import java.util.List;
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Categorie;
 
+/**
+ * ImplÃ©mentation de l'interface CategorieDAO
+ * @author damien
+ *
+ */
 public class CategorieDAOJdbcImpl implements CategorieDAO{
 	private static final String INSERT_CATEGORIE = "INSERT INTO categories (libelle) VALUES(?)";
 	private static final String DELETE_CATEGORIE = "DELETE FROM categories WHERE no_categorie = ?";
@@ -30,7 +35,6 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 				categories.add(c);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return categories;
@@ -41,7 +45,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 		BusinessException BExc;
 		BExc = new BusinessException();
 		if (id==0) {
-			BExc.ajouterErreur("vous devez saisir le n° de la catégorie");
+			BExc.ajouterErreur("vous devez saisir le nï¿½ de la catï¿½gorie");
 			throw BExc;
 		}
 		Categorie categorie = new Categorie();
@@ -71,7 +75,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 	public Categorie ajouterCategorie(Categorie categorie) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if (categorie.getLibelle()==null) {
-			BExc.ajouterErreur("vous devez saisir un libellé de catégorie pour pouvoir l'ajouter à  la base de donnée");
+			BExc.ajouterErreur("vous devez saisir un libellï¿½ de catï¿½gorie pour pouvoir l'ajouter ï¿½ la base de donnï¿½e");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -104,7 +108,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 	public void supprimerCategorie(int id) throws BusinessException{
 		BusinessException BExc = new BusinessException();
 		if (id==0) {
-			BExc.ajouterErreur("vous devez saisir un libellé de catégorie pour pouvoir l'ajouter à  la base de donnée");
+			BExc.ajouterErreur("vous devez saisir un libellï¿½ de catï¿½gorie pour pouvoir l'ajouter ï¿½ la base de donnï¿½e");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();

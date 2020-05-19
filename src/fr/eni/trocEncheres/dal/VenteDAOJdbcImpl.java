@@ -12,7 +12,11 @@ import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Vente;
-
+/**
+ * Implémentation de l'interface VanteDAO
+ * @author damien
+ *
+ */
 class VenteDAOJdbcImpl implements VenteDAO {
 	public static final String INSERT_VENTE = "INSERT INTO ventes "
 			+ "(nom_article, description, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"

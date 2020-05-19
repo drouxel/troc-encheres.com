@@ -11,7 +11,11 @@ import java.util.List;
 
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Enchere;
-
+/**
+ * ImplÃ©mentation de l'interface EnchereDAO
+ * @author damien
+ *
+ */
 class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String INSERT_ENCHERE ="INSERT INTO encheres(date_enchere, credit, no_utilisateur, no_vente) "
 			+ "VALUES(?,?,?,?)";
@@ -27,7 +31,7 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 	public void ajouterEnchere(Enchere e) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if(e == null) {
-			BExc.ajouterErreur("veuillez renseigner une enchère");
+			BExc.ajouterErreur("veuillez renseigner une enchï¿½re");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -63,7 +67,7 @@ class EnchereDAOJdbcImpl implements EnchereDAO {
 	public void supprimerEnchere(Enchere e) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if(e == null) {
-			BExc.ajouterErreur("Veuillez renseigner une enchère.");
+			BExc.ajouterErreur("Veuillez renseigner une enchï¿½re.");
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
