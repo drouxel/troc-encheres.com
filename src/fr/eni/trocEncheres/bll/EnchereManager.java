@@ -44,11 +44,13 @@ public class EnchereManager {
 
 		// ajoute une enchÃ¨re si la date est correcte et si le montant l'est aussi
 		try {
-			if (dateIsValideEnchere(e) || montantIsValideEnchere(e)) {
+			if (dateIsValideEnchere(e) && montantIsValideEnchere(e)) {
 				daoEnchere.ajouterEnchere(e);
+			} else {
+				throw BExc;
 			}
 		} catch (BusinessException e2) {
-			BExc.ajouterErreur("Erreur lors de l'ajout de l'enchère.");
+			BExc.ajouterErreur("Erreur lors de l'ajout de l'enchï¿½re.");
 		}
 	}
 
@@ -131,7 +133,7 @@ public class EnchereManager {
 		try {
 			daoEnchere.getEncheres(noVente);
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Erreur de récupération des enchères liées à la vente.");
+			BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration des enchï¿½res liï¿½es ï¿½ la vente.");
 		}
 		return daoEnchere.getEncheres(noVente);
 	}
@@ -147,7 +149,7 @@ public class EnchereManager {
 		try {
 			daoEnchere.getEncheres();
 		} catch (BusinessException e) {
-			BExc.ajouterErreur("Erreur de récupération des enchères.");
+			BExc.ajouterErreur("Erreur de rï¿½cupï¿½ration des enchï¿½res.");
 		}
 		return daoEnchere.getEncheres();
 	}
