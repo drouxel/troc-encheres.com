@@ -40,6 +40,7 @@ public class UtilisateurManager {
 	 * @throws BusinessException
 	 */
 	public void ajouterUtilisateur(Utilisateur u) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		//Attribut(s)
 		boolean isValide = true;
 		
@@ -51,39 +52,49 @@ public class UtilisateurManager {
 				daoUtilisateur.ajouterUtilisateur(u);
 			}
 		} catch (BusinessException e) {
-			throw new BusinessException("Echec de l'insertion");
+			BExc.ajouterErreur("Echec de l'insertion");
 		}
 	}
 
 	private boolean verifAjouterUtil(Utilisateur u, boolean isValide) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		// vÃ©rifier que tous les champs de saisies soit tous remplis
 		if(u == null) {
 			isValide = false;
-			throw new BusinessException("Utilisateur null");
+			BExc.ajouterErreur("Utilisateur null");
+			throw BExc;
 		}if (u.getPseudo().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Pseudo est obligatoire !");
+			BExc.ajouterErreur("Le champ Pseudo est obligatoire !");
+			throw BExc;
 		}if (u.getNom().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Nom est obligatoire !");
+			BExc.ajouterErreur("Le champ Nom est obligatoire !");
+			throw BExc;
 		}if (u.getPrenom().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs PrÃ©nom est obligatoire !");
+			BExc.ajouterErreur("Le champ Prénom est obligatoire !");
+			throw BExc;
 		}if (u.getMail().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Email est obligatoire !");
+			BExc.ajouterErreur("Le champ Email est obligatoire !");
+			throw BExc;
 		}if (u.getRue().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Rue est obligatoire !");
+			BExc.ajouterErreur("Le champ Rue est obligatoire !");
+			throw BExc;
 		}if (u.getCodePostal().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Code Postal est obligatoire !");
+			BExc.ajouterErreur("Le champ Code Postal est obligatoire !");
+			throw BExc;
 		}if (u.getVille().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Ville est obligatoire !");
+			BExc.ajouterErreur("Le champ Ville est obligatoire !");
+			throw BExc;
 		}if (u.getMotDePasse().trim().length() == 0) {
 			isValide = false;
-			throw new BusinessException("Le champs Mot de Passe est obligatoire !");
+			BExc.ajouterErreur("Le champ Mot de Passe est obligatoire !");
+			throw BExc;
 		}
 		return isValide;
 	}
@@ -94,6 +105,7 @@ public class UtilisateurManager {
 	 * @throws BusinessException
 	 */
 	public void modifierUtilisateur(Utilisateur u) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		boolean isValide = true;
 		
 				isValide = verifAjouterUtil(u, isValide);
@@ -104,7 +116,7 @@ public class UtilisateurManager {
 						daoUtilisateur.modifierUtilisateur(u);
 					}
 				} catch (BusinessException e) {
-					throw new BusinessException("Echec de la mise Ã  jour");
+					BExc.ajouterErreur("Echec de la mise à  jour");
 				}
 	}
 	
@@ -114,11 +126,11 @@ public class UtilisateurManager {
 	 * @throws BusinessException
 	 */
 	public void supprimerUtilisateur(int no_utilisateur) throws BusinessException{
-		// supprime l'utilisateur par son no_utilisateur
+		BusinessException BExc = new BusinessException();
 		try {
 			daoUtilisateur.supprimerUtilisateur(no_utilisateur);			
 		} catch (BusinessException e) {
-			throw new BusinessException("Echec de la suppression");
+			BExc.ajouterErreur("Echec de la suppression");
 		}
 	}
 	
@@ -129,11 +141,12 @@ public class UtilisateurManager {
 	 * @throws BusinessException
 	 */
 	public Utilisateur connecterUtilisateur(String login, String motDePasse) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		Utilisateur u = null;
 		try {
 			u = daoUtilisateur.connecterUtilisateur(login, motDePasse);			
 		} catch (BusinessException e) {
-			throw new BusinessException("Erreur lors de la connexion");
+			BExc.ajouterErreur("Erreur lors de la connexion");
 		}
 		return u;
 	}
@@ -144,27 +157,32 @@ public class UtilisateurManager {
 	 * @throws BusinessException
 	 */
 	public void gererUtilisateur(Utilisateur u) throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		try {
 			daoUtilisateur.gererUtilisateur(u);			
 		} catch (BusinessException e) {
-			throw new BusinessException("Echec de la modification de l'utilisateur");
+			BExc.ajouterErreur("Echec de la modification de l'utilisateur.");
 		}
 	}
 	
 	public List<String> getPseudos() throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		try {
-			return daoUtilisateur.getPseudos();
+			daoUtilisateur.getPseudos();
 		} catch (BusinessException e) {
-			throw new BusinessException("");
+			BExc.ajouterErreur("Erreur de récupération du pseudo.");
 		}
+		return daoUtilisateur.getPseudos();
 	}
 	
 	public List<String> getMails() throws BusinessException {
+		BusinessException BExc = new BusinessException();
 		try {
-			return daoUtilisateur.getMails();
+			daoUtilisateur.getMails();
 		} catch (BusinessException e) {
-			throw new BusinessException("");
+			BExc.ajouterErreur("Erreur de récupération de l'adresse e-mail.");
 		}
+		return daoUtilisateur.getMails();
 	}
 }
 
