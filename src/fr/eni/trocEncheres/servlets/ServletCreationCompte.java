@@ -14,6 +14,7 @@ import fr.eni.trocEncheres.bo.Utilisateur;
 
 /**
  * Servlet implementation class ServletCreationCompte
+ * @author damien
  */
 @WebServlet("/ServletCreationCompte")
 public class ServletCreationCompte extends HttpServlet {

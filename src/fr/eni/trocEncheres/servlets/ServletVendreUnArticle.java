@@ -22,8 +22,8 @@ import fr.eni.trocEncheres.bo.Vente;
 
 /**
  * Servlet implementation class ServletVendreUnArticle
- * Ludo servlet
- * Matthieu algo
+ * @author Ludo servlet
+ * @author Matthieu algo
  */
 @WebServlet("/ServletVendreUnArticle")
 public class ServletVendreUnArticle extends HttpServlet {
@@ -59,7 +59,7 @@ public class ServletVendreUnArticle extends HttpServlet {
 		LocalDateTime dateFinEncheres = null;
 		int prixInitial = 0;
 		
-		try {
+//		try {
 			VenteManager artMger = new VenteManager();
 			BusinessException be = new BusinessException();
 			
@@ -85,13 +85,12 @@ public class ServletVendreUnArticle extends HttpServlet {
 			retrait.setRue(request.getParameter("rue").trim());
 			retrait.setCodePostal(request.getParameter("codePostal").trim());
 			retrait.setVille(request.getParameter("ville").trim());
-//			Retrait retrait = new Retrait(rue, codePostal, ville);
 //			Vente vente = new Vente(nomArticle, description, dateFinEncheres, prixInitial);
 			
-		} catch (BusinessException be) {
-			System.out.println(be.getMessage());
-			request.setAttribute("error", be.getMessage());
-		}
+//		} catch (BusinessException be) {
+//			System.out.println(be.getMessage());
+//			request.setAttribute("error", be.getMessage());
+//		}
 		doGet(request, response);
 	}
 

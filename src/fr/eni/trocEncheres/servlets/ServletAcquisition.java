@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class ServletAcquisition
+ * @author Ludo
  */
 @WebServlet("/ServletAcquisition")
 public class ServletAcquisition extends HttpServlet {

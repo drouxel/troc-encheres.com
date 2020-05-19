@@ -18,6 +18,7 @@ import fr.eni.trocEncheres.bo.Enchere;
 
 /**
  * Servlet implementation class ServletAccueilUtilisateur
+ * @author damien
  */
 @WebServlet("/ServletListeEncheres")
 public class ServletListeEncheres extends HttpServlet {

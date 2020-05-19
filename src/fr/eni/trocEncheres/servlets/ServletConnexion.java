@@ -16,6 +16,7 @@ import fr.eni.trocEncheres.bo.Utilisateur;
 @WebServlet("/ServletConnexion")
 /**
  * Servlet implementation class ServletConnexion
+ * @author damien
  */
 
 public class ServletConnexion extends HttpServlet {

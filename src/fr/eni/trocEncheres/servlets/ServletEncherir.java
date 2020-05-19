@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class ServletEncherir
+ * @author Ludo
  */
 @WebServlet("/ServletEncherir")
 public class ServletEncherir extends HttpServlet {

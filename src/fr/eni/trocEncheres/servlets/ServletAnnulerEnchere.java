@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class ServletAnnulerEnchere
+ * @author Ludo
  */
 @WebServlet("/ServletAnnulerEnchere")
 public class ServletAnnulerEnchere extends HttpServlet {
