@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- auteurs de la page : Damien et Ludovic --> 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,7 +23,7 @@
 				<a class="nav-link" href="<%=request.getContextPath()%>/ServletVendreUnArticle">Vendre un article</a>
 		     </div>
 		     <div class="nav-item">
-				<a class="nav-link" href="<%=request.getContextPath()%>/ServletMonProfil">Mon profil</a>
+				<a class="nav-link" href="<%=request.getContextPath()%>/ServletCreationCompte?noUtilisateurAAfficher=${utilisateurCourant.noUtilisateur}">Mon profil</a>
 		     </div>
 		     <div class="nav-item">
 				<a class="nav-link disabled" href="<%=request.getContextPath()%>/ServletDeconnexion">Déconnexion</a>

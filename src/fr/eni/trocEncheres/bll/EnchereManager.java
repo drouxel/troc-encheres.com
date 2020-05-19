@@ -39,8 +39,6 @@ public class EnchereManager {
 	 */
 	public void ajouterEnchere(Enchere e) throws BusinessException {
 		BusinessException BExc = new BusinessException();
-		dateIsValideEnchere(e);
-		montantIsValideEnchere(e);
 
 		// ajoute une enchère si la date est correcte et si le montant l'est aussi
 		try {
