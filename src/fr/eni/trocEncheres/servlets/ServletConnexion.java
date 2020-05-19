@@ -61,14 +61,15 @@ public class ServletConnexion extends HttpServlet {
 				response.addCookie(cookieSaveLogin);
 				response.addCookie(cookieSavePwd);
 			}
-			request.getRequestDispatcher("/WEB-INF/ListeEncheres.jsp").forward(request, response);
+			request.getRequestDispatcher("/ServletListeEncheres").forward(request, response);
+		}else {
+			String forgotPwd = request.getParameter("forgotPwd");
+			if(forgotPwd!=null) {
+				System.out.println("c'est balot");
+				request.setAttribute("forgotPwd", forgotPwd);
+			}
+			request.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 		}
-		String forgotPwd = request.getParameter("forgotPwd");
-		if(forgotPwd!=null) {
-			System.out.println("c'est balot");
-			request.setAttribute("forgotPwd", forgotPwd);
-		}
-		request.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 	}
 
 	/**

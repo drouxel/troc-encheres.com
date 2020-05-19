@@ -184,6 +184,10 @@ public class UtilisateurManager {
 		}
 		return daoUtilisateur.getMails();
 	}
+	
+	public Utilisateur getUtilisateurById(int noUtilisateur) throws BusinessException{
+		return daoUtilisateur.getUtilisateur(noUtilisateur);
+	}
 }
 
 
