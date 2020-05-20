@@ -28,7 +28,6 @@ public class ServletConnexion extends HttpServlet {
 		HttpSession session = request.getSession();
 		String login=null;
 		String motDePasse=null;
-		System.out.println(request.getParameter("login"));
 		if(request.getParameter("deconnexion")!=null) {
 			session.removeAttribute("utilisateurCourant");
 		}
@@ -54,6 +53,10 @@ public class ServletConnexion extends HttpServlet {
 		if(login==null||motDePasse==null) {
 			login = request.getParameter("login");
 			motDePasse = request.getParameter("motDePasse");
+		}
+		if(login==null||motDePasse==null) {
+			login = (String)request.getAttribute("login");
+			motDePasse = (String)request.getAttribute("motDePasse");
 		}
 		if(login!=null||motDePasse!=null) {
 			UtilisateurManager.getInstance();
