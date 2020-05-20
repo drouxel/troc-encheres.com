@@ -50,7 +50,7 @@
 			<label>Mise à prix : </label>
 		</div>
 		<div class="col-sm-2">
-			<input type="number" name="enchere" id="enchere" min="100">
+			<input type="number" name="enchere" id="enchere" min="0">
 		</div>
 		<div class="col-sm-4"></div>
 	</div>		
