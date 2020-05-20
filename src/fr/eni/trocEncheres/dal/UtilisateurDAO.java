@@ -62,4 +62,10 @@ public interface UtilisateurDAO {
 	 * @throws BusinessException
 	 */
 	public List<String> getMails() throws BusinessException;
+	/**
+	 * fonction qui retourne tous les numéros de téléphone enregistrés en base de données
+	 * @return tous les numéros de téléphone sous forme de String
+	 * @throws BusinessException
+	 */
+	public List<String> getTelephones() throws BusinessException;
 }
