@@ -10,7 +10,9 @@
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
+		<c:if test="${!empty self}">
 	<h2>Nouvelle vente</h2>
+	</c:if>
 	<form name="ajouterUnArticle" id="ajouterUnArticle" method="POST" action="/ServletVendreUnArticle">
 	<div class="row">
 		<div class="col-sm-4"></div>
@@ -18,7 +20,7 @@
 			<label>Article : </label>
 		</div>
 		<div class="col-sm-2">
-			<input type="text" name="article" id="article">
+			<input type="text" class="${plaintext}" name="article" id="article">
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
@@ -28,7 +30,7 @@
 			<label>Description : </label>
 		</div>
 		<div class="col-sm-2">
-			<textarea name="description" id="description" cols="40" rows="5"></textarea>
+			<textarea name="description" class="${plaintext}" id="description" cols="40" rows="5"></textarea>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>	
@@ -50,7 +52,7 @@
 			<label>Mise à prix : </label>
 		</div>
 		<div class="col-sm-2">
-			<input type="number" name="enchere" id="enchere" min="100">
+			<input type="number" class="${plaintext}" name="enchere" id="enchere" min="100">
 		</div>
 		<div class="col-sm-4"></div>
 	</div>		
@@ -60,7 +62,7 @@
 			<label>Fin de l'enchère : </label>
 		</div>
 		<div class="col-sm-2">
-			<input type="date" name="finEnchere" id="finEnchere">
+			<input type="date" class="${plaintext}" name="finEnchere" id="finEnchere">
 		</div>
 		<div class="col-sm-4"></div>
 	</div>		
@@ -71,15 +73,15 @@
 				<legend class="w-auto">Retrait</legend>
 				<div class="row">
 					<div class="col-sm-5"><label>Rue : </label></div>
-					<div class="col-sm-1"><input type="text" name="rue" id="rue"></div>
+					<div class="col-sm-1"><input type="text" class="${plaintext}" name="rue" id="rue"></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-5"><label>Code postal : </label></div>
-					<div class="col-sm-1"><input type="text" name="codePostal" id="codePostal"></div>
+					<div class="col-sm-1"><input type="text" class="${plaintext}" name="codePostal" id="codePostal"></div>
 				</div>			 
 				<div class="row">
 					<div class="col-sm-5"><label>Ville : </label></div>
-					<div class="col-sm-1"><input type="text" name="ville" id="ville"></div>
+					<div class="col-sm-1"><input type="text" class="${plaintext}" name="ville" id="ville"></div>
 				</div>
 			</fieldset>
 		</div>
