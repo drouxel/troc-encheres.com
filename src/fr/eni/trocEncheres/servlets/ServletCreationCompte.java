@@ -52,7 +52,13 @@ public class ServletCreationCompte extends HttpServlet {
 			if(request.getParameter("motDePasse").equals(request.getParameter("confirmation"))) {
 				u.setMotDePasse((String) request.getParameter("motDePasse"));
 				try {
-					uMgr.ajouterUtilisateur(u);
+					if(request.getParameter("credit")!=null) {
+						u.setCredit(Integer.parseInt(request.getParameter("credit")));
+						u.setNoUtilisateur(utilisateurCourant.getNoUtilisateur());
+						uMgr.modifierUtilisateur(u);
+					}else {
+						uMgr.ajouterUtilisateur(u);
+					}
 					request.setAttribute("login", u.getPseudo());
 					request.setAttribute("motDePasse", u.getMotDePasse());
 					request.getRequestDispatcher("/ServletConnexion").forward(request, response);

@@ -28,7 +28,7 @@ public class ServletConnexion extends HttpServlet {
 		HttpSession session = request.getSession();
 		String login=null;
 		String motDePasse=null;
-		if(request.getParameter("deconnexion")!=null) {
+		if(request.getParameter("deconnexion")!=null || request.getAttribute("deconnexion")!=null) {
 			session.removeAttribute("utilisateurCourant");
 		}
 		Cookie[] cookies = request.getCookies();

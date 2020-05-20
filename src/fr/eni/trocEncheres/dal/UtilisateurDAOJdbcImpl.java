@@ -74,10 +74,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				e.printStackTrace();
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
+			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");				
+			throw BExc;
 		}
 		return u;
 	}
@@ -114,10 +116,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				e.printStackTrace();
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 	}
 
