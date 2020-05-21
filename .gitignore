@@ -26,3 +26,7 @@ hs_err_pid*
 WebContent/META-INF/context.xml
 
 src/fr/eni/trocEncheres/test/ServletTestMatthieu.java
+
+src/fr/eni/trocEncheres/bo/Retrait.java
+
+WebContent/WEB-INF/VendreUnArticle.jsp

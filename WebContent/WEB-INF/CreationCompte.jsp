@@ -82,7 +82,7 @@
 					<div class ="row">
 						<div class="form-row col-sm-6">
 							<label for="credit">Credit : ${utilisateurAAfficher.credit} points</label>
-							<input type="hidden" class="form-control-plaintext col offset-1" id="credit" name="credit" value="${utilisateurAAfficher.motDePasse}">
+							<input type="hidden" class="form-control-plaintext col offset-1" id="credit" name="credit" value="${utilisateurAAfficher.credit}">
 						</div>
 					</div>
 				</c:if>

@@ -34,12 +34,14 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String GET_USER = "SELECT * FROM utilisateurs WHERE no_utilisateur = ?";
 	private static final String GET_PSEUDOS = "SELECT pseudo FROM utilisateurs";
 	private static final String GET_MAILS = "SELECT email FROM utilisateurs";
+	private static final String GET_TELS = "SELECT telephone FROM utilisateurs";
 
 	@Override
 	public Utilisateur ajouterUtilisateur(Utilisateur u) throws BusinessException {
 		BusinessException BExc = new BusinessException();
 		if (u==null) {
 			BExc.ajouterErreur("vous devez cr�er un utilisateur pour pouvoir l'ajouter � la base de donn�es");
+			throw BExc;
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -74,10 +76,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				e.printStackTrace();
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");
+			BExc.ajouterErreur("BDD_MAUVAISE_CONNEXION");				
+			throw BExc;
 		}
 		return u;
 	}
@@ -87,6 +91,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		BusinessException BExc = new BusinessException();
 		if (u==null) {
 			BExc.ajouterErreur("pas d'information concernant l'utilisateur � modifier");
+			throw BExc;
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -114,10 +119,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				e.printStackTrace();
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 	}
 
@@ -126,6 +133,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		BusinessException BExc = new BusinessException();
 		if (u==null) {
 			BExc.ajouterErreur("Vous devez cr�er un utilisateur pour pouvoir l'ajouter � la base de donn�es.");
+			throw BExc;
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -150,10 +158,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				e.printStackTrace();
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 	}
 
@@ -208,6 +218,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		BusinessException BExc = new BusinessException();
 		if (id==0) {
 			BExc.ajouterErreur("vous devez cr�er un utilisateur pour pouvoir l'ajouter �la base de donn�es");
+			throw BExc;
 		}
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
@@ -222,10 +233,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				e.printStackTrace();
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 	}
 
@@ -259,15 +272,18 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 					u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				}else {
 					BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+					throw BExc;
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return u;
 	}
@@ -275,7 +291,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public List<String> getPseudos() throws BusinessException {
 		BusinessException BExc = new BusinessException();
-		List<String> logins = new ArrayList();
+		List<String> logins = new ArrayList<String>();
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
 			try {
@@ -287,10 +303,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return logins;
 	}
@@ -298,7 +316,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public List<String> getMails() throws BusinessException {
 		BusinessException BExc = new BusinessException();
-		List<String> mails = new ArrayList();
+		List<String> mails = new ArrayList<String>();
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
 			try {
@@ -310,12 +328,41 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return mails;
+	}
+
+	@Override
+	public List<String> getTelephones() throws BusinessException {
+		BusinessException BExc = new BusinessException();
+		List<String> tels = new ArrayList<String>();
+		try {
+			Connection cnx = ConnecteurBDD.getConnection();
+			try {
+				Statement stmt = cnx.createStatement();
+				ResultSet rs = stmt.executeQuery(GET_TELS);
+				while(rs.next()) {
+					if(rs.getString("telephone")!=null) {
+						tels.add(rs.getString("telephone"));
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
+		}
+		return tels;
 	}
 
 }

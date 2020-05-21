@@ -44,15 +44,17 @@ public class UtilisateurManager {
 		//Attribut(s)
 		boolean isValide = true;
 		
+		
 		isValide = verifAjouterUtil(u, isValide);
 		
 		// insertion de l'utilisateur si tout les 'isValide' sont à 'true'
 		try {
-			if(isValide) {
+			if(isValide && isUnique(u.getPseudo(), u.getMail(), u.getTelephone())) {
 				daoUtilisateur.ajouterUtilisateur(u);
 			}
 		} catch (BusinessException e) {
 			BExc.ajouterErreur("Echec de l'insertion");
+			throw BExc;
 		}
 	}
 
@@ -193,6 +195,26 @@ public class UtilisateurManager {
 	
 	public Utilisateur getUtilisateurById(int noUtilisateur) throws BusinessException{
 		return daoUtilisateur.getUtilisateur(noUtilisateur);
+	}
+	private boolean isUnique(String pseudo, String mail, String telephone) throws BusinessException{
+		boolean isUnique = true;
+		BusinessException bExc = new BusinessException();
+		if(daoUtilisateur.getPseudos().contains(pseudo)) {
+			isUnique=false;
+			bExc.ajouterErreur("ce pseudo est déjà utilisé");
+		}
+		if(daoUtilisateur.getMails().contains(mail)) {
+			isUnique=false;
+			bExc.ajouterErreur("cette adresse mail est déjà utilisé");
+		}
+		if(daoUtilisateur.getTelephones().contains(telephone)) {
+			isUnique=false;
+			bExc.ajouterErreur("ce numéro de téléphone est déjà utilisé");
+		}
+		if(bExc.hasErreurs()) {
+			throw bExc;
+		}
+		return isUnique;
 	}
 }
 
