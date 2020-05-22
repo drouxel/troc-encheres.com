@@ -43,7 +43,7 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				pstmt.setString(2, v.getDescription());
 				pstmt.setDate(3, Date.valueOf(v.getDateFinEnchere()));
 				pstmt.setInt(4, v.getMiseAPrix());
-				pstmt.setNull(5, Types.INTEGER);
+				pstmt.setInt(5, v.getMiseAPrix());
 				pstmt.setInt(6, v.getVendeur().getNoUtilisateur());
 				pstmt.setInt(7, v.getCategorie().getNoCategorie());
 				pstmt.executeUpdate();

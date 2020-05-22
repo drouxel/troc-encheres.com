@@ -1,5 +1,7 @@
 package fr.eni.trocEncheres.bll;
 
+import java.util.List;
+
 import fr.eni.trocEncheres.BusinessException;
 import fr.eni.trocEncheres.bo.Vente;
 import fr.eni.trocEncheres.dal.DAOFactory;
@@ -74,6 +76,14 @@ public class VenteManager {
 					throw new BusinessException("Date obligatoire"); // à changer pour un code erreur
 				}
 				return isValide;
+			}
+			
+			public List<Vente> getVentes() throws BusinessException {
+				return daoVente.getVentes();
+			}
+			
+			public Vente getVenteById(int noVente) throws BusinessException{
+				return daoVente.getVente(noVente);
 			}
 }
 

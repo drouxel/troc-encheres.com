@@ -105,6 +105,8 @@ public class ServletVendreUnArticle extends HttpServlet {
 				request.setAttribute("rue", r.getRue());
 				request.setAttribute("codePostal", r.getCodePostal());
 				request.setAttribute("ville", r.getVille());
+				request.setAttribute("vente", v);
+				request.setAttribute("succes", "true");
 			} catch (BusinessException e) {
 				e.printStackTrace();
 			}

@@ -2,9 +2,9 @@
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-2">
-				<label>PC Gamer pour travailler</label>
+				<label>nom de l'article</label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">${vente.nomArticle}</div>
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="row">
@@ -12,7 +12,7 @@
 			<div class="col-sm-2">
 				<label>Description : </label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">${vente.description}</div>
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="row">
@@ -20,7 +20,7 @@
 			<div class="col-sm-2">
 				<label>Meilleure offre : </label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">${vente.prixVente}</div>
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="row">
@@ -28,7 +28,7 @@
 			<div class="col-sm-2">
 				<label>Mise à prix : </label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">${vente.miseAPrix}</div>
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="row">
@@ -36,7 +36,9 @@
 			<div class="col-sm-2">
 				<label>Fin de l'enchère : </label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">
+				<fmt:formatDate value="${vente.dateFinEnchereAffichage}" dateStyle="short"/>
+			</div>
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="row">
@@ -44,7 +46,7 @@
 			<div class="col-sm-2">
 				<label>Retrait : </label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">${vente.retrait.rue} ${vente.retrait.codePostal} ${vente.retrait.ville}</div>
 			<div class="col-sm-4"></div>
 		</div>
 		<div class="row">
@@ -52,7 +54,7 @@
 			<div class="col-sm-2">
 				<label>Vendeur : </label>
 			</div>
-			<div class="col-sm-2">info</div>
+			<div class="col-sm-2">${vente.vendeur.pseudo}</div>
 			<div class="col-sm-4"></div>
 		</div>
 	</div>

@@ -76,34 +76,34 @@
 					<button class="btn btn-lg btn-block" type="submit">Rechercher</button>
 				</div>
 			</form>
-			<c:forEach var="annonce" items="${annonces}">
-				<div class="row">
-					<div class="col-sm-5 offset-sm-1">
+			<div class="row">
+				<c:forEach var="annonce" items="${annonces}">
+					<div class="col-sm-4">
 						<div class="card">
 							<div class="row no-gutters">
 								<div class="col-sm-4">
-									<img src="" class="card-img" alt="${annonce.vente.nomArticle}">
+									<img src="img/enchere.jpg" class="card-img" alt="${annonce.nomArticle}">
 								</div>
 								<div class="col-sm-8">
 									<div class="card-body">
 										<h5 class="card-title">
-											<a href="<%=request.getContextPath()%>/ServletDetailMaVente?noVente=${annonce.vente.noVente}">${annonce.vente.nomArticle}</a>
+											<a href="<%=request.getContextPath()%>/ServletDetailMaVente?noVente=${annonce.noVente}">${annonce.nomArticle}</a>
 										</h5>
-										<p class="card-text">Prix : ${annonce.vente.prixVente} points</p>
+										<p class="card-text">Prix : ${annonce.prixVente} points</p>
 										<p class="card-text">Fin de l'enchere : 
-											<fmt:formatDate value="${annonce.vente.dateFinEnchereAffichage}" dateStyle="short"/> 
+											<fmt:formatDate value="${annonce.dateFinEnchereAffichage}" dateStyle="short"/> 
 										</p>
-										<p class="card-text">Retrait : ${annonce.vente.retrait.rue}</p>
-										<p class="card-text">			${annonce.vente.retrait.codePostal} ${annonce.vente.retrait.ville}</p>
-										<p class="card-text">Vendeur : ${annonce.vente.vendeur.pseudo}</p>
+										<p class="card-text">Retrait : ${annonce.retrait.rue}</p>
+										<p class="card-text">			${annonce.retrait.codePostal} ${annonce.retrait.ville}</p>
+										<p class="card-text">
+											<a href="<%=request.getContextPath()%>/ServletCreationCompte?noUtilisateurAAfficher=${annonce.vendeur.noUtilisateur}">Vendeur : ${annonce.vendeur.pseudo}</a>
+										</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
-			<div>
+				</c:forEach>
 			</div>
 		</div>
 	</body>

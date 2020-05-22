@@ -11,28 +11,32 @@
 </head>
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
-		<c:if test="${!empty self}">
-	<h2>Nouvelle vente</h2>
+	<c:if test="${!empty succes}">
+		<div class="alert alert-success text-center" role="alert">
+			<p>Votre article a été publié avec succès</p>
+		</div>
 	</c:if>
 	<form name="ajouterUnArticle" id="ajouterUnArticle" method="POST" action="<%=request.getContextPath()%>/ServletVendreUnArticle">
 	<div class="row">
-	<div class="col-sm-4"></div>
-	<div class="form-group form-inline">
-			<label class="col-sm-2" for="categories">Catégories : </label>
-			<select class="form-control col-sm-6" name="categorie">
+		<div class="col-sm-4"></div>
+		<div class=col-sm-2>
+			<label for="categories">Catégories : </label>
+		</div>
+		<div class="col-sm-2">
+			<select class="form-control col-sm-12" name="categorie">
 				<c:forEach var="categorie" items ="${categories}">
 					<option value="${categorie.noCategorie}">${categorie.libelle}</option>
 				</c:forEach>	
 			</select>
-		</div>
-		</div>
+		</div>	
+	</div>
 	<div class="row">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-2">
 			<label>Article : </label>
 		</div>
 		<div class="col-sm-2">
-			<input type="text" class="form-control" name="article" id="article">
+			<input type="text" class="form-control" name="article" id="article" value="${vente.nomArticle}">
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
@@ -42,7 +46,7 @@
 			<label>Description : </label>
 		</div>
 		<div class="col-sm-2">
-			<textarea name="description" class="form-control" id="description" cols="40" rows="5"></textarea>
+			<textarea name="description" class="form-control" id="description" value="${vente.description }"cols="40" rows="5"></textarea>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>	
@@ -99,24 +103,31 @@
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<c:if test="${empty other}">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<c:if test="${empty succes}">
 				<div class="col-sm-2">
-					<input type="submit" class="btn btn-danger btn-lg" value="publier" name="publier"/>
-				</c:if>
+					<input type="submit" class="btn btn-success btn-lg" value="publier" name="publier"/>
 				</div>
 				<div class="col-sm-2">
 					<input type="submit" class="btn btn-success btn-lg" value="enregistrer" name="enregistrer"/>
 				</div>
 				<div class="col-sm-2">
-				<a href="<%=request.getContextPath()%>/ServletListeEncheres">
-					<button type="button" class="btn btn-primary btn-lg">Annuler</button>
+			</c:if>
+			<c:if test="${!empty succes}">
+				<div class="col-sm-2">
+					<a href="<%=request.getContextPath()%>/ServletVendreUnArticle">
+						<button type="button" class="btn btn-primary btn-lg">Vendre un autre article</button>
 					</a>
 				</div>
-				<div class="col-sm-3"></div>
+				<div class="col-sm-2"></div>
+			</c:if>
+			<div class="col-sm-2">
+				<a href="<%=request.getContextPath()%>/ServletListeEncheres">
+					<button type="button" class="btn btn-primary btn-lg">Annuler</button>
+				</a>
 			</div>
-
+		</div>
 	</form>
 </body>
 </html>
