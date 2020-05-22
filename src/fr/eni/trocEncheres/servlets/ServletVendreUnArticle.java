@@ -1,11 +1,13 @@
 package fr.eni.trocEncheres.servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +19,10 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.ParseInfo;
 
 import fr.eni.trocEncheres.BusinessException;
+import fr.eni.trocEncheres.bll.CategorieManager;
 import fr.eni.trocEncheres.bll.UtilisateurManager;
 import fr.eni.trocEncheres.bll.VenteManager;
+import fr.eni.trocEncheres.bo.Categorie;
 import fr.eni.trocEncheres.bo.Retrait;
 import fr.eni.trocEncheres.bo.Utilisateur;
 import fr.eni.trocEncheres.bo.Vente;
@@ -39,6 +43,9 @@ public class ServletVendreUnArticle extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		UtilisateurManager uMgr = UtilisateurManager.getInstance();
+		Utilisateur utilisateurCourant = (Utilisateur) session.getAttribute("utilisateurCourant");
+		
 		String nomArcticle = null;
 		String description = null;
 		String miseAPrix = null;
@@ -67,32 +74,53 @@ public class ServletVendreUnArticle extends HttpServlet {
 			ville = request.getParameter("ville");
 		}
 		
-//		if (nomArcticle != null ||
-//			description != null ||
-//			miseAPrix != null ||
-//			dateFinEnchere != null ||
-//			rue != null ||
-//			codePostal != null ||
-//			ville != null){
-//			VenteManager.getInstance();
-//			VenteManager vMgr = VenteManager.getInstance();
-//			Vente vente = null;
-//			try {
-//				vente = vMgr.
-//			} catch (BusinessException e) {
-//				e.printStackTrace();
-//				request.getRequestDispatcher("/WEB-INF/VendreUnArticle.jsp").forward(request, response);
-//			}
-//		}
+
 		
 		if(request.getParameter("publier")!=null) {
+			CategorieManager catmgr = CategorieManager.getInstance();
 			Vente v = new Vente();
-			v.setNomArticle((String) request.getParameter("article"));
-			v.setDescription((String) request.getParameter("description"));
+			Retrait r = new Retrait();
+			VenteManager vMgr = new VenteManager();
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate date = LocalDate.parse(request.getParameter("finEnchere"));
+			v.setNomArticle(request.getParameter("article"));
+			try {
+				v.setCategorie(catmgr.getCategorieById(Integer.parseInt(request.getParameter("categorie"))));				
+			} catch (BusinessException e) {
+				request.setAttribute("listeErreurs", e.getListeCodesErreur());			}
+			v.setDescription(request.getParameter("description"));
+			v.setVendeur(utilisateurCourant);
 			v.setMiseAPrix((Integer.parseInt(request.getParameter("enchere"))) );
-			v.setDateFinEnchere((Date) request.getParameter("finEnchere"));
+			v.setDateFinEnchere(date);
+			r.setRue(request.getParameter("rue"));
+			r.setCodePostal(request.getParameter("codePostal"));
+			r.setVille(request.getParameter("ville"));
+			v.setRetrait(r);
+			try {
+				vMgr.ajouterVente(v);
+				request.setAttribute("article", v.getNomArticle());
+				request.setAttribute("description", v.getDescription());
+				request.setAttribute("enchere", v.getMiseAPrix());
+				request.setAttribute("finEnchere", v.getDateFinEnchere());
+				request.setAttribute("rue", r.getRue());
+				request.setAttribute("codePostal", r.getCodePostal());
+				request.setAttribute("ville", r.getVille());
+			} catch (BusinessException e) {
+				e.printStackTrace();
+			}
+		}else {
+			System.out.println("coucou");
 		}
-		
+		CategorieManager cMgr;
+		cMgr = CategorieManager.getInstance();
+		List<Categorie> categories;
+		try {
+			categories = cMgr.getCategories();
+			request.setAttribute("categories", categories);
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+
 		request.getRequestDispatcher("/WEB-INF/VendreUnArticle.jsp").forward(request, response);
 	}
 

@@ -40,16 +40,14 @@ public class VenteManager {
 			public void ajouterVente(Vente v) throws BusinessException { //à changer par code d'erreurs
 				Boolean isValide = true;
 				verificationsVente(v);
-				try {
+			
 					if (isValide) {
 						// Ajoute la vente si 'isValide' est 'true'
 						daoVente.ajouterVente(v);
 					}else {
 						throw new BusinessException("erreur");
 					}
-				} catch (BusinessException e) {
-					throw new BusinessException("L'ajout de la vente à échouée");
-				}
+				
 			}
 
 			/**
@@ -65,9 +63,6 @@ public class VenteManager {
 				}if (v.getNomArticle().trim().length() == 0) {
 					isValide = false;
 					throw new BusinessException("Nom de l'article obligatoire"); // à changer pour un code erreurs
-				}if (v.getNoVente() < 0 || v.getNoVente() == 0) {
-					isValide = false;
-					throw new BusinessException("No vente obligatoire"); // à changer pour un code erreur
 				}if (v.getDescription().trim().length() == 0) {
 					isValide = false;
 					throw new BusinessException("Description obligatoire"); // à changer pour un code erreur

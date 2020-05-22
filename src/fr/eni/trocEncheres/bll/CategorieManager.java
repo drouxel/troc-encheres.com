@@ -72,13 +72,9 @@ public class CategorieManager {
 		return categories;
 	}
 	
-	public void categorieById(int id) throws BusinessException {
-		BusinessException BExc = new BusinessException();
-		try { 			
-			daoCategorie.getCategorieById(id);
-		} catch (BusinessException e) {
-			BExc.ajouterErreur("Echec de r�cup�ration de la cat�gorie.");
-		}
+	public Categorie  getCategorieById(int id) throws BusinessException {
+			return daoCategorie.getCategorieById(id);
+		
 	}
 	
 	

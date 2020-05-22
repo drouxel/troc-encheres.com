@@ -33,6 +33,7 @@ class VenteDAOJdbcImpl implements VenteDAO {
 		if (v == null) {
 			BExc.ajouterErreur("Veuillez renseigner une vente.");
 		}
+		System.out.println(v.toString());
 		try {
 			Connection cnx = ConnecteurBDD.getConnection();
 			try {
@@ -59,10 +60,12 @@ class VenteDAOJdbcImpl implements VenteDAO {
 			} catch (Exception e) {
 				cnx.rollback();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return v;
 	}
@@ -97,10 +100,12 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				pstmt.close();
 			} catch (Exception e) {
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 
 		return ventes;
@@ -136,10 +141,12 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				pstmt.close();
 			} catch (Exception e) {
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 
 		return ventes;
@@ -175,10 +182,12 @@ class VenteDAOJdbcImpl implements VenteDAO {
 				pstmt.close();
 			} catch (Exception e) {
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return ventes;
 	}
@@ -212,10 +221,12 @@ class VenteDAOJdbcImpl implements VenteDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+				throw BExc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return v;
 	}
@@ -248,10 +259,12 @@ class VenteDAOJdbcImpl implements VenteDAO {
 			stmt.close();
 		} catch (Exception e) {
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_TRAITEMENT);
+			throw BExc;
 		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			BExc.ajouterErreur(ExceptionsDAL.BDD_ERREUR_CONNEXION);
+			throw BExc;
 		}
 		return ventes;
 	}
