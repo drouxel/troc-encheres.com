@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- auteurs de la page : Damien et Ludovic -->
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
 <%@ include file="fragments/EnTete.jspf"%>
 <body>
 	<div class="container-fluid">
+		<%@ include file="fragments/ListeErreurs.jspf" %>
 		<form action="<%=request.getContextPath()%>/ServletConnexion" method="post">
 			<div class="row">
 			<div class="col-sm-4"></div>

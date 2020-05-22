@@ -34,6 +34,7 @@
 	<body>
 		<%@ include file="fragments/EnTete.jspf"%>
 		<div class="container-fluid">
+			<%@ include file="fragments/ListeErreurs.jspf" %>
 			<form action="<%=request.getContextPath()%>/ServletListeEncheres" method="post">
 				<div class="row">
 					<div class="form-group col-sm-4">

@@ -14,6 +14,7 @@
 <%@ include file="fragments/EnTete.jspf"%>
 	<body>
 		<div class="container">
+			<%@ include file="fragments/ListeErreurs.jspf" %>
 			<div class="col-sm-12 text-center">
 				<c:if test="${!empty self}">
 					<h2>Mon Profil</h2>

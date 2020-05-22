@@ -66,6 +66,10 @@ public class ServletConnexion extends HttpServlet {
 				utilisateurCourant = uMgr.connecterUtilisateur(login, motDePasse);
 			} catch (BusinessException e) {
 				e.printStackTrace();
+				for (String erreur : e.getListeCodesErreur()) {
+					System.out.println(erreur);
+				}
+				request.setAttribute("listeErreurs", e.getListeCodesErreur());
 				request.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 			}
 			session.setAttribute("utilisateurCourant",utilisateurCourant);

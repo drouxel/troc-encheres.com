@@ -1,0 +1,7 @@
+<c:if test="${!empty listeErreurs}">
+	<c:forEach var="erreur" items="${listeErreurs }">
+		<div class="alert alert-warning text-center" role="alert">
+			<p>${erreur}</p>
+		</div>			
+	</c:forEach>
+</c:if>
