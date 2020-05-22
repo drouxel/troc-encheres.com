@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- auteurs de la page : Damien et Ludovic --> 
 <!DOCTYPE html>
 <html>
@@ -89,7 +90,9 @@
 											<a href="<%=request.getContextPath()%>/ServletDetailMaVente?noVente=${annonce.vente.noVente}">${annonce.vente.nomArticle}</a>
 										</h5>
 										<p class="card-text">Prix : ${annonce.vente.prixVente} points</p>
-										<p class="card-text">Fin de l'enchere : ${annonce.vente.dateFinEnchere}</p>
+										<p class="card-text">Fin de l'enchere : 
+											<fmt:formatDate value="${annonce.vente.dateFinEnchereAffichage}" dateStyle="short"/> 
+										</p>
 										<p class="card-text">Retrait : ${annonce.vente.retrait.rue}</p>
 										<p class="card-text">			${annonce.vente.retrait.codePostal} ${annonce.vente.retrait.ville}</p>
 										<p class="card-text">Vendeur : ${annonce.vente.vendeur.pseudo}</p>
