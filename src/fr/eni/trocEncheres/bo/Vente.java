@@ -1,6 +1,8 @@
 package fr.eni.trocEncheres.bo;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -29,8 +31,16 @@ public class Vente {
 	private Utilisateur vendeur;
 	private Utilisateur acheteur;
 	private String image;
+	private Date dateFinEnchereAffichage;
 	
 	
+	/**
+	 * @return the dateFinEnchereAffichage
+	 */
+	public Date getDateFinEnchereAffichage() {
+		return Date.from(this.getDateFinEnchere().atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+
 	/**
 	 * 
 	 */

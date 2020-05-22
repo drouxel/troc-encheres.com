@@ -31,22 +31,14 @@ public class ServletListeEncheres extends HttpServlet {
 		CategorieManager cMgr;
 		EnchereManager eMgr;
 		try {
+			// récupère les catégories enregistrées en base de données pour les afficher sous la forme d'un select dans la JSP
 			cMgr = CategorieManager.getInstance();
-			List<Categorie> categories = cMgr.getCategories();
-			for (Categorie categorie : categories) {
-			}
-			request.setAttribute("categories", categories);
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
+			request.setAttribute("categories", cMgr.getCategories());
+			//récupère les ventes en cours pour les afficher dans l'écran d'accueil
 			eMgr = EnchereManager.getInstance();
-			List<Enchere> annonces = eMgr.getEncheres();
-			request.setAttribute("annonces", annonces);
+			request.setAttribute("annonces", eMgr.getEncheres());
 		} catch (BusinessException e) {
-			List<String> listeErreurs = e.getListeCodesErreur();
-			request.setAttribute("listeErreurs", listeErreurs);
+			request.setAttribute("listeErreurs", e.getListeCodesErreur());
 			e.printStackTrace();
 		}
 		
